@@ -53,7 +53,7 @@ endmodule
 // Retrieval info: 	<generic name="device" value="5CEBA2F17A7" />
 // Retrieval info: 	<generic name="gui_device_speed_grade" value="1" />
 // Retrieval info: 	<generic name="gui_pll_mode" value="Integer-N PLL" />
-// Retrieval info: 	<generic name="gui_reference_clock_frequency" value="100.0" />
+// Retrieval info: 	<generic name="gui_reference_clock_frequency" value="50.0" />
 // Retrieval info: 	<generic name="gui_channel_spacing" value="0.0" />
 // Retrieval info: 	<generic name="gui_operation_mode" value="direct" />
 // Retrieval info: 	<generic name="gui_feedback_clock" value="Global Clock" />

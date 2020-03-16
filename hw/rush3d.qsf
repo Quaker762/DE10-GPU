@@ -63,4 +63,118 @@ set_global_assignment -name SIP_FILE ip/PixelPLL.sip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AF14 -to clk_ref
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk_ref
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to btn_begin
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to btn_reset
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to btn_set_color
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to btn_switch_color
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blank_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_blue_pins[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_green_pins[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_red_pins[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to dac_sync_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to hsync
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_color_bits[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to segment_leds[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to segment_leds[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to segment_leds[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to segment_leds[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to segment_leds[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to segment_leds[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to segment_leds[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to switch_color_bits[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vga_pixel_clock
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vsync
+set_location_assignment PIN_AA24 -to led_color_bits[0]
+set_location_assignment PIN_AB23 -to led_color_bits[1]
+set_location_assignment PIN_AC23 -to led_color_bits[2]
+set_location_assignment PIN_AD24 -to led_color_bits[3]
+set_location_assignment PIN_AG25 -to led_color_bits[4]
+set_location_assignment PIN_AF25 -to led_color_bits[5]
+set_location_assignment PIN_AE24 -to led_color_bits[6]
+set_location_assignment PIN_AF24 -to led_color_bits[7]
+set_location_assignment PIN_W17 -to segment_leds[0]
+set_location_assignment PIN_V18 -to segment_leds[1]
+set_location_assignment PIN_AG17 -to segment_leds[2]
+set_location_assignment PIN_AG16 -to segment_leds[3]
+set_location_assignment PIN_AH17 -to segment_leds[4]
+set_location_assignment PIN_AG18 -to segment_leds[5]
+set_location_assignment PIN_AH18 -to segment_leds[6]
+set_location_assignment PIN_AB30 -to switch_color_bits[0]
+set_location_assignment PIN_Y27 -to switch_color_bits[1]
+set_location_assignment PIN_AB28 -to switch_color_bits[2]
+set_location_assignment PIN_AC30 -to switch_color_bits[3]
+set_location_assignment PIN_W25 -to switch_color_bits[4]
+set_location_assignment PIN_V25 -to switch_color_bits[5]
+set_location_assignment PIN_AC28 -to switch_color_bits[6]
+set_location_assignment PIN_AD30 -to switch_color_bits[7]
+set_location_assignment PIN_AJ4 -to btn_begin
+set_location_assignment PIN_AK4 -to btn_reset
+set_location_assignment PIN_AA14 -to btn_set_color
+set_location_assignment PIN_AA15 -to btn_switch_color
+set_location_assignment PIN_AK29 -to dac_red_pins[0]
+set_location_assignment PIN_AK28 -to dac_red_pins[1]
+set_location_assignment PIN_AK27 -to dac_red_pins[2]
+set_location_assignment PIN_AJ27 -to dac_red_pins[3]
+set_location_assignment PIN_AH27 -to dac_red_pins[4]
+set_location_assignment PIN_AF26 -to dac_red_pins[5]
+set_location_assignment PIN_AG26 -to dac_red_pins[6]
+set_location_assignment PIN_AJ26 -to dac_red_pins[7]
+set_location_assignment PIN_AK26 -to dac_green_pins[0]
+set_location_assignment PIN_AJ25 -to dac_green_pins[1]
+set_location_assignment PIN_AH25 -to dac_green_pins[2]
+set_location_assignment PIN_AK24 -to dac_green_pins[3]
+set_location_assignment PIN_AJ24 -to dac_green_pins[4]
+set_location_assignment PIN_AH24 -to dac_green_pins[5]
+set_location_assignment PIN_AK23 -to dac_green_pins[6]
+set_location_assignment PIN_AH23 -to dac_green_pins[7]
+set_location_assignment PIN_AJ21 -to dac_blue_pins[0]
+set_location_assignment PIN_AJ20 -to dac_blue_pins[1]
+set_location_assignment PIN_AH20 -to dac_blue_pins[2]
+set_location_assignment PIN_AJ19 -to dac_blue_pins[3]
+set_location_assignment PIN_AH19 -to dac_blue_pins[4]
+set_location_assignment PIN_AJ17 -to dac_blue_pins[5]
+set_location_assignment PIN_AJ16 -to dac_blue_pins[6]
+set_location_assignment PIN_AK16 -to dac_blue_pins[7]
+set_location_assignment PIN_AK22 -to dac_blank_n
+set_location_assignment PIN_AJ22 -to dac_sync_n
+set_location_assignment PIN_AK21 -to vga_pixel_clock
+set_location_assignment PIN_AK18 -to vsync
+set_location_assignment PIN_AK19 -to hsync
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
