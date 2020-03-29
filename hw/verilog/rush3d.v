@@ -7,8 +7,10 @@ module Rush3D
 	input btn_reset,
 	input btn_begin,
 	input [7:0] switch_color_bits,
+	input [1:0] switch_change_res,
 	input btn_set_color,
 	input btn_switch_color,
+	
 	
 	// Should this be a part of the VGA controller module???
 	output [7:0] dac_red_pins,
@@ -24,16 +26,34 @@ module Rush3D
 	output [6:0] segment_leds
 );
 
-PixelPLL vga_pll// PLL 40MHz Pixel Clock Generator 
+PixelPLL vga_pll800// PLL 40MHz Pixel Clock Generator (800*600@60p)
 (
 .refclk(clk_ref),
 .rst(1'b0), 
-.outclk_0(vga_pixel_clock)
+.outclk_0(vga_pixel_clock800)
 );
+
+PixelPLL vga_pll640// PLL 25.175MHz Pixel Clock Generator (640*480@60p)
+(
+.refclk(clk_ref),
+.rst(1'b0), 
+.outclk_1(vga_pixel_clock640)
+);
+
+PixelPLL vga_pll1024// PLL 65MHz Pixel Clock Generator (1024*768@60p)
+(
+.refclk(clk_ref),
+.rst(1'b0), 
+.outclk_2(vga_pixel_clock1024)
+);
+
 
 VGAController vga_ctrl
 (
-	.pixel_clock(vga_pixel_clock), 
+	.pixel_clock800(vga_pixel_clock800),
+	.pixel_clock640(vga_pixel_clock800),
+	.pixel_clock1024(vga_pixel_clock1024),
+	.switch_res(switch_change_res),
 	.reset_n(btn_reset),
 	.beg(btn_begin),
 	

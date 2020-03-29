@@ -9,6 +9,8 @@ module PixelPLL (
 		input  wire  refclk,   //  refclk.clk
 		input  wire  rst,      //   reset.reset
 		output wire  outclk_0, // outclk0.clk
+		output wire  outclk_1, // outclk1.clk
+		output wire  outclk_2, // outclk2.clk
 		output wire  locked    //  locked.export
 	);
 
@@ -16,6 +18,8 @@ module PixelPLL (
 		.refclk   (refclk),   //  refclk.clk
 		.rst      (rst),      //   reset.reset
 		.outclk_0 (outclk_0), // outclk0.clk
+		.outclk_1 (outclk_1), // outclk0.clk
+		.outclk_2 (outclk_2), // outclk0.clk
 		.locked   (locked)    //  locked.export
 	);
 
