@@ -2,8 +2,6 @@
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
 AlignConsecutiveMacros: 'true'
-AlignConsecutiveAssignments: 'true'
-AlignConsecutiveDeclarations: 'true'
 AlignEscapedNewlines: Left
 AlignOperands: 'true'
 AlignTrailingComments: 'true'
@@ -43,6 +41,7 @@ DisableFormat: 'false'
 FixNamespaceComments: 'false'
 IncludeBlocks: Regroup
 IndentWidth: '4'
+IndentPPDirectives: BeforeHash
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
 Language: Cpp
 NamespaceIndentation: None
