@@ -1,10 +1,16 @@
 /**
- *  Rush3D MiniGL driver
+ * Rush3D MiniGL driver
  *
- *  Provides function prototypes for a small subset of the OpenGL 1 fixed
- *  function pipeline, as well as providing typedefs.
+ * Provides function prototypes for a small subset of the OpenGL 1 fixed
+ * function pipeline, as well as providing typedefs.
  *
- *  Copyright 2020 Jesse Buhagiar, Matthew Atkin and Jack Allan
+ * Copyright (c) 2020, Jesse Buhagiar, Jack Allan and Matthew Atkin
+ * All rights reserved.
+ * Unauthorized copying or reproduction of this project and the files contained within
+ * is strictly prohibited.
+ *
+ * Author: Jesse Buhagiar
+ * Date: 4/4/2020
  */
 #pragma once
 

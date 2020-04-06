@@ -1,13 +1,21 @@
 /**
- *  Describes the current OpenGL rendering context (and it's state).
+ * Describes the current OpenGL rendering context (and it's state).
  *
- *  This is used by the driver to know what state the OpenGL renderer is in (i.e
- *  the matrix mode, the matrix stack") as well as any other "state" that the
- *  driver needs to know about. This state is _global_, meaning the struct is
- *  defined.
+ * This is used by the driver to know what state the OpenGL renderer is in (i.e
+ * the matrix mode, the matrix stack") as well as any other "state" that the
+ * driver needs to know about. This state is _global_, meaning the struct is
+ * defined.
  *
+ * Provides function prototypes for a small subset of the OpenGL 1 fixed
+ * function pipeline, as well as providing typedefs.
  *
+ * Copyright (c) 2020, Jesse Buhagiar, Jack Allan and Matthew Atkin
+ * All rights reserved.
+ * Unauthorized copying or reproduction of this project and the files contained within
+ * is strictly prohibited.
  *
+ * Author: Jesse Buhagiar
+ * Date: 4/4/2020
  */
 #pragma once
 
