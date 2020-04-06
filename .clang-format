@@ -36,6 +36,7 @@ BraceWrapping:
 BreakBeforeBraces: Custom
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
+ColumnLimit: 256
 Cpp11BracedListStyle: 'false'
 DisableFormat: 'false'
 FixNamespaceComments: 'false'
