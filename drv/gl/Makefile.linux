@@ -1,0 +1,29 @@
+# Makefile for Rush3D MiniGL driver for Linux
+
+CXX_OBJS = \
+	glstate.o \
+	glutil.o \
+
+AR=ar
+CC=gcc
+CXX=gcc
+LD=$(CXX)
+
+CXX_FLAGS += -std=c++11 -O0
+CXX_FLAGS += -DDEBUG
+CXXFLAGS += -I./
+CXXFLAGS += -I../
+CXXFLAGS += -I../r3d/
+
+OUTPUT=build/libgl.a
+
+OUTPUT: $(CXX_OBJS)
+	@mkdir -p ./build
+	@echo "AR $@"; $(AR) -rcs $(OUTPUT) $(CXX_OBJS)
+
+.cpp.o:
+	@echo "CXX $@"; $(CXX) $(CXXFLAGS) -o $@ -c $<
+
+clean:
+	rm -rf build
+	rm -f $(CXX_OBJS)
