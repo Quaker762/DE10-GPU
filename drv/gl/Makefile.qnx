@@ -1,0 +1,23 @@
+# Makefile for Rush3D MiniGL driver for QNX
+
+CXX_OBJS = \
+	glvert.o
+
+export QNX_HOST=/home/quaker/qnx700/host/linux/x86_64/
+export QNX_TARGET=/home/quaker/qnx700/target/qnx7/
+PLATFORM ?= armv7le
+CC=qcc -Vgcc_nto$(PLATFORM)
+CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
+LD=$(CXX)
+
+PROGRAM=test
+
+PROGRAM : $(CXX_OBJS)
+	@echo "LINK $@"; $(CXX) $(CXX_OBJS) -o $(PROGRAM)
+
+.cpp.o:
+	@echo "CXX $@"; $(CXX) $(CXXFLAGS) -o $@ -c $<
+
+clean:
+	rm -f $(PROGRAM)
+	rm -f $(CXX_OBJS)
