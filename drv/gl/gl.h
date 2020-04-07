@@ -14,6 +14,13 @@
  */
 #pragma once
 
+// Comment this shit out for the actual board!
+#define USE_SIM
+#ifdef USE_SIM
+    #include "../../emu/rush3d/card.h"
+extern Rush3D g_card;
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

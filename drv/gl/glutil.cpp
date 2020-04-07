@@ -11,11 +11,20 @@
 #include "gl.h"
 #include "glcontext.h"
 
+#include <cmath>
+
 void glClear(GLbitfield mask)
 {
     if(mask & GL_COLOR_BUFFER_BIT)
     {
-        // TODO: Send card clear command here based on glClearColor
+        uint8_t r = floor(g_gl_state.clear_color.r * 255.0);
+        uint8_t g = floor(g_gl_state.clear_color.g * 255.0);
+        uint8_t b = floor(g_gl_state.clear_color.b * 255.0);
+
+#ifdef USE_SIM
+        g_card.write_register(RegisterOffsets::fbCOLOR, (r << 16) | (g << 8) | b);
+        g_card.write_register(RegisterOffsets::fbFILL, 1); // Execute fill command
+#endif
     }
     else
     {
