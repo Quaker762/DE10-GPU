@@ -33,13 +33,21 @@ extern "C" {
 #define GL_TRUE  1
 #define GL_FALSE 0
 
+// Matrix Modes
 #define GL_MODELVIEW  0x0050
 #define GL_PROJECTION 0x0051
 
-#define GL_TRIANGLES 0x0100
-#define GL_QUADS     0x0101
+// glBegin/glEnd primitive types
+#define GL_TRIANGLES 0x0000
+#define GL_QUADS     0x0001
 
+// Buffer bits
 #define GL_COLOR_BUFFER_BIT 0x0200
+
+// Utility
+#define GL_VENDOR   0x1F00
+#define GL_RENDERER 0x1F01
+#define GL_VERSION  0x1F02
 
 //
 // OpenGL typedefs
@@ -48,6 +56,7 @@ extern "C" {
 // https://www.khronos.org/opengl/wiki/OpenGL_Type
 typedef char GLchar;
 typedef unsigned char GLuchar;
+typedef unsigned char GLubyte;
 typedef short GLshort;
 typedef unsigned short GLushort;
 typedef int GLint;
@@ -64,6 +73,7 @@ typedef unsigned int GLbitfield;
 
 GLAPI void glClear(GLbitfield mask);
 GLAPI void glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+GLAPI GLubyte* glGetString(GLenum name);
 
 #ifdef __cplusplus
 }
