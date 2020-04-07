@@ -1,19 +1,22 @@
 CXX_OBJS = \
 	rush3d/card.o \
 	rush3d/pcu.o \
-	main.o
 
 CXX=g++
 
 CXXFLAGS += -std=c++14 -Wall -Wextra -Wold-style-cast
 CXXFLAGS += -O0 -g3
+CXXFLAGS += -I.
+CXXFLAGS += -I../
 
 DEP = $(CXX_OBJS:%.o=%.d)
 
-PROGRAM=emulator
+PROGRAM=build/libsim.a
+OUTPUT += build/libsim.a
 
 PROGRAM : $(CXX_OBJS)
-	@echo "LINK $@"; $(CXX) $(CXX_OBJS) -o $(PROGRAM) -lSDL2
+	@mkdir -p ./build
+	@echo "AR $@"; $(AR) -rcs $(OUTPUT) $(CXX_OBJS)
 
 .cpp.o:
 	@echo "CXX $@"; $(CXX) $(CXXFLAGS) -o $@ -c $<
