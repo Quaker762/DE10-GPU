@@ -15,7 +15,7 @@
 void glMatrixMode(GLenum mode)
 {
     ASSERT(mode == GL_MODELVIEW || mode == GL_PROJECTION);
-    g_gl_state.curr_matrix_mode = mode;
+    g_gl_state->curr_matrix_mode = mode;
 }
 
 /*
@@ -26,19 +26,19 @@ void glMatrixMode(GLenum mode)
 void glPushMatrix()
 {
 #ifdef DEBUG
-    log(LogLevel::INFO, "glPushMatrix(): Pushing matrix to the matrix stack (matrix_mode = 0x%x)\n", g_gl_state.curr_matrix_mode);
+    log(LogLevel::INFO, "glPushMatrix(): Pushing matrix to the matrix stack (matrix_mode = 0x%x)\n", g_gl_state->curr_matrix_mode);
 #endif
 
-    switch(g_gl_state.curr_matrix_mode)
+    switch(g_gl_state->curr_matrix_mode)
     {
     case GL_PROJECTION:
-        g_gl_state.projection_matrix_stack.push(g_gl_state.projection_matrix);
+        g_gl_state->projection_matrix_stack.push(g_gl_state->projection_matrix);
         break;
     case GL_MODELVIEW:
-        g_gl_state.model_view_matrix_stack.push(g_gl_state.model_view_matrix);
+        g_gl_state->model_view_matrix_stack.push(g_gl_state->model_view_matrix);
         break;
     default:
-        log(LogLevel::ERROR, "glPushMatrix(): Attempt to push matrix with invalid matrix mode, 0x%x\n", g_gl_state.curr_matrix_mode);
+        log(LogLevel::ERROR, "glPushMatrix(): Attempt to push matrix with invalid matrix mode, 0x%x\n", g_gl_state->curr_matrix_mode);
         break;
     }
 }
@@ -51,22 +51,22 @@ void glPushMatrix()
 void glPopMatrix()
 {
 #ifdef DEBUG
-    log(LogLevel::INFO, "glPopMatrix(): Popping matrix from matrix stack (matrix_mode = 0x%x)\n", g_gl_state.curr_matrix_mode);
+    log(LogLevel::INFO, "glPopMatrix(): Popping matrix from matrix stack (matrix_mode = 0x%x)\n", g_gl_state->curr_matrix_mode);
 #endif
 
     // TODO: Make sure stack::top() doesn't cause any  nasty issues if it's empty (that could result in a lockup/hang)
-    switch(g_gl_state.curr_matrix_mode)
+    switch(g_gl_state->curr_matrix_mode)
     {
     case GL_PROJECTION:
-        g_gl_state.projection_matrix = g_gl_state.projection_matrix_stack.top();
-        g_gl_state.projection_matrix_stack.pop();
+        g_gl_state->projection_matrix = g_gl_state->projection_matrix_stack.top();
+        g_gl_state->projection_matrix_stack.pop();
         break;
     case GL_MODELVIEW:
-        g_gl_state.projection_matrix = g_gl_state.model_view_matrix_stack.top();
-        g_gl_state.model_view_matrix_stack.pop();
+        g_gl_state->projection_matrix = g_gl_state->model_view_matrix_stack.top();
+        g_gl_state->model_view_matrix_stack.pop();
         break;
     default:
-        log(LogLevel::ERROR, "glPopMatrix(): Attempt to pop matrix with invalid matrix mode, 0x%x\n", g_gl_state.curr_matrix_mode);
+        log(LogLevel::ERROR, "glPopMatrix(): Attempt to pop matrix with invalid matrix mode, 0x%x\n", g_gl_state->curr_matrix_mode);
         break;
     }
 }
