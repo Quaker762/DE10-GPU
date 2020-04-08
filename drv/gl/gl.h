@@ -74,6 +74,9 @@ typedef unsigned int GLbitfield;
 GLAPI void glClear(GLbitfield mask);
 GLAPI void glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
 GLAPI GLubyte* glGetString(GLenum name);
+GLAPI void glMatrixMode(GLenum mode);
+GLAPI void glPushMatrix();
+GLAPI void glPopMatrix();
 
 #ifdef __cplusplus
 }
