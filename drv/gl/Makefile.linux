@@ -4,6 +4,7 @@ CXX_OBJS = \
     glmat.o \
 	glstate.o \
 	glutil.o \
+	glvert.o \
 
 AR=ar
 CC=gcc

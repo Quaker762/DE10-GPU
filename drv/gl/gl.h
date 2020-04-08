@@ -71,6 +71,7 @@ typedef float GLclampf;
 typedef unsigned int GLenum;
 typedef unsigned int GLbitfield;
 
+GLAPI void glBegin(GLenum mode);
 GLAPI void glClear(GLbitfield mask);
 GLAPI void glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
 GLAPI GLubyte* glGetString(GLenum name);
