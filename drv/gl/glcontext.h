@@ -33,6 +33,9 @@ struct GLContext
     Mat4 projection_matrix;
     Mat4 model_view_matrix;
 
+    std::stack<Mat4> projection_matrix_stack;
+    std::stack<Mat4> model_view_matrix_stack;
+
     color_t clear_color;
 };
 
