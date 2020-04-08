@@ -11,4 +11,4 @@
  */
 #include "glcontext.h"
 
-GLContext g_gl_state;
+GLContext* g_gl_state = new GLContext();

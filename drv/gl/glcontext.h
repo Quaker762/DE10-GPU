@@ -39,5 +39,5 @@ struct GLContext
     color_t clear_color;
 };
 
-extern GLContext g_gl_state;
+extern GLContext* g_gl_state;
 extern Mat4 g_curr_matrix;

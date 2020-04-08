@@ -23,9 +23,9 @@ void glClear(GLbitfield mask)
 {
     if(mask & GL_COLOR_BUFFER_BIT)
     {
-        uint8_t r = floor(g_gl_state.clear_color.r * 255.0);
-        uint8_t g = floor(g_gl_state.clear_color.g * 255.0);
-        uint8_t b = floor(g_gl_state.clear_color.b * 255.0);
+        uint8_t r = floor(g_gl_state->clear_color.r * 255.0);
+        uint8_t g = floor(g_gl_state->clear_color.g * 255.0);
+        uint8_t b = floor(g_gl_state->clear_color.b * 255.0);
 
 #ifdef USE_SIM
         g_card.write_register(RegisterOffsets::fbCOLOR, (r << 16) | (g << 8) | b);
@@ -40,10 +40,10 @@ void glClear(GLbitfield mask)
 
 void glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-    g_gl_state.clear_color.r = red;
-    g_gl_state.clear_color.g = green;
-    g_gl_state.clear_color.b = blue;
-    g_gl_state.clear_color.a = alpha;
+    g_gl_state->clear_color.r = red;
+    g_gl_state->clear_color.g = green;
+    g_gl_state->clear_color.b = blue;
+    g_gl_state->clear_color.a = alpha;
 }
 
 GLubyte* glGetString(GLenum name)
