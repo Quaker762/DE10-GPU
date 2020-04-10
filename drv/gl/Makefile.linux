@@ -11,8 +11,8 @@ CC=gcc
 CXX=gcc
 LD=$(CXX)
 
-CXX_FLAGS += -std=c++11 -O0
-CXX_FLAGS += -DDEBUG
+CXXFLAGS += -std=c++11 -O0 -g3
+CXXFLAGS += -DDEBUG
 CXXFLAGS += -I./
 CXXFLAGS += -I../
 CXXFLAGS += -I../r3d/
