@@ -8,6 +8,9 @@ export QNX_TARGET=/home/quaker/qnx700/target/qnx7/
 PLATFORM ?= armv7le
 CC=qcc -Vgcc_nto$(PLATFORM)
 CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
+CXXFLAGS += -std=c++14 -Wall -Wextra
+CXXFLAGS += -I.
+CXXFLAGS += -mfloat-abi=softfp -mfpu=neon
 LD=$(CXX)
 
 PROGRAM=test
