@@ -7,7 +7,7 @@
  * Author: Jesse Buhagiar
  * Date: 4/4/2020
  */
-#include "assert.h"
+#include "assertions.h"
 #include "gl.h"
 #include "glcontext.h"
 #include "log.hpp"

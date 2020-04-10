@@ -3,7 +3,7 @@
  */
 #pragma once
 
-#include "assert.h"
+#include "assertions.h"
 
 #include <cstdio>
 #include <cstring>
@@ -11,9 +11,9 @@
 class Mat4 final
 {
 public:
-    Mat4() { memset(m_data, 0, sizeof(float) * 16); }
+    Mat4() {}
 
-    Mat4(float val) { memset(m_data, val, sizeof(float) * 16); }
+    Mat4(float val) {}
 
     Mat4(const float data[4][4]) { memcpy(m_data, data, sizeof(float) * 16); }
 
@@ -125,73 +125,25 @@ public:
     {
         Mat4 ret;
 
-        ret.m_data[0][0] = (m_data[0][0] * rhs.m_data[0][0]) +
-                           (m_data[0][1] * rhs.m_data[1][0]) +
-                           (m_data[0][2] * rhs.m_data[2][0]) +
-                           (m_data[0][3] * rhs.m_data[3][0]);
-        ret.m_data[0][1] = (m_data[0][0] * rhs.m_data[0][1]) +
-                           (m_data[0][1] * rhs.m_data[1][1]) +
-                           (m_data[0][2] * rhs.m_data[2][1]) +
-                           (m_data[0][3] * rhs.m_data[3][1]);
-        ret.m_data[0][2] = (m_data[0][0] * rhs.m_data[0][2]) +
-                           (m_data[0][1] * rhs.m_data[1][2]) +
-                           (m_data[0][2] * rhs.m_data[2][2]) +
-                           (m_data[0][3] * rhs.m_data[3][2]);
-        ret.m_data[0][3] = (m_data[0][0] * rhs.m_data[0][3]) +
-                           (m_data[0][1] * rhs.m_data[1][3]) +
-                           (m_data[0][2] * rhs.m_data[2][3]) +
-                           (m_data[0][3] * rhs.m_data[3][3]);
+        ret.m_data[0][0] = (m_data[0][0] * rhs.m_data[0][0]) + (m_data[0][1] * rhs.m_data[1][0]) + (m_data[0][2] * rhs.m_data[2][0]) + (m_data[0][3] * rhs.m_data[3][0]);
+        ret.m_data[0][1] = (m_data[0][0] * rhs.m_data[0][1]) + (m_data[0][1] * rhs.m_data[1][1]) + (m_data[0][2] * rhs.m_data[2][1]) + (m_data[0][3] * rhs.m_data[3][1]);
+        ret.m_data[0][2] = (m_data[0][0] * rhs.m_data[0][2]) + (m_data[0][1] * rhs.m_data[1][2]) + (m_data[0][2] * rhs.m_data[2][2]) + (m_data[0][3] * rhs.m_data[3][2]);
+        ret.m_data[0][3] = (m_data[0][0] * rhs.m_data[0][3]) + (m_data[0][1] * rhs.m_data[1][3]) + (m_data[0][2] * rhs.m_data[2][3]) + (m_data[0][3] * rhs.m_data[3][3]);
 
-        ret.m_data[1][0] = (m_data[1][0] * rhs.m_data[0][0]) +
-                           (m_data[1][1] * rhs.m_data[1][0]) +
-                           (m_data[1][2] * rhs.m_data[2][0]) +
-                           (m_data[1][3] * rhs.m_data[3][0]);
-        ret.m_data[1][1] = (m_data[1][0] * rhs.m_data[0][1]) +
-                           (m_data[1][1] * rhs.m_data[1][1]) +
-                           (m_data[1][2] * rhs.m_data[2][1]) +
-                           (m_data[1][3] * rhs.m_data[3][1]);
-        ret.m_data[1][2] = (m_data[1][0] * rhs.m_data[0][2]) +
-                           (m_data[1][1] * rhs.m_data[1][2]) +
-                           (m_data[1][2] * rhs.m_data[2][2]) +
-                           (m_data[1][3] * rhs.m_data[3][2]);
-        ret.m_data[1][3] = (m_data[1][0] * rhs.m_data[0][3]) +
-                           (m_data[1][1] * rhs.m_data[1][3]) +
-                           (m_data[1][2] * rhs.m_data[2][3]) +
-                           (m_data[1][3] * rhs.m_data[3][3]);
+        ret.m_data[1][0] = (m_data[1][0] * rhs.m_data[0][0]) + (m_data[1][1] * rhs.m_data[1][0]) + (m_data[1][2] * rhs.m_data[2][0]) + (m_data[1][3] * rhs.m_data[3][0]);
+        ret.m_data[1][1] = (m_data[1][0] * rhs.m_data[0][1]) + (m_data[1][1] * rhs.m_data[1][1]) + (m_data[1][2] * rhs.m_data[2][1]) + (m_data[1][3] * rhs.m_data[3][1]);
+        ret.m_data[1][2] = (m_data[1][0] * rhs.m_data[0][2]) + (m_data[1][1] * rhs.m_data[1][2]) + (m_data[1][2] * rhs.m_data[2][2]) + (m_data[1][3] * rhs.m_data[3][2]);
+        ret.m_data[1][3] = (m_data[1][0] * rhs.m_data[0][3]) + (m_data[1][1] * rhs.m_data[1][3]) + (m_data[1][2] * rhs.m_data[2][3]) + (m_data[1][3] * rhs.m_data[3][3]);
 
-        ret.m_data[2][0] = (m_data[2][0] * rhs.m_data[0][0]) +
-                           (m_data[2][1] * rhs.m_data[1][0]) +
-                           (m_data[2][2] * rhs.m_data[2][0]) +
-                           (m_data[2][3] * rhs.m_data[3][0]);
-        ret.m_data[2][1] = (m_data[2][0] * rhs.m_data[0][1]) +
-                           (m_data[2][1] * rhs.m_data[1][1]) +
-                           (m_data[2][2] * rhs.m_data[2][1]) +
-                           (m_data[2][3] * rhs.m_data[3][1]);
-        ret.m_data[2][2] = (m_data[2][0] * rhs.m_data[0][2]) +
-                           (m_data[2][1] * rhs.m_data[1][2]) +
-                           (m_data[2][2] * rhs.m_data[2][2]) +
-                           (m_data[2][3] * rhs.m_data[3][2]);
-        ret.m_data[2][3] = (m_data[2][0] * rhs.m_data[0][3]) +
-                           (m_data[2][1] * rhs.m_data[1][3]) +
-                           (m_data[2][2] * rhs.m_data[2][3]) +
-                           (m_data[2][3] * rhs.m_data[3][3]);
+        ret.m_data[2][0] = (m_data[2][0] * rhs.m_data[0][0]) + (m_data[2][1] * rhs.m_data[1][0]) + (m_data[2][2] * rhs.m_data[2][0]) + (m_data[2][3] * rhs.m_data[3][0]);
+        ret.m_data[2][1] = (m_data[2][0] * rhs.m_data[0][1]) + (m_data[2][1] * rhs.m_data[1][1]) + (m_data[2][2] * rhs.m_data[2][1]) + (m_data[2][3] * rhs.m_data[3][1]);
+        ret.m_data[2][2] = (m_data[2][0] * rhs.m_data[0][2]) + (m_data[2][1] * rhs.m_data[1][2]) + (m_data[2][2] * rhs.m_data[2][2]) + (m_data[2][3] * rhs.m_data[3][2]);
+        ret.m_data[2][3] = (m_data[2][0] * rhs.m_data[0][3]) + (m_data[2][1] * rhs.m_data[1][3]) + (m_data[2][2] * rhs.m_data[2][3]) + (m_data[2][3] * rhs.m_data[3][3]);
 
-        ret.m_data[3][0] = (m_data[3][0] * rhs.m_data[0][0]) +
-                           (m_data[3][1] * rhs.m_data[1][0]) +
-                           (m_data[3][2] * rhs.m_data[2][0]) +
-                           (m_data[3][3] * rhs.m_data[3][0]);
-        ret.m_data[3][1] = (m_data[3][0] * rhs.m_data[0][1]) +
-                           (m_data[3][1] * rhs.m_data[1][1]) +
-                           (m_data[3][2] * rhs.m_data[2][1]) +
-                           (m_data[3][3] * rhs.m_data[3][1]);
-        ret.m_data[3][2] = (m_data[3][0] * rhs.m_data[0][2]) +
-                           (m_data[3][1] * rhs.m_data[1][2]) +
-                           (m_data[3][2] * rhs.m_data[2][2]) +
-                           (m_data[3][3] * rhs.m_data[3][2]);
-        ret.m_data[3][3] = (m_data[3][0] * rhs.m_data[0][3]) +
-                           (m_data[3][1] * rhs.m_data[1][3]) +
-                           (m_data[3][2] * rhs.m_data[2][3]) +
-                           (m_data[3][3] * rhs.m_data[3][3]);
+        ret.m_data[3][0] = (m_data[3][0] * rhs.m_data[0][0]) + (m_data[3][1] * rhs.m_data[1][0]) + (m_data[3][2] * rhs.m_data[2][0]) + (m_data[3][3] * rhs.m_data[3][0]);
+        ret.m_data[3][1] = (m_data[3][0] * rhs.m_data[0][1]) + (m_data[3][1] * rhs.m_data[1][1]) + (m_data[3][2] * rhs.m_data[2][1]) + (m_data[3][3] * rhs.m_data[3][1]);
+        ret.m_data[3][2] = (m_data[3][0] * rhs.m_data[0][2]) + (m_data[3][1] * rhs.m_data[1][2]) + (m_data[3][2] * rhs.m_data[2][2]) + (m_data[3][3] * rhs.m_data[3][2]);
+        ret.m_data[3][3] = (m_data[3][0] * rhs.m_data[0][3]) + (m_data[3][1] * rhs.m_data[1][3]) + (m_data[3][2] * rhs.m_data[2][3]) + (m_data[3][3] * rhs.m_data[3][3]);
 
         return ret;
     }
@@ -221,18 +173,18 @@ public:
         return *this;
     }
 
-    float operator()(int row, int col) const
+    float operator()(int col, int row) const
     {
         ASSERT(row >= 0 && col >= 0);
         ASSERT(row < 4 && col < 4);
-        return m_data[row][col];
+        return m_data[col][row];
     }
 
-    void operator()(int row, int col, float val)
+    void operator()(int col, int row, float val)
     {
         ASSERT(row >= 0 && col >= 0);
         ASSERT(row < 4 && col < 4);
-        m_data[row][col] = val;
+        m_data[col][row] = val;
     }
 
     void print() const
@@ -242,7 +194,7 @@ public:
             std::printf("[ ");
             for(int col = 0; col < 4; col++)
             {
-                std::printf("%.4f ", m_data[row][col]);
+                std::printf("%.4f ", m_data[col][row]);
             }
 
             std::printf("]\n");
@@ -250,5 +202,5 @@ public:
     }
 
 private:
-    float m_data[4][4]; // row x column
+    float m_data[4][4] = { 0 }; // row x column
 };
