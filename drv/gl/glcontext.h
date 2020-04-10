@@ -21,7 +21,6 @@
 
 #include "gl.h"
 #include "glstruct.h"
-#include "math/mat3.h"
 #include "math/mat4.h"
 
 #include <stack>
