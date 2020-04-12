@@ -276,6 +276,19 @@ public:
         }
     }
 
+    void load_identity()
+    {
+#ifdef USE_NEON
+        memset(&m_data, 0, 16 * sizeof(float32_t));
+#else
+        memset(&m_data, 0, 16 * sizeof(float));
+#endif
+        m_data[0][0] = 1.0f;
+        m_data[1][1] = 1.0f;
+        m_data[2][2] = 1.0f;
+        m_data[3][3] = 1.0f;
+    }
+
 private:
 #ifdef USE_NEON
     float32_t m_data[4][4] = { { 0 } };
