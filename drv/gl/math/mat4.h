@@ -213,6 +213,27 @@ public:
 
     Mat4& operator*=(float val)
     {
+#ifdef USE_NEON
+        float32x4_t mat0_col0;
+        float32x4_t mat0_col1;
+        float32x4_t mat0_col2;
+        float32x4_t mat0_col3;
+
+        mat0_col0 = vld1q_f32(m_data[0]);
+        mat0_col1 = vld1q_f32(m_data[1]);
+        mat0_col2 = vld1q_f32(m_data[2]);
+        mat0_col3 = vld1q_f32(m_data[3]);
+
+        mat0_col0 = vmulq_n_f32(mat0_col0, val);
+        mat0_col1 = vmulq_n_f32(mat0_col1, val);
+        mat0_col2 = vmulq_n_f32(mat0_col2, val);
+        mat0_col3 = vmulq_n_f32(mat0_col3, val);
+
+        vst1q_f32(m_data[0], mat0_col0);
+        vst1q_f32(m_data[1], mat0_col1);
+        vst1q_f32(m_data[2], mat0_col2);
+        vst1q_f32(m_data[3], mat0_col3);
+#else
         m_data[0][0] *= val;
         m_data[0][1] *= val;
         m_data[0][2] *= val;
@@ -232,6 +253,7 @@ public:
         m_data[3][1] *= val;
         m_data[3][2] *= val;
         m_data[3][3] *= val;
+#endif
 
         return *this;
     }
