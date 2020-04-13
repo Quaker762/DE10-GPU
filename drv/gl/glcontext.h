@@ -35,7 +35,8 @@ struct GLContext
     std::stack<Mat4> projection_matrix_stack;
     std::stack<Mat4> model_view_matrix_stack;
 
-    color_t clear_color;
+    color_t clear_color = { 0.0f, 0.0f, 0.0f, 0.0f };
+    color_t curr_vertex_color = { 255.0f, 255.0f, 255.0f, 255.0f };
 };
 
 extern GLContext* g_gl_state;
