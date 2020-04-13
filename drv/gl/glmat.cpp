@@ -62,7 +62,7 @@ void glPopMatrix()
         g_gl_state->projection_matrix_stack.pop();
         break;
     case GL_MODELVIEW:
-        g_gl_state->projection_matrix = g_gl_state->model_view_matrix_stack.top();
+        g_gl_state->model_view_matrix = g_gl_state->model_view_matrix_stack.top();
         g_gl_state->model_view_matrix_stack.pop();
         break;
     default:
