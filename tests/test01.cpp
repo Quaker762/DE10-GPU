@@ -1,14 +1,14 @@
 /**
  * test01.cpp
- * 
+ *
  * Draws a red triangle on a black background to the screen
  */
-#include <stdio.h>
-#include <SDL2/SDL.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <SDL2/SDL.h>
+#include <stdio.h>
 
-#define VIDEO_WIDTH 800
+#define VIDEO_WIDTH  800
 #define VIDEO_HEIGHT 600
 
 static SDL_Window* _initSDL(int width, int height)
@@ -17,7 +17,7 @@ static SDL_Window* _initSDL(int width, int height)
     SDL_GLContext gl_ctxt = nullptr;
 
     hwnd = SDL_CreateWindow(__FILE__, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_OPENGL);
-    
+
     if(!hwnd)
         return NULL;
 
@@ -37,16 +37,24 @@ int main(int, char**)
         return 1;
     }
 
-    glClearDepth(1.0f);                   // Set background depth to farthest
-    glEnable(GL_DEPTH_TEST);   // Enable depth testing for z-culling
-    glDepthFunc(GL_LEQUAL);    // Set the type of depth-test
-    glShadeModel(GL_SMOOTH);   // Enable smooth shading
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);  // Nice perspective corrections
+    // glClearDepth(1.0f); // Set background depth to farthest
+    // glEnable(GL_DEPTH_TEST);                           // Enable depth testing for z-culling
+    // glDepthFunc(GL_LEQUAL);                            // Set the type of depth-test
+    // glShadeModel(GL_SMOOTH);                           // Enable smooth shading
+    // glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // Nice perspective corrections
 
     GLfloat aspect = (GLfloat)VIDEO_WIDTH / (GLfloat)VIDEO_HEIGHT; // Compute aspect ratio of window
-    glMatrixMode(GL_PROJECTION); // To operate on the Projection matrix
-    glLoadIdentity(); // Reset
-    gluPerspective(45.0f, aspect, 0.1f, 100.0f); // Perspective projection: fovy, aspect, near, far
+    glMatrixMode(GL_PROJECTION);                                   // To operate on the Projection matrix
+    glLoadIdentity();                                              // Reset
+
+    // Let's work out the view frustum (this is ripped from Quake, cheers John)
+    GLdouble xmin, xmax, ymin, ymax;
+    ymax = 4.0f * tan(60.0f * M_PI / 360.0);
+    ymin = -ymax;
+    xmin = ymin * aspect;
+    xmax = ymax * aspect;
+    glFrustum(xmin, xmax, ymin, ymax, 4, 4096);
+
     glPointSize(5.0f);
     glViewport(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
 
@@ -70,8 +78,8 @@ int main(int, char**)
         glBegin(GL_TRIANGLES);
         glColor3f(0.0f, 1.0f, 0.0f);
         glVertex3f(-1.0f, -1.0f, 0.0f); // Top left corner (the origin)
-        glVertex3f(-1.0f, 1.0f, 0.0f); // Bottom left corner
-        glVertex3f(1.0f, 1.0f, 0.0f); // Bottom right corner
+        glVertex3f(-1.0f, 1.0f, 0.0f);  // Bottom left corner
+        glVertex3f(1.0f, 1.0f, 0.0f);   // Bottom right corner
         glEnd();
 
         SDL_GL_SwapWindow(hwnd);
