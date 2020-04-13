@@ -68,12 +68,14 @@ typedef unsigned long GLsizei;
 typedef void GLvoid;
 typedef float GLfloat;
 typedef float GLclampf;
+typedef double GLdouble;
 typedef unsigned int GLenum;
 typedef unsigned int GLbitfield;
 
 GLAPI void glBegin(GLenum mode);
 GLAPI void glClear(GLbitfield mask);
 GLAPI void glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+GLAPI void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble nearVal, GLdouble farVal);
 GLAPI GLubyte* glGetString(GLenum name);
 GLAPI void glMatrixMode(GLenum mode);
 GLAPI void glPushMatrix();
