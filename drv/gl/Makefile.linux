@@ -11,7 +11,8 @@ CC=gcc
 CXX=gcc
 LD=$(CXX)
 
-CXXFLAGS += -std=c++11 -O0 -g3
+CXXFLAGS += -std=c++17 -O0 -g3
+CXXFLAGS += -Wall -Wextra
 CXXFLAGS += -DDEBUG
 CXXFLAGS += -I./
 CXXFLAGS += -I../
