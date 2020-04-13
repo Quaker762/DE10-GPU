@@ -1,13 +1,13 @@
 /**
  * test00.cpp
- * 
+ *
  * Clears the screen colour to red
  */
-#include <stdio.h>
-#include <SDL2/SDL.h>
 #include <GL/gl.h>
+#include <SDL2/SDL.h>
+#include <stdio.h>
 
-#define VIDEO_WIDTH 800
+#define VIDEO_WIDTH  800
 #define VIDEO_HEIGHT 600
 
 static SDL_Window* _initSDL(int width, int height)
@@ -16,7 +16,7 @@ static SDL_Window* _initSDL(int width, int height)
     SDL_GLContext gl_ctxt = nullptr;
 
     hwnd = SDL_CreateWindow(__FILE__, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_OPENGL);
-    
+
     if(!hwnd)
         return NULL;
 
