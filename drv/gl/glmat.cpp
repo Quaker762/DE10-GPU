@@ -70,3 +70,47 @@ void glPopMatrix()
         break;
     }
 }
+
+/**
+ * Create a viewing frustum (a.k.a a "Perspective Matrix") in the current matrix. This
+ * is usually done to the projection matrix. The current matrix is then multiplied
+ * by this viewing frustum matrix.
+ *
+ * https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glFrustum.xml
+ *
+ */
+void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble nearVal, GLdouble farVal)
+{
+    Mat4 frustum;
+    GLdouble a;
+    GLdouble b;
+    GLdouble c;
+    GLdouble d;
+
+    // Let's do some math!
+    a = (right + left) / (right - left);
+    b = (top + bottom) / (top - bottom);
+    c = -((farVal + nearVal) / (farVal - nearVal));
+    d = -((2 * (farVal + nearVal)) / (farVal - nearVal));
+
+    frustum(0, 0, ((2 * nearVal) / (right - left)));
+    frustum(1, 1, ((2 * nearVal) / (top - bottom)));
+    frustum(2, 0, a);
+    frustum(2, 1, b);
+    frustum(2, 2, c);
+    frustum(2, 3, -1);
+    frustum(3, 2, d);
+    // Phew
+
+    if(g_gl_state->curr_matrix_mode == GL_PROJECTION)
+    {
+        g_gl_state->projection_matrix = g_gl_state->projection_matrix * frustum;
+    }
+    else if(g_gl_state->curr_matrix_mode == GL_MODELVIEW)
+    {
+#ifdef DEBUG
+        log(LogLevel::WARN, "glFrustum(): frustum created with curr_matrix_mode == GL_MODELVIEW!!!\n");
+#endif
+        g_gl_state->projection_matrix = g_gl_state->model_view_matrix * frustum;
+    }
+}
