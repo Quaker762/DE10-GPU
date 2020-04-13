@@ -1,0 +1,37 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "I2C_SCL",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX_HS",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX_VS",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX_DE",
+					"strict" : false
+				},
+				{
+					"name" : "I2C_SDA",
+					"strict" : false
+				},
+				{
+					"name" : "reset_KEY0",
+					"strict" : false
+				},
+				{
+					"name" : "start_KEY1",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

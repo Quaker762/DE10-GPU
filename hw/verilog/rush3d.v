@@ -11,8 +11,6 @@ module Rush3D
 	input btn_set_color,
 	input btn_switch_color,
 	
-	
-	// Should this be a part of the VGA controller module???
 	output [7:0] dac_red_pins,
 	output [7:0] dac_green_pins,
 	output [7:0] dac_blue_pins,
@@ -25,13 +23,14 @@ module Rush3D
 	output [7:0] led_color_bits,
 	output [6:0] segment_leds
 );
-
+/*
 PixelPLL vga_pll800// PLL 40MHz Pixel Clock Generator (800*600@60p)
 (
 .refclk(clk_ref),
 .rst(1'b0), 
 .outclk_0(vga_pixel_clock800)
 );
+*/
 
 PixelPLL vga_pll640// PLL 25.175MHz Pixel Clock Generator (640*480@60p)
 (
@@ -48,6 +47,39 @@ PixelPLL vga_pll1024// PLL 65MHz Pixel Clock Generator (1024*768@60p)
 );
 
 
+
+PixelPLL vga_pll1080// PLL 148.5MHz Pixel Clock Generator (1920*1080@60p)
+(
+.refclk(clk_ref),
+.rst(1'b0), 
+.outclk_3(vga_pixel_clock1080)
+);
+
+
+HDMIController hdmi_ctrl
+(
+	.pixel_clock480(vga_pixel_clock640),
+	.pixel_clock768(vga_pixel_clock1024),
+	.pixel_clock1080(vga_pixel_clock1080),
+	.switch_res(switch_change_res),
+	.reset_n(btn_reset),
+	.beg(btn_begin),
+	
+	.hdmi_scl(hdmi_scl),
+	.hdmi_sda(hdmi_sda),
+	
+	.hsync(hsync),
+	.vsync(vsync),
+	.dac_sync_pin_n(dac_sync_n),
+	.dac_blank_pin_n(dac_blank_n)
+);
+
+
+
+
+
+
+/*
 VGAController vga_ctrl
 (
 	.pixel_clock800(vga_pixel_clock800),
@@ -57,11 +89,13 @@ VGAController vga_ctrl
 	.reset_n(btn_reset),
 	.beg(btn_begin),
 	
-	.hsync(hsync),
-	.vsync(vsync),
-	.dac_sync_pin_n(dac_sync_n),
-	.dac_blank_pin_n(dac_blank_n)
+	.hsync(hsync_VGA),
+	.vsync(vsync_VGA),
+	.dac_sync_pin_n(dac_sync_VGA),
+	.dac_blank_pin_n(dac_blank_VGA)
 );
+*/
+
 
 reg [7:0] RED_reg = 8'hFF;
 reg [7:0] GREEN_reg = 8'h00;
@@ -76,6 +110,9 @@ assign dac_red_pins = RED_reg;
 assign dac_green_pins = GREEN_reg;
 assign dac_blue_pins = BLUE_reg;
 
+
+
+/*
 always @(negedge(btn_switch_color), negedge(btn_set_color)) begin: colourSwitch
 	if (!btn_set_color) begin
 		case(current_Colour)
@@ -102,5 +139,5 @@ always @(negedge(btn_switch_color), negedge(btn_set_color)) begin: colourSwitch
 		2'd0 : LED_reg = LED_reg;
 	endcase
 end
-
+*/
 endmodule 

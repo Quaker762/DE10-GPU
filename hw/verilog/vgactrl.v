@@ -1,10 +1,10 @@
-/**
+/*
  *	VGA Controller Module
- * Also implements signal loading to the 
+ * Jack Allan 2020
  */
- 
 module VGAController
 (
+	input enable,
 	input pixel_clock800, 
 	input pixel_clock640, 
 	input pixel_clock1024, 

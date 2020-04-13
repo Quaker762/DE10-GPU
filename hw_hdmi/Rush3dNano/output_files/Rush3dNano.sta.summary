@@ -1,0 +1,229 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 100C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -6.624
+TNS   : -155.244
+
+Type  : Slow 1100mV 100C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -6.330
+TNS   : -6.330
+
+Type  : Slow 1100mV 100C Model Setup 'FreqDivider:slowClock|clock'
+Slack : -3.748
+TNS   : -62.523
+
+Type  : Slow 1100mV 100C Model Setup 'I2C:startConfig|comm_done'
+Slack : -1.722
+TNS   : -9.638
+
+Type  : Slow 1100mV 100C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.418
+TNS   : 0.000
+
+Type  : Slow 1100mV 100C Model Hold 'FreqDivider:slowClock|clock'
+Slack : 0.466
+TNS   : 0.000
+
+Type  : Slow 1100mV 100C Model Hold 'I2C:startConfig|comm_done'
+Slack : 0.615
+TNS   : 0.000
+
+Type  : Slow 1100mV 100C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.817
+TNS   : 0.000
+
+Type  : Slow 1100mV 100C Model Minimum Pulse Width 'FreqDivider:slowClock|clock'
+Slack : -0.538
+TNS   : -23.600
+
+Type  : Slow 1100mV 100C Model Minimum Pulse Width 'I2C:startConfig|comm_done'
+Slack : -0.538
+TNS   : -4.742
+
+Type  : Slow 1100mV 100C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.961
+TNS   : 0.000
+
+Type  : Slow 1100mV 100C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.126
+TNS   : 0.000
+
+Type  : Slow 1100mV 100C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.730
+TNS   : 0.000
+
+Type  : Slow 1100mV 100C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 99.281
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -5.519
+TNS   : -129.384
+
+Type  : Slow 1100mV -40C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -5.283
+TNS   : -5.283
+
+Type  : Slow 1100mV -40C Model Setup 'FreqDivider:slowClock|clock'
+Slack : -3.704
+TNS   : -60.313
+
+Type  : Slow 1100mV -40C Model Setup 'I2C:startConfig|comm_done'
+Slack : -1.769
+TNS   : -9.749
+
+Type  : Slow 1100mV -40C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.443
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.446
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Hold 'FreqDivider:slowClock|clock'
+Slack : 0.513
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Hold 'I2C:startConfig|comm_done'
+Slack : 0.707
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Minimum Pulse Width 'FreqDivider:slowClock|clock'
+Slack : -0.538
+TNS   : -22.364
+
+Type  : Slow 1100mV -40C Model Minimum Pulse Width 'I2C:startConfig|comm_done'
+Slack : -0.538
+TNS   : -4.676
+
+Type  : Slow 1100mV -40C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.961
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.045
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.754
+TNS   : 0.000
+
+Type  : Slow 1100mV -40C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 99.200
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -5.213
+TNS   : -5.213
+
+Type  : Fast 1100mV 100C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -4.693
+TNS   : -110.628
+
+Type  : Fast 1100mV 100C Model Setup 'FreqDivider:slowClock|clock'
+Slack : -1.756
+TNS   : -26.048
+
+Type  : Fast 1100mV 100C Model Setup 'I2C:startConfig|comm_done'
+Slack : -0.710
+TNS   : -4.174
+
+Type  : Fast 1100mV 100C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.200
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Hold 'FreqDivider:slowClock|clock'
+Slack : 0.216
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.305
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Hold 'I2C:startConfig|comm_done'
+Slack : 0.405
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Minimum Pulse Width 'FreqDivider:slowClock|clock'
+Slack : 0.089
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Minimum Pulse Width 'I2C:startConfig|comm_done'
+Slack : 0.146
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.961
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.404
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.347
+TNS   : 0.000
+
+Type  : Fast 1100mV 100C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 99.560
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -3.675
+TNS   : -3.675
+
+Type  : Fast 1100mV -40C Model Setup 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : -3.431
+TNS   : -81.000
+
+Type  : Fast 1100mV -40C Model Setup 'FreqDivider:slowClock|clock'
+Slack : -1.493
+TNS   : -21.840
+
+Type  : Fast 1100mV -40C Model Setup 'I2C:startConfig|comm_done'
+Slack : -0.636
+TNS   : -3.727
+
+Type  : Fast 1100mV -40C Model Hold 'FreqDivider:slowClock|clock'
+Slack : 0.141
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.186
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Hold 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.290
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Hold 'I2C:startConfig|comm_done'
+Slack : 0.346
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Minimum Pulse Width 'FreqDivider:slowClock|clock'
+Slack : 0.115
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Minimum Pulse Width 'I2C:startConfig|comm_done'
+Slack : 0.159
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
+Slack : 0.961
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 3.394
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Minimum Pulse Width 'FPGA_CLK1_50'
+Slack : 9.274
+TNS   : 0.000
+
+Type  : Fast 1100mV -40C Model Minimum Pulse Width 'systemClockToPixel|pll_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 99.550
+TNS   : 0.000
+
+------------------------------------------------------------
