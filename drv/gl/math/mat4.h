@@ -9,7 +9,6 @@
  */
 #pragma once
 
-#include <arm_neon.h>
 #include <cstdio>
 #include <cstring>
 
@@ -20,9 +19,13 @@
 class Mat4 final
 {
 public:
-    Mat4() {}
+    Mat4(bool identity = true)
+    {
+        if(identity)
+            load_identity();
+    }
 
-    Mat4(float val) {}
+    Mat4(float val) { memset(m_data, val, sizeof(float) * 16); }
 
     Mat4(const float data[4][4]) { memcpy(m_data, data, sizeof(float) * 16); }
 
