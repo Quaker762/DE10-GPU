@@ -18,6 +18,10 @@
 Rush3D g_card;
 #endif
 
+static const char* register_names[] = {
+    "STATUS", "fbCOLOR", "fbFILL", "fbWIDTH", "fbHEIGHT", "vertexAx", "vertexAy", "vertexBx", "vertexBy", "vertexCx", "vertexCy", "cmdTriangle",
+};
+
 void Rush3D::initialize()
 {
     m_monitor = SDL_CreateWindow("Rush3D Simulator", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, DEFAULT_WIDTH, DEFAULT_HEIGHT, 0);
@@ -48,7 +52,7 @@ void Rush3D::flip() const
 void Rush3D::write_register(RegisterOffsets offset, uint32_t value)
 {
 #ifdef CARD_DEBUG
-    log(LogLevel::INFO, "writing 0x%x to register %d\n", value, static_cast<int>(offset));
+    log(LogLevel::INFO, "writing 0x%x to register %d(%s)\n", value, static_cast<int>(offset), register_names[offset]);
 #endif
     m_pcu->write_register(offset, value);
 }

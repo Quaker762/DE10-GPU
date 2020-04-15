@@ -34,7 +34,20 @@ enum RegisterOffsets
 {
     STATUS = 0,
     fbCOLOR,
-    fbFILL
+    fbFILL,
+    fbWIDTH,
+    fbHEIGHT,
+    vertexAx,
+    vertexAy,
+    vertexBx,
+    vertexBy,
+    vertexCx,
+    vertexCy,
+    triStartR,
+    triStartG,
+    triStartB,
+
+    cmdTriangle,
 };
 
 namespace Chip
@@ -69,6 +82,8 @@ public:
 
 private:
     void put_pixel(int, int, uint32_t pixel);
+    void draw_wireframe_triangle();
+    void draw_line(int startX, int startY, int endX, int endY);
     void fill_framebuffer();
 
 private:
