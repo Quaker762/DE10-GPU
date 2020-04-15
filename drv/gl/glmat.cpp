@@ -113,6 +113,7 @@ void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLd
     frustum(2, 2, c);
     frustum(2, 3, -1);
     frustum(3, 2, d);
+    frustum(3, 3, 0);
     // Phew
 
     if(g_gl_state->curr_matrix_mode == GL_PROJECTION)
