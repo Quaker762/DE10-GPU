@@ -7,7 +7,7 @@
  * Author: Jesse Buhagiar
  * Date: 4/4/2020
  */
-#include "assert.h"
+#include "assertions.h"
 #include "gl.h"
 #include "glcontext.h"
 #include "log.hpp"
@@ -65,4 +65,15 @@ GLubyte* glGetString(GLenum name)
 
     // TODO: Set glError to GL_INVALID_ENUM here
     return 0;
+}
+
+void glViewPort(GLint x, GLint y, GLsizei width, GLsizei height)
+{
+#ifdef USE_SIM
+    g_card.write_register(RegisterOffsets::fbWIDTH, width);
+    g_card.write_register(RegisterOffsets::fbHEIGHT, height);
+#else
+
+    ASSERT_NOT_REACHED;
+#endif
 }

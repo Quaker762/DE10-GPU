@@ -17,7 +17,7 @@
 // Comment this shit out for the actual board!
 #define USE_SIM
 #ifdef USE_SIM
-    #include "../../chipsim/rush3d/card.h"
+    #include "../chipsim/rush3d/card.h"
 extern Rush3D g_card;
 #endif
 
@@ -38,8 +38,8 @@ extern "C" {
 #define GL_PROJECTION 0x0051
 
 // glBegin/glEnd primitive types
-#define GL_TRIANGLES 0x0000
-#define GL_QUADS     0x0001
+#define GL_TRIANGLES 0x0100
+#define GL_QUADS     0x0101
 
 // Buffer bits
 #define GL_COLOR_BUFFER_BIT 0x0200
@@ -75,11 +75,15 @@ typedef unsigned int GLbitfield;
 GLAPI void glBegin(GLenum mode);
 GLAPI void glClear(GLbitfield mask);
 GLAPI void glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+GLAPI void glColor3f(GLfloat r, GLfloat g, GLfloat b);
+GLAPI void glEnd();
 GLAPI void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble nearVal, GLdouble farVal);
 GLAPI GLubyte* glGetString(GLenum name);
 GLAPI void glMatrixMode(GLenum mode);
 GLAPI void glPushMatrix();
 GLAPI void glPopMatrix();
+GLAPI void glVertex3f(GLfloat x, GLfloat y, GLfloat z);
+GLAPI void glViewPort(GLint x, GLint y, GLsizei width, GLsizei height);
 
 #ifdef __cplusplus
 }
