@@ -168,12 +168,14 @@ public:
     float z() { return m_z; }
     float w() { return m_w; }
 
+    void x(float x) { m_x = x; }
+    void y(float y) { m_y = y; }
+    void z(float z) { m_z = z; }
+    void w(float w) { m_w = w; }
+
     Vec4 operator+(const Vec4& rhs) { return Vec4(m_x + rhs.m_x, m_y + rhs.m_y, m_z + rhs.m_z, m_w + rhs.m_w); }
-
     Vec4 operator-(const Vec4& rhs) { return Vec4(m_x - rhs.m_x, m_y - rhs.m_y, m_z - rhs.m_z, m_w - rhs.m_w); }
-
     Vec4 operator*(const float scalar) { return Vec4(m_x * scalar, m_y * scalar, m_z * scalar, m_w * scalar); }
-
     Vec4 operator/(const float scalar) { return Vec4(m_x / scalar, m_y / scalar, m_z / scalar, m_w / scalar); }
 
     Vec4 operator*(const Mat4& rhs)
