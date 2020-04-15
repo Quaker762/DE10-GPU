@@ -83,7 +83,7 @@ GLAPI void glMatrixMode(GLenum mode);
 GLAPI void glPushMatrix();
 GLAPI void glPopMatrix();
 GLAPI void glVertex3f(GLfloat x, GLfloat y, GLfloat z);
-GLAPI void glViewPort(GLint x, GLint y, GLsizei width, GLsizei height);
+GLAPI void glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
 
 #ifdef __cplusplus
 }

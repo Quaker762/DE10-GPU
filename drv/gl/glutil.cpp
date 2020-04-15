@@ -67,7 +67,7 @@ GLubyte* glGetString(GLenum name)
     return 0;
 }
 
-void glViewPort(GLint x, GLint y, GLsizei width, GLsizei height)
+void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
 #ifdef USE_SIM
     g_card.write_register(RegisterOffsets::fbWIDTH, width);
