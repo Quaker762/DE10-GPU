@@ -71,6 +71,16 @@ void glPopMatrix()
     }
 }
 
+void glLoadIdentity()
+{
+    if(g_gl_state->curr_matrix_mode == GL_PROJECTION)
+        g_gl_state->projection_matrix.load_identity();
+    else if(g_gl_state->curr_matrix_mode == GL_MODELVIEW)
+        g_gl_state->model_view_matrix.load_identity();
+    else
+        ASSERT_NOT_REACHED;
+}
+
 /**
  * Create a viewing frustum (a.k.a a "Perspective Matrix") in the current matrix. This
  * is usually done to the projection matrix. The current matrix is then multiplied
@@ -78,6 +88,9 @@ void glPopMatrix()
  *
  * https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glFrustum.xml
  *
+ *
+ * TODO: We need to check for some values that could result in a division by zero
+ * or some other fuckery that will fuck with the driver here!
  */
 void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble nearVal, GLdouble farVal)
 {

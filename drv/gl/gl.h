@@ -79,6 +79,7 @@ GLAPI void glColor3f(GLfloat r, GLfloat g, GLfloat b);
 GLAPI void glEnd();
 GLAPI void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble nearVal, GLdouble farVal);
 GLAPI GLubyte* glGetString(GLenum name);
+GLAPI void glLoadIdentity();
 GLAPI void glMatrixMode(GLenum mode);
 GLAPI void glPushMatrix();
 GLAPI void glPopMatrix();
