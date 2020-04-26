@@ -51,7 +51,12 @@ void PCU::put_pixel(int x, int y, uint32_t pixel)
     // printf("pcu: writing pixel 0x%x to (%d, %d)\n", pixel, x, y);
 #endif
     pixel &= 0x00ffffff;
-    m_backbuffer[x + y * m_window_size.width] = pixel;
+    int location = x + y * m_window_size.width;
+
+    if(location < 0 || location > m_window_size.width * m_window_size.height)
+        return;
+
+    m_backbuffer[location] = pixel;
 }
 
 // Extremely Fast Line Algorithm Var B (Multiplication)
@@ -119,6 +124,10 @@ void PCU::draw_wireframe_triangle()
     draw_line(a_x, a_y, b_x, b_y);
     draw_line(a_x, a_y, c_x, c_y);
     draw_line(b_x, b_y, c_x, c_y);
+}
+
+void PCU::draw_filled_triangle()
+{
 }
 
 void PCU::fill_framebuffer()
