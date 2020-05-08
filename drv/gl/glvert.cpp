@@ -20,6 +20,7 @@
 
 // static std::list<R3D_Triangle> triangle_list;
 static std::vector<R3DVertex> vertex_list;
+static std::vector<R3DTriangle> triangle_list;
 
 void glBegin(GLenum mode)
 {
@@ -49,40 +50,112 @@ void glEnd()
     float scr_height = static_cast<float>(g_card.read_register(RegisterOffsets::fbHEIGHT));
 #endif
 
-    for(size_t i = 0; i < vertex_list.size(); i++)
+    ASSERT(g_gl_state->curr_draw_mode == GL_TRIANGLES); // We only support GL_TRIANGLES at the moment
+
+    // Let's construct some triangles
+    if(g_gl_state->curr_draw_mode == GL_TRIANGLES)
     {
-        R3DVertex& vertex = vertex_list.at(i);
-        Vec4 vec({ vertex.x, vertex.y, vertex.z, 1.0f });
-
-        // First multiply the vertex by the MODELVIEW matrix and then the PROJECTION matrix
-        vec = vec * g_gl_state->model_view_matrix;
-        vec = vec * g_gl_state->projection_matrix;
-
-        if(vec.w() != 0.0f)
+        R3DTriangle triangle;
+        for(size_t i = 0; i < vertex_list.size(); i += 3)
         {
-            vec.x(vec.x() / vec.w());
-            vec.y(vec.y() / vec.w());
-            vec.z(vec.z() / vec.w());
-        }
+            triangle.a = vertex_list.at(i);
+            triangle.b = vertex_list.at(i + 1);
+            triangle.c = vertex_list.at(i + 2);
 
-        // https://www.khronos.org/registry/OpenGL-Refpages/es2.0/xhtml/glViewport.xml
-        vertex.x = (vec.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
-        vertex.y = scr_height - ((vec.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
-        vertex.z = vec.z();
+            triangle_list.push_back(triangle);
+        }
+    }
+    else
+    {
+        ASSERT_NOT_REACHED; // We only support GL_TRIANGLES at the moment!
     }
 
-    // Now we sort the vertices by their y values. A is the vertex that has the least y value,
-    // B is the middle and C is the bottom.
-    std::sort(vertex_list.begin(), vertex_list.end(), compare_y_values);
+    // Now let's transform each triangle and send that to the GPU
+    for(size_t i = 0; i < triangle_list.size(); i++)
+    {
+        R3DVertex& vertexa = triangle_list.at(i).a;
+        R3DVertex& vertexb = triangle_list.at(i).b;
+        R3DVertex& vertexc = triangle_list.at(i).c;
+
+        Vec4 veca({ vertexa.x, vertexa.y, vertexa.z, 1.0f });
+        Vec4 vecb({ vertexb.x, vertexb.y, vertexb.z, 1.0f });
+        Vec4 vecc({ vertexc.x, vertexc.y, vertexc.z, 1.0f });
+
+        // First multiply the vertex by the MODELVIEW matrix and then the PROJECTION matrix
+        veca = veca * g_gl_state->model_view_matrix;
+        veca = veca * g_gl_state->projection_matrix;
+
+        vecb = vecb * g_gl_state->model_view_matrix;
+        vecb = vecb * g_gl_state->projection_matrix;
+
+        vecc = vecc * g_gl_state->model_view_matrix;
+        vecc = vecc * g_gl_state->projection_matrix;
+
+        // At this point, we're in clip space
+        // Here's where we do the clipping. This is a really crude implementation of the
+        // https://learnopengl.com/Getting-started/Coordinate-Systems
+        // "Note that if only a part of a primitive e.g. a triangle is outside the clipping volume OpenGL
+        // will reconstruct the triangle as one or more triangles to fit inside the clipping range. "
+        //
+        // ALL VERTICES ARE DEFINED IN A CLOCKWISE ORDER
+        if(veca.w() != 0.0f)
+        {
+            // This brings us from clip space to Normalized Device Co-ordinates
+            veca.x(veca.x() / veca.w());
+            veca.y(veca.y() / veca.w());
+            veca.z(veca.z() / veca.w());
+        }
+
+        if(vecb.w() != 0.0f)
+        {
+            // This brings us from clip space to Normalized Device Co-ordinates
+            vecb.x(vecb.x() / vecb.w());
+            vecb.y(vecb.y() / vecb.w());
+            vecb.z(vecb.z() / vecb.w());
+        }
+
+        if(vecb.w() != 0.0f)
+        {
+            // This brings us from clip space to Normalized Device Co-ordinates
+            vecc.x(vecc.x() / vecc.w());
+            vecc.y(vecc.y() / vecc.w());
+            vecc.z(vecc.z() / vecc.w());
+        }
+
+        // Perform the viewport transform
+        // https://www.khronos.org/registry/OpenGL-Refpages/es2.0/xhtml/glViewport.xml
+        vertexa.x = (veca.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
+        vertexa.y = scr_height - ((veca.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
+        vertexa.z = veca.z();
+
+        vertexb.x = (vecb.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
+        vertexb.y = scr_height - ((vecb.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
+        vertexb.z = vecb.z();
+
+        vertexc.x = (vecc.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
+        vertexc.y = scr_height - ((vecc.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
+        vertexc.z = vecc.z();
+    }
 
     if(g_gl_state->curr_draw_mode == GL_TRIANGLES)
     {
-        ASSERT((vertex_list.size() % 3) == 0);
-        for(size_t i = 0; i < vertex_list.size(); i += 3)
+        for(size_t i = 0; i < triangle_list.size(); i++)
         {
-            R3DVertex a = vertex_list.at(i);
-            R3DVertex b = vertex_list.at(i + 1);
-            R3DVertex c = vertex_list.at(i + 2);
+            std::vector<R3DVertex> sort_vert_list;
+            R3DTriangle& triangle = triangle_list.at(i);
+
+            // Now we sort the vertices by their y values. A is the vertex that has the least y value,
+            // B is the middle and C is the bottom.
+            // These are sorted in groups of 3
+            sort_vert_list.push_back(triangle.a);
+            sort_vert_list.push_back(triangle.b);
+            sort_vert_list.push_back(triangle.c);
+
+            std::sort(sort_vert_list.begin(), sort_vert_list.end(), compare_y_values);
+
+            triangle.a = sort_vert_list.at(0);
+            triangle.b = sort_vert_list.at(1);
+            triangle.c = sort_vert_list.at(2);
 
 #ifdef USE_SIM
             // std::printf("GL_PROJECTION\n");
@@ -91,17 +164,18 @@ void glEnd()
             // g_gl_state->model_view_matrix.print();
             // ASSERT_NOT_REACHED;
             // We should probably wait here too
-            g_card.write_register(RegisterOffsets::vertexAx, a.x);
-            g_card.write_register(RegisterOffsets::vertexAy, a.y);
-            g_card.write_register(RegisterOffsets::vertexBx, b.x);
-            g_card.write_register(RegisterOffsets::vertexBy, b.y);
-            g_card.write_register(RegisterOffsets::vertexCx, c.x);
-            g_card.write_register(RegisterOffsets::vertexCy, c.y);
+            g_card.write_register(RegisterOffsets::vertexAx, triangle.a.x);
+            g_card.write_register(RegisterOffsets::vertexAy, triangle.a.y);
+            g_card.write_register(RegisterOffsets::vertexBx, triangle.b.x);
+            g_card.write_register(RegisterOffsets::vertexBy, triangle.b.y);
+            g_card.write_register(RegisterOffsets::vertexCx, triangle.c.x);
+            g_card.write_register(RegisterOffsets::vertexCy, triangle.c.y);
             g_card.write_register(RegisterOffsets::cmdTriangle, 1);
 #endif
         }
 
         // We probably need to wait for the card to finish drawing here before we clear
+        triangle_list.clear();
         vertex_list.clear();
     }
     else
