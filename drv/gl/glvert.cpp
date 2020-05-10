@@ -33,6 +33,14 @@ static bool compare_y_values(const R3DVertex& a, const R3DVertex& b)
     return a.y < b.y;
 }
 
+enum class Boundary
+{
+    LEFT,
+    RIGHT,
+    TOP,
+    BOTTOM
+};
+
 void glEnd()
 {
     // At this point, the user has effectively specified that they are done with defining the geometry
@@ -58,9 +66,9 @@ void glEnd()
         R3DTriangle triangle;
         for(size_t i = 0; i < vertex_list.size(); i += 3)
         {
-            triangle.a = vertex_list.at(i);
-            triangle.b = vertex_list.at(i + 1);
-            triangle.c = vertex_list.at(i + 2);
+            triangle.vertices[0] = vertex_list.at(i);
+            triangle.vertices[1] = vertex_list.at(i + 1);
+            triangle.vertices[2] = vertex_list.at(i + 2);
 
             triangle_list.push_back(triangle);
         }
@@ -73,9 +81,10 @@ void glEnd()
     // Now let's transform each triangle and send that to the GPU
     for(size_t i = 0; i < triangle_list.size(); i++)
     {
-        R3DVertex& vertexa = triangle_list.at(i).a;
-        R3DVertex& vertexb = triangle_list.at(i).b;
-        R3DVertex& vertexc = triangle_list.at(i).c;
+        R3DTriangle& triangle = triangle_list.at(i);
+        R3DVertex& vertexa = triangle.vertices[0];
+        R3DVertex& vertexb = triangle.vertices[1];
+        R3DVertex& vertexc = triangle.vertices[2];
 
         Vec4 veca({ vertexa.x, vertexa.y, vertexa.z, 1.0f });
         Vec4 vecb({ vertexb.x, vertexb.y, vertexb.z, 1.0f });
@@ -147,15 +156,15 @@ void glEnd()
             // Now we sort the vertices by their y values. A is the vertex that has the least y value,
             // B is the middle and C is the bottom.
             // These are sorted in groups of 3
-            sort_vert_list.push_back(triangle.a);
-            sort_vert_list.push_back(triangle.b);
-            sort_vert_list.push_back(triangle.c);
+            sort_vert_list.push_back(triangle.vertices[0]);
+            sort_vert_list.push_back(triangle.vertices[1]);
+            sort_vert_list.push_back(triangle.vertices[2]);
 
             std::sort(sort_vert_list.begin(), sort_vert_list.end(), compare_y_values);
 
-            triangle.a = sort_vert_list.at(0);
-            triangle.b = sort_vert_list.at(1);
-            triangle.c = sort_vert_list.at(2);
+            triangle.vertices[0] = sort_vert_list.at(0);
+            triangle.vertices[1] = sort_vert_list.at(1);
+            triangle.vertices[2] = sort_vert_list.at(2);
 
 #ifdef USE_SIM
             // std::printf("GL_PROJECTION\n");
@@ -164,12 +173,12 @@ void glEnd()
             // g_gl_state->model_view_matrix.print();
             // ASSERT_NOT_REACHED;
             // We should probably wait here too
-            g_card.write_register(RegisterOffsets::vertexAx, triangle.a.x);
-            g_card.write_register(RegisterOffsets::vertexAy, triangle.a.y);
-            g_card.write_register(RegisterOffsets::vertexBx, triangle.b.x);
-            g_card.write_register(RegisterOffsets::vertexBy, triangle.b.y);
-            g_card.write_register(RegisterOffsets::vertexCx, triangle.c.x);
-            g_card.write_register(RegisterOffsets::vertexCy, triangle.c.y);
+            g_card.write_register(RegisterOffsets::vertexAx, triangle.vertices[0].x);
+            g_card.write_register(RegisterOffsets::vertexAy, triangle.vertices[0].y);
+            g_card.write_register(RegisterOffsets::vertexBx, triangle.vertices[1].x);
+            g_card.write_register(RegisterOffsets::vertexBy, triangle.vertices[1].y);
+            g_card.write_register(RegisterOffsets::vertexCx, triangle.vertices[2].x);
+            g_card.write_register(RegisterOffsets::vertexCy, triangle.vertices[2].y);
             g_card.write_register(RegisterOffsets::cmdTriangle, 1);
 #endif
         }
