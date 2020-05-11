@@ -18,9 +18,40 @@
 #include <algorithm>
 #include <vector>
 
+#define NUM_CLIP_PLANES 6
+
 // static std::list<R3D_Triangle> triangle_list;
 static std::vector<R3DVertex> vertex_list;
 static std::vector<R3DTriangle> triangle_list;
+static std::vector<R3DTriangle> processed_triangles;
+
+static Vec4 clip_planes[] = {
+    { -1, 0, 0, 1 }, // Left Plane
+    { 1, 0, 0, 1 },  // Right Plane
+    { 0, 1, 0, 1 },  // Top Plane
+    { 0, -1, 0, 1 }, // Bottom plane
+    { 0, 0, 1, 1 },  // Near Plane
+    { 0, 0, -1, 1 }  // Far Plane
+};
+
+static Vec4 clip_plane_normals[] = {
+    { 1, 0, 0, 1 },  // Left Plane
+    { -1, 0, 0, 1 }, // Right Plane
+    { 0, -1, 0, 1 }, // Top Plane
+    { 0, 1, 0, 1 },  // Bottom plane
+    { 0, 0, -1, 1 }, // Near Plane
+    { 0, 0, 1, 1 }   // Far Plane
+};
+
+enum ClippingPlane
+{
+    LEFT = 0,
+    RIGHT = 1,
+    TOP = 2,
+    BOTTOM = 3,
+    NEAR = 4,
+    FAR = 5
+};
 
 void glBegin(GLenum mode)
 {
@@ -33,13 +64,89 @@ static bool compare_y_values(const R3DVertex& a, const R3DVertex& b)
     return a.y < b.y;
 }
 
-enum class Boundary
+// TODO: Change this to a vertex!
+// Determines whether or not a vertex is inside the frustum for a given plane
+static bool vert_inside_plane(const Vec4& vec, ClippingPlane plane)
 {
-    LEFT,
-    RIGHT,
-    TOP,
-    BOTTOM
-};
+    switch(plane)
+    {
+    case ClippingPlane::LEFT:
+        return vec.x() > -vec.w();
+    case ClippingPlane::RIGHT:
+        return vec.x() < vec.w();
+    case ClippingPlane::TOP:
+        return vec.y() < vec.w();
+    case ClippingPlane::BOTTOM:
+        return vec.y() > -vec.w();
+    case ClippingPlane::NEAR:
+        return vec.z() > -vec.w();
+    case ClippingPlane::FAR:
+        return vec.z() < vec.w();
+    }
+
+    return false;
+}
+
+// TODO: This needs to interpolate color/UV data as well!
+static Vec4 clip_intersection_point(const Vec4& vec, const Vec4& prev_vec, ClippingPlane plane_index)
+{
+    // https://github.com/fogleman/fauxgl/blob/master/clipping.go#L20
+    // How the fuck does this work??????
+    Vec4 u, w;
+    Vec4 ret = prev_vec;
+    Vec4 plane = clip_planes[plane_index];
+    Vec4 plane_normal = clip_plane_normals[plane_index];
+
+    u = vec;
+    u -= prev_vec;
+    w = prev_vec;
+    w -= plane;
+    float d = plane_normal.dot(u);
+    float n = -plane_normal.dot(w);
+
+    ret += (u * (n / d));
+    return ret;
+}
+
+// https://groups.csail.mit.edu/graphics/classes/6.837/F04/lectures/07_Pipeline_II.pdf
+// This is a really rough implementation of the Sutherland-Hodgman algorithm in clip-space
+static void clip_triangle_against_frustum(std::vector<Vec4>& in_vec)
+{
+    std::vector<Vec4> clipped_polygon = in_vec; // in_vec = subjectPolygon, clipped_polygon = outputList
+
+    for(int i = 0; i < NUM_CLIP_PLANES; i++) // Test against each clip plane
+    {
+        ClippingPlane plane = static_cast<ClippingPlane>(i); // Hahaha, what the fuck
+        bool last_vertex_inside = true;
+        in_vec = clipped_polygon;
+        clipped_polygon.clear();
+        Vec4 prev_vec;
+
+        for(size_t j = 0; j < in_vec.size(); j++) // Perform this for each vertex
+        {
+            const Vec4& vec = in_vec.at(j);
+
+            if(vert_inside_plane(vec, plane))
+            {
+                if(!last_vertex_inside)
+                {
+                    Vec4 intersect = clip_intersection_point(prev_vec, vec, plane);
+                    clipped_polygon.push_back(intersect);
+                }
+
+                clipped_polygon.push_back(vec);
+            }
+            else if(last_vertex_inside)
+            {
+                Vec4 intersect = clip_intersection_point(vec, prev_vec, plane);
+                clipped_polygon.push_back(intersect);
+                last_vertex_inside = false;
+            }
+
+            prev_vec = vec;
+        }
+    }
+}
 
 void glEnd()
 {
@@ -107,51 +214,62 @@ void glEnd()
         // will reconstruct the triangle as one or more triangles to fit inside the clipping range. "
         //
         // ALL VERTICES ARE DEFINED IN A CLOCKWISE ORDER
-        if(veca.w() != 0.0f)
+
+        std::vector<Vec4> vecs;
+        std::vector<R3DVertex> verts;
+
+        vecs.push_back(veca);
+        vecs.push_back(vecb);
+        vecs.push_back(vecc);
+        clip_triangle_against_frustum(vecs);
+
+        // TODO: Copy color and UV information too!
+        for(size_t vec_idx = 0; vec_idx < vecs.size(); vec_idx++)
         {
-            // This brings us from clip space to Normalized Device Co-ordinates
-            veca.x(veca.x() / veca.w());
-            veca.y(veca.y() / veca.w());
-            veca.z(veca.z() / veca.w());
+            Vec4& vec = vecs.at(vec_idx);
+            R3DVertex vertex;
+
+            // Perform the perspective divide
+            if(vec.w() != 0.0f)
+            {
+                vec.x(vec.x() / vec.w());
+                vec.y(vec.y() / vec.w());
+                vec.z(vec.z() / vec.w());
+            }
+
+            vertex.x = vec.x();
+            vertex.x = vec.x();
+            vertex.x = vec.x();
+
+            vertex.x = (vec.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
+            vertex.y = scr_height - ((vec.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
+            vertex.z = vec.z();
+            verts.push_back(vertex);
         }
 
-        if(vecb.w() != 0.0f)
+        if(verts.size() == 4)
         {
-            // This brings us from clip space to Normalized Device Co-ordinates
-            vecb.x(vecb.x() / vecb.w());
-            vecb.y(vecb.y() / vecb.w());
-            vecb.z(vecb.z() / vecb.w());
+            R3DTriangle tri1;
+            R3DTriangle tri2;
+
+            tri1.vertices[0] = verts.at(0);
+            tri1.vertices[1] = verts.at(1);
+            tri1.vertices[2] = verts.at(2);
+            processed_triangles.push_back(tri1);
+
+            tri2.vertices[0] = verts.at(0);
+            tri2.vertices[1] = verts.at(2);
+            tri2.vertices[2] = verts.at(3);
+            processed_triangles.push_back(tri2);
         }
-
-        if(vecb.w() != 0.0f)
-        {
-            // This brings us from clip space to Normalized Device Co-ordinates
-            vecc.x(vecc.x() / vecc.w());
-            vecc.y(vecc.y() / vecc.w());
-            vecc.z(vecc.z() / vecc.w());
-        }
-
-        // Perform the viewport transform
-        // https://www.khronos.org/registry/OpenGL-Refpages/es2.0/xhtml/glViewport.xml
-        vertexa.x = (veca.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
-        vertexa.y = scr_height - ((veca.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
-        vertexa.z = veca.z();
-
-        vertexb.x = (vecb.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
-        vertexb.y = scr_height - ((vecb.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
-        vertexb.z = vecb.z();
-
-        vertexc.x = (vecc.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
-        vertexc.y = scr_height - ((vecc.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
-        vertexc.z = vecc.z();
     }
 
     if(g_gl_state->curr_draw_mode == GL_TRIANGLES)
     {
-        for(size_t i = 0; i < triangle_list.size(); i++)
+        for(size_t i = 0; i < processed_triangles.size(); i++)
         {
             std::vector<R3DVertex> sort_vert_list;
-            R3DTriangle& triangle = triangle_list.at(i);
+            R3DTriangle& triangle = processed_triangles.at(i);
 
             // Now we sort the vertices by their y values. A is the vertex that has the least y value,
             // B is the middle and C is the bottom.
@@ -185,6 +303,7 @@ void glEnd()
 
         // We probably need to wait for the card to finish drawing here before we clear
         triangle_list.clear();
+        processed_triangles.clear();
         vertex_list.clear();
     }
     else

@@ -28,8 +28,9 @@ int main(int, char**)
     ymin = -ymax;
     xmin = ymin * aspect;
     xmax = ymax * aspect;
-    glFrustum(xmin, xmax, ymin, ymax, 0.1f, 1000.0f);
+    glFrustum(xmin, xmax, ymin, ymax, 4, 4096);
 
+    GLfloat z = -7.0f;
     glViewport(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
     while(running)
     {
@@ -46,11 +47,22 @@ int main(int, char**)
         glLoadIdentity();
 
         glBegin(GL_TRIANGLES);
-        glColor3f(0.0f, 1.0f, 0.0f);
-        glVertex3f(-1.0f, -1.0f, -0.4f); // Top left corner (the origin)
-        glVertex3f(-1.0f, 1.0f, -0.1f);  // Bottom left corner
-        glVertex3f(1.0f, 1.0f, -0.1f);   // Bottom right corner
+
+        // Triangle 1
+        glVertex3f(-2.0f, 1.0f, z);  // Bottom left corner
+        glVertex3f(-4.0f, -1.0f, z); // Top left corner (the origin)
+        glVertex3f(2.0f, 1.0f, z);   // Bottom right corner
+
+        // Triangle 2
+        /**
+        glVertex3f(-1.0f, -1.0f, -0.01f); // Top left corner (the origin)
+        glVertex3f(-1.0f, 1.0f, -0.01f);  // Bottom left corner
+        glVertex3f(1.0f, 1.0f, -0.01f);   // Bottom right corner
+        **/
         glEnd();
+
+        z += 0.001f;
+        printf("%.6f\n", z);
 
         g_card.flip(); // THIS SHOULD BE A REGISTER WRITE!
         SDL_UpdateWindowSurface(const_cast<SDL_Window*>(g_card.monitor()));
