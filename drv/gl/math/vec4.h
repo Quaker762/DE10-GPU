@@ -163,10 +163,10 @@ public:
 
     // float angle() { return atan(m_y / m_x); }
 
-    float x() { return m_x; }
-    float y() { return m_y; }
-    float z() { return m_z; }
-    float w() { return m_w; }
+    float x() const { return m_x; }
+    float y() const { return m_y; }
+    float z() const { return m_z; }
+    float w() const { return m_w; }
 
     void x(float x) { m_x = x; }
     void y(float y) { m_y = y; }
