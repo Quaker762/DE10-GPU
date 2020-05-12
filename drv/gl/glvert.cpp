@@ -117,18 +117,16 @@ static void clip_triangle_against_frustum(std::vector<Vec4>& in_vec)
     for(int i = 0; i < NUM_CLIP_PLANES; i++) // Test against each clip plane
     {
         ClippingPlane plane = static_cast<ClippingPlane>(i); // Hahaha, what the fuck
-        bool last_vertex_inside = true;
         in_vec = clipped_polygon;
         clipped_polygon.clear();
-        Vec4 prev_vec;
+        Vec4 prev_vec = in_vec.at(in_vec.size() - 1);
 
         for(size_t j = 0; j < in_vec.size(); j++) // Perform this for each vertex
         {
             const Vec4& vec = in_vec.at(j);
-
             if(vert_inside_plane(vec, plane))
             {
-                if(!last_vertex_inside)
+                if(!vert_inside_plane(prev_vec, plane))
                 {
                     Vec4 intersect = clip_intersection_point(prev_vec, vec, plane);
                     clipped_polygon.push_back(intersect);
@@ -136,11 +134,10 @@ static void clip_triangle_against_frustum(std::vector<Vec4>& in_vec)
 
                 clipped_polygon.push_back(vec);
             }
-            else if(last_vertex_inside)
+            else if(vert_inside_plane(prev_vec, plane))
             {
-                Vec4 intersect = clip_intersection_point(vec, prev_vec, plane);
+                Vec4 intersect = clip_intersection_point(prev_vec, vec, plane);
                 clipped_polygon.push_back(intersect);
-                last_vertex_inside = false;
             }
 
             prev_vec = vec;
@@ -215,6 +212,8 @@ void glEnd()
         //
         // ALL VERTICES ARE DEFINED IN A CLOCKWISE ORDER
 
+        // Okay, let's do some face culling first
+
         std::vector<Vec4> vecs;
         std::vector<R3DVertex> verts;
 
@@ -247,7 +246,20 @@ void glEnd()
             verts.push_back(vertex);
         }
 
-        if(verts.size() == 4)
+        if(verts.size() == 0)
+        {
+            continue;
+        }
+        else if(verts.size() == 3)
+        {
+            R3DTriangle tri;
+
+            tri.vertices[0] = verts.at(0);
+            tri.vertices[1] = verts.at(1);
+            tri.vertices[2] = verts.at(2);
+            processed_triangles.push_back(tri);
+        }
+        else if(verts.size() == 4)
         {
             R3DTriangle tri1;
             R3DTriangle tri2;
