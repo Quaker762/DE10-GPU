@@ -53,9 +53,6 @@ void PCU::put_pixel(int x, int y, uint32_t pixel)
     pixel &= 0x00ffffff;
     int location = x + y * m_window_size.width;
 
-    if(location < 0 || location > m_window_size.width * m_window_size.height)
-        return;
-
     m_backbuffer[location] = pixel;
 }
 
