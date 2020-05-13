@@ -16,6 +16,7 @@
 #include "r3d/rush3d.h"
 
 #include <algorithm>
+#include <cmath>
 #include <vector>
 
 #define NUM_CLIP_PLANES 6
@@ -113,12 +114,12 @@ static Vec4 clip_intersection_point(const Vec4& vec, const Vec4& prev_vec, Clipp
 static void clip_triangle_against_frustum(std::vector<Vec4>& in_vec)
 {
     std::vector<Vec4> clipped_polygon = in_vec; // in_vec = subjectPolygon, clipped_polygon = outputList
-
-    for(int i = 0; i < NUM_CLIP_PLANES; i++) // Test against each clip plane
+    for(int i = 0; i < NUM_CLIP_PLANES; i++)    // Test against each clip plane
     {
         ClippingPlane plane = static_cast<ClippingPlane>(i); // Hahaha, what the fuck
         in_vec = clipped_polygon;
         clipped_polygon.clear();
+
         Vec4 prev_vec = in_vec.at(in_vec.size() - 1);
 
         for(size_t j = 0; j < in_vec.size(); j++) // Perform this for each vertex
@@ -344,4 +345,49 @@ void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
     vertex.b = g_gl_state->curr_vertex_color.b;
 
     vertex_list.push_back(vertex);
+}
+
+void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+{
+    Vec4 vec = { x, y, z, 0 };
+    Mat4 rotation_mat;
+    float cosangle = cos(angle * (M_PI / 180));
+    float sinangle = sin(angle * (M_PI / 180));
+    float one_minus_cosangle = 1 - cosangle;
+
+    if(vec.length() > 1.0f)
+        vec.normalize();
+
+    // Here we go...
+    // https://learnopengl.com/Getting-started/Transformations
+    // https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glRotate.xml
+    rotation_mat(0, 0, ((vec.x() * vec.x()) * one_minus_cosangle) + cosangle);
+    rotation_mat(0, 1, ((vec.y() * vec.x()) * one_minus_cosangle) + (vec.z() * sinangle));
+    rotation_mat(0, 2, ((vec.x() * vec.z()) * one_minus_cosangle) - (vec.y() * sinangle));
+    rotation_mat(0, 3, 0.0f);
+
+    rotation_mat(1, 0, ((vec.x() * vec.y()) * one_minus_cosangle) - (vec.z() * sinangle));
+    rotation_mat(1, 1, ((vec.y() * vec.y()) * one_minus_cosangle) + cosangle);
+    rotation_mat(1, 2, ((vec.y() * vec.z()) * one_minus_cosangle) + (vec.x() * sinangle));
+    rotation_mat(1, 3, 0.0f);
+
+    rotation_mat(2, 0, ((vec.x() * vec.z()) * one_minus_cosangle) + (vec.y() * sinangle));
+    rotation_mat(2, 1, ((vec.y() * vec.z()) * one_minus_cosangle) - (vec.x() * sinangle));
+    rotation_mat(2, 2, ((vec.z() * vec.z()) * one_minus_cosangle) + cosangle);
+    rotation_mat(2, 3, 0.0f);
+
+    rotation_mat(3, 0, 0.0f);
+    rotation_mat(3, 1, 0.0f);
+    rotation_mat(3, 2, 0.0f);
+    rotation_mat(3, 3, 1.0f);
+
+    // Phew...
+    if(g_gl_state->curr_matrix_mode == GL_MODELVIEW)
+    {
+        g_gl_state->model_view_matrix = g_gl_state->model_view_matrix * rotation_mat;
+    }
+    else if(g_gl_state->curr_matrix_mode == GL_PROJECTION)
+    {
+        g_gl_state->projection_matrix = g_gl_state->projection_matrix * rotation_mat;
+    }
 }

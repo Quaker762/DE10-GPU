@@ -159,7 +159,16 @@ public:
     Vec4() {}
     Vec4(float x, float y, float z, float w) : m_x(x), m_y(y), m_z(z), m_w(w) {}
 
-    // float magnitude() const { return sqrt((m_x * m_x) + (m_y * m_y) + (m_z * m_z) + (m_w * m_w)); }
+    float length() const { return sqrt((m_x * m_x) + (m_y * m_y) + (m_z * m_z) + (m_w * m_w)); }
+
+    void normalize()
+    {
+        float len = length();
+        m_x /= len;
+        m_y /= len;
+        m_z /= len;
+        m_w /= len;
+    }
 
     // float angle() { return atan(m_y / m_x); }
 
