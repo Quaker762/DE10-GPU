@@ -1,6 +1,7 @@
 # Makefile for Rush3D MiniGL driver for Linux
 
 CXX_OBJS = \
+    glcolor.o \
     glmat.o \
 	glstate.o \
 	glutil.o \

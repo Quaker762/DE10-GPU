@@ -336,14 +336,6 @@ void glEnd()
     }
 }
 
-void glColor3f(GLfloat r, GLfloat g, GLfloat b)
-{
-    g_gl_state->curr_vertex_color.r = std::clamp(r, 0.0f, 255.0f);
-    g_gl_state->curr_vertex_color.g = std::clamp(g, 0.0f, 255.0f);
-    g_gl_state->curr_vertex_color.b = std::clamp(b, 0.0f, 255.0f);
-    g_gl_state->curr_vertex_color.a = 255.0f;
-}
-
 void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 {
     R3DVertex vertex;
