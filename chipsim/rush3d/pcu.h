@@ -83,8 +83,12 @@ public:
 private:
     void put_pixel(int, int, uint32_t pixel);
     void draw_wireframe_triangle();
-    void draw_line(int startX, int startY, int endX, int endY);
+    void draw_filled_triangle();
+    void draw_line(int startX, int startY, int endX, int endY, uint32_t);
     void fill_framebuffer();
+
+    void draw_flat_top(float x1, float y1, float x2, float y2, float x3, float y3);
+    void draw_flat_bottom(float x1, float y1, float x2, float y2, float x3, float y3);
 
 private:
     uint32_t* m_framebuffer;

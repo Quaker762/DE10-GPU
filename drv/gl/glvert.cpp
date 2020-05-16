@@ -297,6 +297,17 @@ void glEnd()
             triangle.vertices[1] = sort_vert_list.at(1);
             triangle.vertices[2] = sort_vert_list.at(2);
 
+            // Let's calculate the (signed) area of the triangle
+            // https://cp-algorithms.com/geometry/oriented-triangle-area.html
+            float dxAB = triangle.vertices[0].x - triangle.vertices[1].x; // A.x - B.x
+            float dxBC = triangle.vertices[1].x - triangle.vertices[2].x; // B.X - C.x
+            float dyAB = triangle.vertices[0].y - triangle.vertices[1].y;
+            float dyBC = triangle.vertices[1].y - triangle.vertices[2].y;
+            float area = (dxAB * dyBC) - (dxBC * dyAB);
+
+            if(area == 0.0f)
+                continue;
+
 #ifdef USE_SIM
             // std::printf("GL_PROJECTION\n");
             // g_gl_state->projection_matrix.print();
@@ -310,7 +321,7 @@ void glEnd()
             g_card.write_register(RegisterOffsets::vertexBy, triangle.vertices[1].y);
             g_card.write_register(RegisterOffsets::vertexCx, triangle.vertices[2].x);
             g_card.write_register(RegisterOffsets::vertexCy, triangle.vertices[2].y);
-            g_card.write_register(RegisterOffsets::cmdTriangle, 1);
+            g_card.write_register(RegisterOffsets::cmdTriangle, (uint32_t)area); // Write the area to the draw command
 #endif
         }
 
