@@ -241,6 +241,25 @@ void glEnd()
             vertex.x = vec.x();
             vertex.x = vec.x();
 
+            if(vec_idx == 0)
+            {
+                vertex.r = vertexa.r;
+                vertex.g = vertexa.g;
+                vertex.b = vertexa.b;
+            }
+            else if(vec_idx == 1)
+            {
+                vertex.r = vertexb.r;
+                vertex.g = vertexb.g;
+                vertex.b = vertexb.b;
+            }
+            else
+            {
+                vertex.r = vertexc.r;
+                vertex.g = vertexc.g;
+                vertex.b = vertexc.b;
+            }
+
             vertex.x = (vec.x() + 1.0f) * (scr_width / 2.0f) + 0.0f; // TODO: 0.0f should be something!?
             vertex.y = scr_height - ((vec.y() + 1.0f) * (scr_height / 2.0f) + 0.0f);
             vertex.z = vec.z();
@@ -308,6 +327,8 @@ void glEnd()
             if(area == 0.0f)
                 continue;
 
+                // Now let's work out the barycentric co-ords for the color gradients
+
 #ifdef USE_SIM
             // std::printf("GL_PROJECTION\n");
             // g_gl_state->projection_matrix.print();
@@ -321,6 +342,15 @@ void glEnd()
             g_card.write_register(RegisterOffsets::vertexBy, triangle.vertices[1].y);
             g_card.write_register(RegisterOffsets::vertexCx, triangle.vertices[2].x);
             g_card.write_register(RegisterOffsets::vertexCy, triangle.vertices[2].y);
+            g_card.write_register(RegisterOffsets::triStartR, static_cast<uint32_t>(triangle.vertices[0].r));
+            g_card.write_register(RegisterOffsets::triStartG, static_cast<uint32_t>(triangle.vertices[0].g));
+            g_card.write_register(RegisterOffsets::triStartB, static_cast<uint32_t>(triangle.vertices[0].b));
+            g_card.write_register(RegisterOffsets::triRdX, static_cast<uint32_t>(0.0f));
+            g_card.write_register(RegisterOffsets::triGdX, static_cast<uint32_t>(1.0f));
+            g_card.write_register(RegisterOffsets::triBdX, static_cast<uint32_t>(0.0f));
+            g_card.write_register(RegisterOffsets::triRdY, static_cast<uint32_t>(0.0f));
+            g_card.write_register(RegisterOffsets::triGdY, static_cast<uint32_t>(1.0f));
+            g_card.write_register(RegisterOffsets::triBdY, static_cast<uint32_t>(0.0f));
             g_card.write_register(RegisterOffsets::cmdTriangle, (uint32_t)area); // Write the area to the draw command
 #endif
         }

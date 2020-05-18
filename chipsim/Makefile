@@ -4,7 +4,7 @@ CXX_OBJS = \
 
 CXX=g++
 
-CXXFLAGS += -std=c++14 -Wall -Wextra -Wold-style-cast
+CXXFLAGS += -std=c++17 -Wall -Wextra -Wold-style-cast
 CXXFLAGS += -O0 -g3
 CXXFLAGS += -I.
 CXXFLAGS += -I../

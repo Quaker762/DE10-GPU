@@ -46,6 +46,15 @@ enum RegisterOffsets
     triStartR,
     triStartG,
     triStartB,
+    triStartA,
+    triRdX,
+    triGdX,
+    triBdX,
+    triAdX,
+    triRdY,
+    triGdY,
+    triBdY,
+    triAdY,
 
     cmdTriangle,
 };
@@ -84,7 +93,8 @@ private:
     void put_pixel(int, int, uint32_t pixel);
     void draw_wireframe_triangle();
     void draw_filled_triangle();
-    void draw_line(int startX, int startY, int endX, int endY, uint32_t);
+    void draw_line_debug(int startX, int startY, int endX, int endY, uint32_t);
+    void draw_line(int startX, int startY, int endX, int endY);
     void fill_framebuffer();
 
     void draw_flat_top(float x1, float y1, float x2, float y2, float x3, float y3);

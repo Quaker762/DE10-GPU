@@ -10,7 +10,7 @@ extern "C" {
 typedef struct
 {
     float x, y, z, w;
-    float r, g, b;
+    float r = 255.0f, g = 255.0f, b = 255.0f;
     float u, v;
 } R3DVertex;
 

@@ -19,7 +19,8 @@ Rush3D g_card;
 #endif
 
 static const char* register_names[] = {
-    "STATUS", "fbCOLOR", "fbFILL", "fbWIDTH", "fbHEIGHT", "vertexAx", "vertexAy", "vertexBx", "vertexBy", "vertexCx", "vertexCy", "cmdTriangle",
+    "STATUS",    "fbCOLOR",   "fbFILL",    "fbWIDTH", "fbHEIGHT", "vertexAx", "vertexAy", "vertexBx", "vertexBy", "vertexCx", "vertexCy", "triStartR",
+    "triStartG", "triStartB", "triStartA", "triRdX",  "triGdX",   "triBdX",   "triAdX",   "triRdY",   "triGdY",   "triBdY",   "triAdY",   "cmdTriangle",
 };
 
 void Rush3D::initialize()
