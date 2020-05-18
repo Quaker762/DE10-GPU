@@ -104,7 +104,8 @@
     "ios": "cpp",
     "locale": "cpp",
     "queue": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "*.ipp": "cpp"
   },
   "clang-format.executable": "/usr/bin/clang-format",
   "editor.formatOnSave": true
