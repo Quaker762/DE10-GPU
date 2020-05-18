@@ -1,5 +1,11 @@
 /**
+ * Copyright (c) 2020, Jesse Buhagiar, Jack Allan and Matthew Atkin
+ * All rights reserved.
+ * Unauthorized copying or reproduction of this project and the files contained within
+ * is strictly prohibited.
  *
+ * Author: Jesse Buhagiar
+ * Date: 4/4/2020
  */
 #pragma once
 
@@ -21,7 +27,6 @@ public:
     uint32_t read_register(RegisterOffsets offset);
 
     void push_fifo(uint32_t);
-    void send_command(uint32_t);
     void flip() const;
 
     const SDL_Window* monitor() const;
