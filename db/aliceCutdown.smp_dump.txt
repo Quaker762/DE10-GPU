@@ -1,0 +1,22 @@
+
+State Machine - |aliceCutdown|framebuffer_read:data_out|buffer
+Name buffer.0011 buffer.0010 buffer.0001 buffer.0000 
+buffer.0000 0 0 0 0 
+buffer.0001 0 0 1 1 
+buffer.0010 0 1 0 1 
+buffer.0011 1 0 0 1 
+
+State Machine - |aliceCutdown|framebuffer_read:data_out|state
+Name state.STATE_DONE state.STATE_HDMI_WAIT2 state.STATE_READ_WAIT2 state.STATE_READ_START2 state.STATE_HDMI_WAIT1 state.STATE_READ_WAIT1 state.STATE_READ_START1 state.STATE_WRITE_WAIT2 state.STATE_WRITE_START2 state.STATE_WRITE_WAIT1 state.STATE_WRITE_START1 state.STATE_INIT 
+state.STATE_INIT 0 0 0 0 0 0 0 0 0 0 0 0 
+state.STATE_WRITE_START1 0 0 0 0 0 0 0 0 0 0 1 1 
+state.STATE_WRITE_WAIT1 0 0 0 0 0 0 0 0 0 1 0 1 
+state.STATE_WRITE_START2 0 0 0 0 0 0 0 0 1 0 0 1 
+state.STATE_WRITE_WAIT2 0 0 0 0 0 0 0 1 0 0 0 1 
+state.STATE_READ_START1 0 0 0 0 0 0 1 0 0 0 0 1 
+state.STATE_READ_WAIT1 0 0 0 0 0 1 0 0 0 0 0 1 
+state.STATE_HDMI_WAIT1 0 0 0 0 1 0 0 0 0 0 0 1 
+state.STATE_READ_START2 0 0 0 1 0 0 0 0 0 0 0 1 
+state.STATE_READ_WAIT2 0 0 1 0 0 0 0 0 0 0 0 1 
+state.STATE_HDMI_WAIT2 0 1 0 0 0 0 0 0 0 0 0 1 
+state.STATE_DONE 1 0 0 0 0 0 0 0 0 0 0 1 

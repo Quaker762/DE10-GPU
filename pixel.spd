@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="pixel_sim/pixel.vo" type="VERILOG" />
+ <topLevel name="pixel" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

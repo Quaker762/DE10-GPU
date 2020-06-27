@@ -1,1 +1,0 @@
-Warning (10268): Verilog HDL information at I2C.v(88): always construct contains both blocking and non-blocking assignments File: /home/jallan/Rush3dNano/I2C.v Line: 88

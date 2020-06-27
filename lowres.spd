@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="lowres_sim/lowres.vo" type="VERILOG" />
+ <topLevel name="lowres" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

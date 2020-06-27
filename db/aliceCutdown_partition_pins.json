@@ -1,0 +1,161 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "I2C_SCL",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[7]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[8]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[9]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[10]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[11]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[12]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[13]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[14]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[15]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[16]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[17]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[18]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[19]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[20]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[21]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[22]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX[23]",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX_HS",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX_VS",
+					"strict" : false
+				},
+				{
+					"name" : "HDMI_TX_DE",
+					"strict" : false
+				},
+				{
+					"name" : "leds[0]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[1]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[2]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[3]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[4]",
+					"strict" : false
+				},
+				{
+					"name" : "leds[5]",
+					"strict" : false
+				},
+				{
+					"name" : "I2C_SDA",
+					"strict" : false
+				},
+				{
+					"name" : "reset_KEY0",
+					"strict" : false
+				},
+				{
+					"name" : "SW[3]",
+					"strict" : false
+				},
+				{
+					"name" : "start_KEY1",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
