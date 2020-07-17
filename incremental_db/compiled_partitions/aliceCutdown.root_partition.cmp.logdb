@@ -1,4 +1,0 @@
-v1
-GXB_MERGING,PLL Reference Clock Select Block,289255,PLL500:memclock|PLL500_0002:pll500_inst|altera_pll:altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT,PLL:systemClockToPixel|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT,
-GXB_MERGING,PLL Reconfiguration Block,289249,PLL500:memclock|PLL500_0002:pll500_inst|altera_pll:altera_pll_i|general[0].gpll~PLL_RECONFIG,PLL:systemClockToPixel|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll~PLL_RECONFIG,
-GXB_MERGING,Fractional PLL,288562,PLL500:memclock|PLL500_0002:pll500_inst|altera_pll:altera_pll_i|general[0].gpll~FRACTIONAL_PLL,PLL:systemClockToPixel|PLL_0002:pll_inst|altera_pll:altera_pll_i|general[0].gpll~FRACTIONAL_PLL,

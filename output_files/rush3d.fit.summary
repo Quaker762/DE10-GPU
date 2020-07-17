@@ -1,0 +1,20 @@
+Fitter Status : Successful - Fri Jul 17 01:23:24 2020
+Quartus Prime Version : 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+Revision Name : rush3d
+Top-level Entity Name : rush3d
+Family : Cyclone V
+Device : 5CSXFC6D6F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 320 / 41,910 ( < 1 % )
+Total registers : 877
+Total pins : 126 / 499 ( 25 % )
+Total virtual pins : 0
+Total block memory bits : 2,432 / 5,662,720 ( < 1 % )
+Total RAM Blocks : 1 / 553 ( < 1 % )
+Total DSP Blocks : 0 / 112 ( 0 % )
+Total HSSI RX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 9 ( 0 % )
+Total HSSI TX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 9 ( 0 % )
+Total PLLs : 3 / 15 ( 20 % )
+Total DLLs : 1 / 4 ( 25 % )

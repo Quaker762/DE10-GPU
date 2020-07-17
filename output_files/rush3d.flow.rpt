@@ -1,0 +1,186 @@
+Flow report for rush3d
+Fri Jul 17 01:24:01 2020
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Fri Jul 17 01:24:01 2020       ;
+; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                   ; rush3d                                      ;
+; Top-level Entity Name           ; rush3d                                      ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CSXFC6D6F31C6                              ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 320 / 41,910 ( < 1 % )                      ;
+; Total registers                 ; 877                                         ;
+; Total pins                      ; 126 / 499 ( 25 % )                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 2,432 / 5,662,720 ( < 1 % )                 ;
+; Total DSP Blocks                ; 0 / 112 ( 0 % )                             ;
+; Total HSSI RX PCSs              ; 0 / 9 ( 0 % )                               ;
+; Total HSSI PMA RX Deserializers ; 0 / 9 ( 0 % )                               ;
+; Total HSSI TX PCSs              ; 0 / 9 ( 0 % )                               ;
+; Total HSSI PMA TX Serializers   ; 0 / 9 ( 0 % )                               ;
+; Total PLLs                      ; 3 / 15 ( 20 % )                             ;
+; Total DLLs                      ; 1 / 4 ( 25 % )                              ;
++---------------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 07/17/2020 01:21:14 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; rush3d              ;
++-------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                                            ;
++---------------------------------------+---------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
+; Assignment Name                       ; Value                                                                                             ; Default Value ; Entity Name ; Section Id                        ;
++---------------------------------------+---------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
+; COMPILER_SIGNATURE_ID                 ; 222577710721491.159491287320045                                                                   ; --            ; --          ; --                                ;
+; ECO_REGENERATE_REPORT                 ; On                                                                                                ; Off           ; --          ; --                                ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST       ; Off                                                                                               ; --            ; --          ; eda_board_design_timing           ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST       ; Off                                                                                               ; --            ; --          ; eda_board_design_boundary_scan    ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST       ; Off                                                                                               ; --            ; --          ; eda_board_design_signal_integrity ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST       ; Off                                                                                               ; --            ; --          ; eda_board_design_symbol           ;
+; EDA_OUTPUT_DATA_FORMAT                ; Verilog Hdl                                                                                       ; --            ; --          ; eda_simulation                    ;
+; EDA_SIMULATION_TOOL                   ; ModelSim-Altera (Verilog)                                                                         ; <None>        ; --          ; --                                ;
+; EDA_TIME_SCALE                        ; 1 ps                                                                                              ; --            ; --          ; eda_simulation                    ;
+; ENABLE_SIGNALTAP                      ; On                                                                                                ; --            ; --          ; --                                ;
+; MAX_CORE_JUNCTION_TEMP                ; 85                                                                                                ; --            ; --          ; --                                ;
+; MIN_CORE_JUNCTION_TEMP                ; 0                                                                                                 ; --            ; --          ; --                                ;
+; MISC_FILE                             ; src/ip/xga60_pll_sim/xga60_pll.vo                                                                 ; --            ; --          ; --                                ;
+; MISC_FILE                             ; src/ip/vga60_svga60_pll_sim/vga60_svga60_pll.vo                                                   ; --            ; --          ; --                                ;
+; MISC_FILE                             ; src/ip/hsbridge_pll_sim/hsbridge_pll.vo                                                           ; --            ; --          ; --                                ;
+; MISC_FILE                             ; src/ip/xga60_pll.cmp                                                                              ; --            ; --          ; --                                ;
+; MISC_FILE                             ; src/ip/vga60_svga60_pll.cmp                                                                       ; --            ; --          ; --                                ;
+; MISC_FILE                             ; src/ip/hsbridge_pll.cmp                                                                           ; --            ; --          ; --                                ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS        ; Half Signal Swing                                                                                 ; --            ; --          ; --                                ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS        ; Half Signal Swing                                                                                 ; --            ; --          ; --                                ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS       ; Half Vccio                                                                                        ; --            ; --          ; --                                ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS       ; Half Vccio                                                                                        ; --            ; --          ; --                                ;
+; PARTITION_COLOR                       ; -- (Not supported for targeted family)                                                            ; --            ; --          ; Top                               ;
+; PARTITION_FITTER_PRESERVATION_LEVEL   ; -- (Not supported for targeted family)                                                            ; --            ; --          ; Top                               ;
+; PARTITION_NETLIST_TYPE                ; -- (Not supported for targeted family)                                                            ; --            ; --          ; Top                               ;
+; POWER_BOARD_THERMAL_MODEL             ; None (CONSERVATIVE)                                                                               ; --            ; --          ; --                                ;
+; POWER_PRESET_COOLING_SOLUTION         ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                                             ; --            ; --          ; --                                ;
+; PROJECT_OUTPUT_DIRECTORY              ; output_files                                                                                      ; --            ; --          ; --                                ;
+; SLD_FILE                              ; db/signal_tap_auto_stripped.stp                                                                   ; --            ; --          ; --                                ;
+; SLD_NODE_CREATOR_ID                   ; 110                                                                                               ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_ENTITY_NAME                  ; sld_signaltap                                                                                     ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_RAM_BLOCK_TYPE=AUTO                                                                           ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_NODE_INFO=805334528                                                                           ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0                                                     ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_SEGMENT_SIZE=128                                                                              ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_ATTRIBUTE_MEM_MODE=OFF                                                                        ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_STATE_FLOW_USE_GENERATED=0                                                                    ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_STATE_BITS=11                                                                                 ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_BUFFER_FULL_STOP=1                                                                            ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_CURRENT_RESOURCE_WIDTH=1                                                                      ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_INCREMENTAL_ROUTING=1                                                                         ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_TRIGGER_LEVEL=1                                                                               ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_SAMPLE_DEPTH=128                                                                              ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_TRIGGER_IN_ENABLED=0                                                                          ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_TRIGGER_PIPELINE=0                                                                            ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_RAM_PIPELINE=0                                                                                ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_COUNTER_PIPELINE=0                                                                            ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_ADVANCED_TRIGGER_ENTITY=basic,1,                                                              ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_TRIGGER_LEVEL_PIPELINE=1                                                                      ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_ENABLE_ADVANCED_TRIGGER=0                                                                     ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_POWER_UP_TRIGGER=0                                                                            ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_DATA_BITS=19                                                                                  ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_TRIGGER_BITS=19                                                                               ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_STORAGE_QUALIFIER_BITS=19                                                                     ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000 ; --            ; --          ; auto_signaltap_0                  ;
+; SLD_NODE_PARAMETER_ASSIGNMENT         ; SLD_INVERSION_MASK_LENGTH=78                                                                      ; --            ; --          ; auto_signaltap_0                  ;
+; SPD_FILE                              ; src/ip/xga60_pll.spd                                                                              ; --            ; --          ; --                                ;
+; SPD_FILE                              ; src/ip/vga60_svga60_pll.spd                                                                       ; --            ; --          ; --                                ;
+; SPD_FILE                              ; src/ip/hsbridge_pll.spd                                                                           ; --            ; --          ; --                                ;
+; SYNTHESIS_ONLY_QIP                    ; On                                                                                                ; --            ; --          ; --                                ;
+; SYNTHESIS_ONLY_QIP                    ; On                                                                                                ; --            ; --          ; --                                ;
+; SYNTHESIS_ONLY_QIP                    ; On                                                                                                ; --            ; --          ; --                                ;
+; USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ; On                                                                                                ; Off           ; --          ; --                                ;
+; USE_SIGNALTAP_FILE                    ; signal_tap.stp                                                                                    ; --            ; --          ; --                                ;
++---------------------------------------+---------------------------------------------------------------------------------------------------+---------------+-------------+-----------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:01:11     ; 1.0                     ; 1303 MB             ; 00:02:04                           ;
+; Fitter               ; 00:00:58     ; 1.2                     ; 3743 MB             ; 00:02:35                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 999 MB              ; 00:00:08                           ;
+; Timing Analyzer      ; 00:00:20     ; 1.2                     ; 1779 MB             ; 00:00:24                           ;
+; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 1245 MB             ; 00:00:03                           ;
+; Total                ; 00:02:40     ; --                      ; --                  ; 00:05:14                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                          ;
++----------------------+------------------+---------------+---------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name       ; OS Version    ; Processor type ;
++----------------------+------------------+---------------+---------------+----------------+
+; Analysis & Synthesis ; desktop          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Fitter               ; desktop          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Assembler            ; desktop          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; Timing Analyzer      ; desktop          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; desktop          ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
++----------------------+------------------+---------------+---------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off rush3d -c rush3d
+quartus_fit --read_settings_files=off --write_settings_files=off rush3d -c rush3d
+quartus_asm --read_settings_files=off --write_settings_files=off rush3d -c rush3d
+quartus_sta rush3d -c rush3d
+quartus_eda --read_settings_files=off --write_settings_files=off rush3d -c rush3d
+
+
+

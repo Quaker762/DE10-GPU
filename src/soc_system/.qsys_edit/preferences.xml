@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="111" />
+   <irq preferredWidth="34" />
+   <description preferredWidth="280" />
+   <inputclock preferredWidth="159" />
+   <name preferredWidth="170" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/Basic Functions,Library,Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Qsys Interconnect,Library/Processors and Peripherals,Project,Library/Basic Functions/Simulation; Debug and Verification,Library/Processors and Peripherals/Peripherals,Library/Qsys Interconnect/Memory-Mapped" />
+ <window width="1920" height="1035" x="1920" y="0" />
+ <generation path="src/_PROJECT_NAME_" />
+</preferences>
