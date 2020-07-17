@@ -1,9 +1,0 @@
-
-State Machine - |rush3d|SDRAM_test:test|state
-Name state.STATE_DONE state.STATE_READ_WAIT state.STATE_READ_START state.STATE_WRITE_WAIT state.STATE_WRITE_START state.STATE_INIT 
-state.STATE_INIT 0 0 0 0 0 0 
-state.STATE_WRITE_START 0 0 0 0 1 1 
-state.STATE_WRITE_WAIT 0 0 0 1 0 1 
-state.STATE_READ_START 0 0 1 0 0 1 
-state.STATE_READ_WAIT 0 1 0 0 0 1 
-state.STATE_DONE 1 0 0 0 0 1 

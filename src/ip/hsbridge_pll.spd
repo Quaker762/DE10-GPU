@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<simPackage>
- <file path="hsbridge_pll_sim/hsbridge_pll.vo" type="VERILOG" />
- <topLevel name="hsbridge_pll" />
- <deviceFamily name="cyclonev" />
-</simPackage>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<simPackage>
- <file path="first480_sim/first480.vo" type="VERILOG" />
- <topLevel name="first480" />
- <deviceFamily name="cyclonev" />
-</simPackage>
