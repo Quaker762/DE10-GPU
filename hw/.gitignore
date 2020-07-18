@@ -12,6 +12,8 @@ incremental_db
 simulation
 testbench
 timing
+output_files
+hps_isw_handoff
 # ignore Quartus II generated files
 *_generation_script*
 *_inst.vhd
@@ -34,10 +36,12 @@ timing
 *.smsg
 *.sof
 *.sopc_builder
+*.sopcinfo
 *.summary
-*.txt # Explicitly add any text files used
+*.txt 
 *example*
 *sopc_*
 *.bak
-output_files/
+*.csv
+
 PLLJ_PLLSPE_INFO.txt # The generated PLL specification file
