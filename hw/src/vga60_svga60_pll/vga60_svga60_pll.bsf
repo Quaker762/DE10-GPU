@@ -22,7 +22,7 @@ https://fpgasoftware.intel.com/eula.
 (header "symbol" (version "1.1"))
 (symbol
 	(rect 0 0 160 144)
-	(text "PixelPLL" (rect 54 -1 89 11)(font "Arial" (font_size 10)))
+	(text "vga60_svga60_pll" (rect 29 -1 102 11)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 128 20 140)(font "Arial" ))
 	(port
 		(pt 0 72)
@@ -48,8 +48,8 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 160 112)
 		(output)
-		(text "locked" (rect 0 0 24 12)(font "Arial" (font_size 8)))
-		(text "locked" (rect 127 101 163 112)(font "Arial" (font_size 8)))
+		(text "outclk_1" (rect 0 0 31 12)(font "Arial" (font_size 8)))
+		(text "outclk_1" (rect 119 101 167 112)(font "Arial" (font_size 8)))
 		(line (pt 160 112)(pt 112 112)(line_width 1))
 	)
 	(drawing
@@ -59,8 +59,8 @@ https://fpgasoftware.intel.com/eula.
 		(text "reset" (rect 53 107 136 224)(font "Arial" (color 0 0 0)))
 		(text "outclk0" (rect 113 43 268 99)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "clk" (rect 97 67 212 144)(font "Arial" (color 0 0 0)))
-		(text "locked" (rect 113 83 262 179)(font "Arial" (color 128 0 0)(font_size 9)))
-		(text "export" (rect 82 107 200 224)(font "Arial" (color 0 0 0)))
+		(text "outclk1" (rect 113 83 268 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 97 107 212 224)(font "Arial" (color 0 0 0)))
 		(text " altera_pll " (rect 118 128 308 266)(font "Arial" ))
 		(line (pt 48 32)(pt 112 32)(line_width 1))
 		(line (pt 112 32)(pt 112 128)(line_width 1))

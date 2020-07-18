@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <simPackage>
- <file path="PixelPLL_sim/PixelPLL.vo" type="VERILOG" />
- <topLevel name="PixelPLL" />
+ <file path="xga60_pll_sim/xga60_pll.vo" type="VERILOG" />
+ <topLevel name="xga60_pll" />
  <deviceFamily name="cyclonev" />
 </simPackage>
