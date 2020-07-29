@@ -458,6 +458,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vga_b[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vga_b[6]
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE signal_tap.stp
+set_global_assignment -name VERILOG_FILE src/component/regfile.v
 set_global_assignment -name SIP_FILE src/hsbridge_pll/hsbridge_pll.sip
 set_global_assignment -name QIP_FILE src/hsbridge_pll/hsbridge_pll.qip
 set_global_assignment -name SIP_FILE src/vga60_svga60_pll/vga60_svga60_pll.sip
