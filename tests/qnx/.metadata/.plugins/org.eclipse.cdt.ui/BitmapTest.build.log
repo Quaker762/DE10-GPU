@@ -1,0 +1,6 @@
+23:13:19 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+
+23:13:19 Build Finished (took 169ms)
+

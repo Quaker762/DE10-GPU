@@ -1,0 +1,539 @@
+22:21:20 **** Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/BitmapTest.o  
+22:27:48 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/bitmap.d,-MT,build/armv7le-debug/src/bitmap.o -o build/armv7le-debug/src/bitmap.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/bitmap.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:13:72: error: reinterpret_cast from type 'const uint8_t* {aka const unsigned char*}' to type 'uint32_t* {aka unsigned int*}' casts away qualifiers
+  std::printf("0x%x\n", *reinterpret_cast<uint32_t*>(bitmap.pixel_data());
+                                                                        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:28:02 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:13:79: error: expected ')' before ';' token
+  std::printf("0x%x\n", *reinterpret_cast<const uint32_t*>(bitmap.pixel_data());
+                                                                               ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:28:38 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:28:51 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:28:54 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:33:24 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:33:31 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:33:48 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:33:49 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:34:44 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:13:65: error: invalid use of member function (did you forget the '()' ?)
+  for(int i = 0; i < (bitmap.width() * bitmap.height()) / bitmap.bpp; i += 4)
+                                                                 ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:34:51 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:34:52 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:35:33 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:36:03 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:36:10 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:37:21 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:37:22 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:41:24 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:10:18: error: 'FRAMEBUFFER_WIDTH' does not name a type
+ static constexpr FRAMEBUFFER_WIDTH  = 640;
+                  ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:41:44 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:43:13 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:12:43: error: invalid conversion from 'int' to 'void*' [-fpermissive]
+ static constexpr void* FRAMEBUFFER_ADDR = 0x3800 0000;
+                                           ^
+src/BitmapTest.cpp:12:50: error: expected ',' or ';' before numeric constant
+ static constexpr void* FRAMEBUFFER_ADDR = 0x3800 0000;
+                                                  ^
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:23:18: error: 'mmap' was not declared in this scope
+  void* fb = mmap()
+                  ^
+src/BitmapTest.cpp:23:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap()
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:43:18 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:12:57: error: expected ',' or ';' before numeric constant
+ static constexpr void* FRAMEBUFFER_ADDR = (void*)0x3800 0000;
+                                                         ^
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:23:18: error: 'mmap' was not declared in this scope
+  void* fb = mmap()
+                  ^
+src/BitmapTest.cpp:23:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap()
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:43:34 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:12:43: error: invalid conversion from 'int' to 'void*' [-fpermissive]
+ static constexpr void* FRAMEBUFFER_ADDR = 0x3800 0000;
+                                           ^
+src/BitmapTest.cpp:12:50: error: expected ',' or ';' before numeric constant
+ static constexpr void* FRAMEBUFFER_ADDR = 0x3800 0000;
+                                                  ^
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:23:18: error: 'mmap' was not declared in this scope
+  void* fb = mmap()
+                  ^
+src/BitmapTest.cpp:23:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap()
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:43:47 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:23:18: error: 'mmap' was not declared in this scope
+  void* fb = mmap()
+                  ^
+src/BitmapTest.cpp:23:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap()
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:43:50 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:23:18: error: 'mmap' was not declared in this scope
+  void* fb = mmap()
+                  ^
+src/BitmapTest.cpp:23:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap()
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:50:12 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:23:33: error: 'O_RDWR' was not declared in this scope
+  int memfile = open("/dev/mem", O_RDWR | O_SYNC);
+                                 ^
+src/BitmapTest.cpp:23:42: error: 'O_SYNC' was not declared in this scope
+  int memfile = open("/dev/mem", O_RDWR | O_SYNC);
+                                          ^
+src/BitmapTest.cpp:23:48: error: 'open' was not declared in this scope
+  int memfile = open("/dev/mem", O_RDWR | O_SYNC);
+                                                ^
+src/BitmapTest.cpp:13:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:31:42: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                                          ^
+src/BitmapTest.cpp:13:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:31:42: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                                          ^
+src/BitmapTest.cpp:31:61: error: too few arguments to function 'void* mmap(void*, size_t, int, int, int, off_t)'
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                                                             ^
+In file included from src/BitmapTest.cpp:9:0:
+/home/quaker/qnx700/target/qnx7/usr/include/sys/mman.h:199:14: note: declared here
+ extern void *mmap(void *__addr, size_t __len, int __prot, int __flags, int __fd, off_t __off) __ALIAS64("mmap64");
+              ^
+src/BitmapTest.cpp:31:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:51:09 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:23:33: error: 'O_RDWR' was not declared in this scope
+  int memfile = open("/dev/mem", O_RDWR | O_SYNC);
+                                 ^
+src/BitmapTest.cpp:23:42: error: 'O_SYNC' was not declared in this scope
+  int memfile = open("/dev/mem", O_RDWR | O_SYNC);
+                                          ^
+src/BitmapTest.cpp:23:48: error: 'open' was not declared in this scope
+  int memfile = open("/dev/mem", O_RDWR | O_SYNC);
+                                                ^
+src/BitmapTest.cpp:13:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:32:28: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                            ^
+src/BitmapTest.cpp:13:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:32:28: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                            ^
+src/BitmapTest.cpp:32:47: error: too few arguments to function 'void* mmap(void*, size_t, int, int, int, off_t)'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                                               ^
+In file included from src/BitmapTest.cpp:9:0:
+/home/quaker/qnx700/target/qnx7/usr/include/sys/mman.h:199:14: note: declared here
+ extern void *mmap(void *__addr, size_t __len, int __prot, int __flags, int __fd, off_t __off) __ALIAS64("mmap64");
+              ^
+src/BitmapTest.cpp:31:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:52:28 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:14:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:33:28: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                            ^
+src/BitmapTest.cpp:14:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:33:28: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                            ^
+src/BitmapTest.cpp:33:47: error: too few arguments to function 'void* mmap(void*, size_t, int, int, int, off_t)'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                                               ^
+In file included from src/BitmapTest.cpp:9:0:
+/home/quaker/qnx700/target/qnx7/usr/include/sys/mman.h:199:14: note: declared here
+ extern void *mmap(void *__addr, size_t __len, int __prot, int __flags, int __fd, off_t __off) __ALIAS64("mmap64");
+              ^
+src/BitmapTest.cpp:32:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:52:47 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:14:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:33:28: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                            ^
+src/BitmapTest.cpp:14:36: error: expected ')' before numeric constant
+ #define FRAMEBUFFER_ADDRESS 0x3800 0000
+                                    ^
+src/BitmapTest.cpp:33:28: note: in expansion of macro 'FRAMEBUFFER_ADDRESS'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                            ^
+src/BitmapTest.cpp:33:47: error: too few arguments to function 'void* mmap(void*, size_t, int, int, int, off_t)'
+    reinterpret_cast<void*>(FRAMEBUFFER_ADDRESS),
+                                               ^
+In file included from src/BitmapTest.cpp:9:0:
+/home/quaker/qnx700/target/qnx7/usr/include/sys/mman.h:199:14: note: declared here
+ extern void *mmap(void *__addr, size_t __len, int __prot, int __flags, int __fd, off_t __off) __ALIAS64("mmap64");
+              ^
+src/BitmapTest.cpp:32:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:53:03 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:32:35: error: expected ')' before numeric constant
+    reinterpret_cast<void*>(0x3800 0000),
+                                   ^
+src/BitmapTest.cpp:32:35: error: expected ')' before numeric constant
+src/BitmapTest.cpp:32:39: error: too few arguments to function 'void* mmap(void*, size_t, int, int, int, off_t)'
+    reinterpret_cast<void*>(0x3800 0000),
+                                       ^
+In file included from src/BitmapTest.cpp:9:0:
+/home/quaker/qnx700/target/qnx7/usr/include/sys/mman.h:199:14: note: declared here
+ extern void *mmap(void *__addr, size_t __len, int __prot, int __flags, int __fd, off_t __off) __ALIAS64("mmap64");
+              ^
+src/BitmapTest.cpp:31:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:53:34 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:32:18: error: expected ')' before numeric constant
+    (void*)0x3800 0000,
+                  ^
+src/BitmapTest.cpp:31:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:54:01 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:31:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(reinterpret_cast<void*>(0x38000000), FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4,PROT_READ | PROT_WRITE,MAP_PRIVATE,memfile,0);
+        ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:54:20 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:15:43: error: invalid conversion from 'int' to 'void*' [-fpermissive]
+ static constexpr void* FRAMEBUFFER_ADDR = 0x38000000;
+                                           ^
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:33:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(FRAMEBUFFER_ADDR, FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4,PROT_READ | PROT_WRITE,MAP_PRIVATE,memfile,0);
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:55:16 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:15:36: error: expected ')' before ';' token
+ #define FRAMEBUFFER_ADDR 0x38000000;
+                                    ^
+src/BitmapTest.cpp:33:42: note: in expansion of macro 'FRAMEBUFFER_ADDR'
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDR), FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4,PROT_READ | PROT_WRITE,MAP_PRIVATE,memfile,0);
+                                          ^
+src/BitmapTest.cpp:15:36: error: expected ')' before ';' token
+ #define FRAMEBUFFER_ADDR 0x38000000;
+                                    ^
+src/BitmapTest.cpp:33:42: note: in expansion of macro 'FRAMEBUFFER_ADDR'
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDR), FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4,PROT_READ | PROT_WRITE,MAP_PRIVATE,memfile,0);
+                                          ^
+src/BitmapTest.cpp:33:58: error: expected primary-expression before ')' token
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDR), FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4,PROT_READ | PROT_WRITE,MAP_PRIVATE,memfile,0);
+                                                          ^
+src/BitmapTest.cpp:33:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDR), FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4,PROT_READ | PROT_WRITE,MAP_PRIVATE,memfile,0);
+        ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+22:55:22 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:33:8: warning: unused variable 'fb' [-Wunused-variable]
+  void* fb = mmap(reinterpret_cast<void*>(FRAMEBUFFER_ADDR), FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4,PROT_READ | PROT_WRITE,MAP_PRIVATE,memfile,0);
+        ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:56:07 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:56:08 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:56:48 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:36:3: error: 'void*' is not a pointer-to-object type
+  *fb = 0xcafebabe;
+   ^
+src/BitmapTest.cpp:37:25: error: 'void*' is not a pointer-to-object type
+  std::printf("0x%x\n", *fb);
+                         ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:57:15 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:57:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:57:53 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:57:55 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:58:14 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:58:15 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:58:27 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:58:28 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:58:40 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:58:42 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+22:59:10 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:40:2: error: expected ';' before 'std'
+  std::printf("yikes!\n");
+  ^
+cc: /home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+22:59:15 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:59:16 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:00:34 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:00:35 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:03:52 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:03:56 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:04:23 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:04:24 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:10:55 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:11:00 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:11:27 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:11:29 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:11:55 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:11:57 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:12:23 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:12:45 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:12:47 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:12:56 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:12:57 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.
+23:13:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:13:19 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j24 all 
+make: Nothing to be done for 'all'.

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<trgtproject id="com.qnx.tools.ide.target.core.target">
+    <data>
+        <item id="com.qnx.tools.ide.target">
+            <connection>
+                <ENDIAN value="le"/>
+                <VERSION value="2017/06/13-10:38:51EDT"/>
+                <ARCHITECTURE value="armle"/>
+                <MACHINE value="SocFPGA_Cyclone_V_unknown_revision"/>
+                <DOMAIN value="net.intra"/>
+                <SYSNAME value="QNX"/>
+                <CPU value="armle"/>
+                <HASVERSION value="1"/>
+                <HOSTNAME value="cycloneVg01a"/>
+                <OS value="nto"/>
+                <QCONN_VERSION value="1.4.207944"/>
+                <RELEASE value="7.0.0"/>
+                <NUM_SRVCS value="1"/>
+            </connection>
+            <qconnostype value="nto"/>
+            <project>
+                <name value="192.168.0.12"/>
+            </project>
+            <qconnport value="8000"/>
+            <qconnguid value="0926a9b9-04ed-4c55-9639-546d80690585"/>
+            <targettmpdir value="/tmp"/>
+            <qconnhostname value="192.168.0.12"/>
+        </item>
+    </data>
+</trgtproject>
