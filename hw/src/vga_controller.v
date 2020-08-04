@@ -12,8 +12,52 @@ module vga_controller
 	output reg hsync,
 	output reg vsync,
 	output reg sync_n,
-	output reg blank_n
+	output reg blank_n,
+	output reg [23:0] pixel_test,
+	
+	output reg display_active
 );
+/*
+always @(vertical_pixel_count, horizontal_pixel_count) begin
+	if((vertical_pixel_count< VTOTAL640/2) && (horizontal_pixel_count< HTOTAL640/2)) begin
+		pixel_test = 24'hFF0000;
+	end else if((vertical_pixel_count< VTOTAL640/2) && (horizontal_pixel_count> HTOTAL640/2))begin
+		pixel_test = 24'h00FF00;
+	end else if((vertical_pixel_count> VTOTAL640/2) && (horizontal_pixel_count< HTOTAL640/2))begin
+		pixel_test = 24'h0000FF;
+	end else begin
+		pixel_test = 24'hFFFFFF;
+	end
+end
+
+always @(posedge(pixel_clock)) begin
+	if(vertical_pixel_count < VBP) begin
+		pixel_test = 24'h00FF00;
+	end else if(vertical_pixel_count > (VBP + VRES)) begin
+		pixel_test = 24'h00FF00;
+	end else if(horizontal_pixel_count < (HSLEN + HBP)) begin
+		pixel_test = 24'h00FF00;
+	end else if(horizontal_pixel_count > (HSLEN + HBP + HRES)) begin
+		pixel_test = 24'h00FF00;
+	end else begin
+		pixel_test = 24'hFF0000;
+	end
+end
+*/
+
+always @(posedge(pixel_clock)) begin: displayActive
+	if(vertical_pixel_count <= VBP) begin
+		display_active <= 0;
+	end else if(vertical_pixel_count > (VBP + VRES)) begin
+		display_active <= 0;
+	end else if(horizontal_pixel_count < (HSLEN + HBP)) begin
+		display_active <= 0;
+	end else if(horizontal_pixel_count >= (HSLEN + HBP + HRES)) begin
+		display_active <= 0;
+	end else begin
+		display_active <= 1;
+	end
+end
 
 // Resolution: VGA60 (640x480@60P) and Pixel Clock = 25.175MHz
 parameter HTOTAL640 = 12'd800; // Total Horizontal Pixels (and sync period)
@@ -79,14 +123,14 @@ vga60_svga60_pll vga60_svga60_pll
 	.refclk(refclk),               // 50MHz input
 	.rst(1'b0),
 	.outclk_0(vga60_pixel_clock),  // 25MHz output (This should be 25.175MHz)
-	.outclk_1(svga60_pixel_clock), // 40MHz output
+	.outclk_1(svga60_pixel_clock) // 40MHz output
 );
 
 xga60_pll xga60_pll
 (
 	.refclk(refclk),              // 50MHz input
 	.rst(1'b0),
-	.outclk_0(xga60_pixel_clock), // 65MHz output
+	.outclk_0(xga60_pixel_clock) // 65MHz output
 );
 
 reg [1:0] new_resolution = 2'b01;

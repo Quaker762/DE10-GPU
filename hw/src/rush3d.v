@@ -45,17 +45,24 @@ wire sdram0_waitrequest;
 wire [63:0] sdram0_readdata;
 wire sdram0_readdatavalid;
 wire sdram0_read;
-wire [63:0] sdram0_writedata;	 
-wire [7:0] sdram0_byteenable;	 
-wire sdram0_write;
+//wire [63:0] sdram0_writedata;	 
+//wire [7:0] sdram0_byteenable;	 
+//wire sdram0_write;
 
 wire hsbridge_clock;
-
+wire [31:0] pixel_data;
+wire pixel_clock;
+wire display_active;
+wire sync;
+wire current_buffer;
+assign current_buffer= keys[3];
+assign vga_vs = sync;
 assign leds = slide_switches;
 
-assign vga_r = 8'hFF;
-assign vga_g = 8'hFF;
-assign vga_b = 8'h00;
+assign vga_clk = pixel_clock;
+assign vga_r = pixel_data[23:16];
+assign vga_g = pixel_data[15:8];
+assign vga_b = pixel_data[7:0];
 
 vga_controller vga_controller
 (
@@ -63,11 +70,14 @@ vga_controller vga_controller
 	.reset_n(keys[0]),
 	.resolution(slide_switches[1:0]),
 	
-	.pixel_clock(vga_clk),
+	.pixel_clock(pixel_clock),
 	.hsync(vga_hs),
-	.vsync(vga_vs),
+	.vsync(sync),
 	.sync_n(vga_sync_n),
-	.blank_n(vga_blank_n)
+	.blank_n(vga_blank_n),
+	.pixel_test(test),
+	
+	.display_active(display_active)
 );
 
 
@@ -93,7 +103,7 @@ soc_system u0
 
 	// Clock resets and system clock.
 	.reset_reset_n(1'b1),
-	.clk_clk(hsbridge_clock), 
+	.clk_clk(clock_50), 
 
 	// sdram0: SDRAM interface for front buffer video scan-out.
 	.hps_0_f2h_sdram0_data_address(sdram0_address),
@@ -102,9 +112,9 @@ soc_system u0
 	.hps_0_f2h_sdram0_data_readdata(sdram0_readdata),
 	.hps_0_f2h_sdram0_data_readdatavalid(sdram0_readdatavalid),
 	.hps_0_f2h_sdram0_data_read(sdram0_read),
-	.hps_0_f2h_sdram0_data_writedata(sdram0_writedata),
-	.hps_0_f2h_sdram0_data_byteenable(sdram0_byteenable),
-	.hps_0_f2h_sdram0_data_write(sdram0_write),
+	//.hps_0_f2h_sdram0_data_writedata(sdram0_writedata),
+	//.hps_0_f2h_sdram0_data_byteenable(sdram0_byteenable),
+	//.hps_0_f2h_sdram0_data_write(sdram0_write),
 
 	// I2C is not used.
 	.hps_0_i2c1_out_data(),
@@ -112,11 +122,11 @@ soc_system u0
 	.hps_0_i2c1_clk_clk(),
 	.hps_0_i2c1_scl_in_clk()
 );
-
+/*
 SDRAM_test test
 (
-	.clock(clock_50),
-	.reset_n(keys[0] && slide_switches[0]),
+	.systemClock(hsbridge_clock),
+	.reset_n(keys[0]),
 	.address(sdram0_address),
 	.burstcount(sdram0_burstcount),
 	.waitrequest(sdram0_waitrequest),
@@ -127,6 +137,27 @@ SDRAM_test test
 	.byteenable(sdram0_byteenable),
 	.write(sdram0_write),
 );
+*/
+
+framebuffer_read reader
+(
+	.clock(clock_50),
+	.reset_n(keys[0]),
+	
+	.address(sdram0_address),
+	.burstcount(sdram0_burstcount),
+	.waitrequest(sdram0_waitrequest),
+	.readdata(sdram0_readdata),
+	.readdatavalid(sdram0_readdatavalid),
+	.read(sdram0_read),
+	
+	.buffer(current_buffer),
+	.pixel(pixel_data),
+	.pixel_clock(pixel_clock),
+	.pixel_valid(display_active),
+	.sync(~sync)
+);
+
 
 hsbridge_pll hsbridge_pll
 (

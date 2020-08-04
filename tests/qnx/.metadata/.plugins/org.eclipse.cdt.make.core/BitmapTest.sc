@@ -2,6 +2,9 @@
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="com.qnx.qcc.toolChain.1612185985">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="/home/matt/qnx/qnx700/target/qnx7/usr/include"/>
+<includePath path="/home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/include"/>
+<includePath path="/home/matt/qnx/qnx700/target/qnx7/usr/include/c++/v1"/>
 <includePath path="/home/quaker/qnx700/target/qnx7/usr/include"/>
 <includePath path="/home/quaker/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/include"/>
 <includePath path="/home/quaker/qnx700/target/qnx7/usr/include/c++/v1"/>

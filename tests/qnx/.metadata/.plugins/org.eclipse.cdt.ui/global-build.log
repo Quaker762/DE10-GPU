@@ -537,3 +537,759 @@ qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le
 23:13:19 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
 make -j24 all 
 make: Nothing to be done for 'all'.
+23:34:11 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/bitmap.d,-MT,build/armv7le-debug/src/bitmap.o -o build/armv7le-debug/src/bitmap.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/bitmap.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:35:45 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:35:57 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:40:07 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:43:40 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:44:31 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:45:08 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:45:38 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:45:47 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:53:09 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:54:21 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:54:30 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:54:49 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:56:10 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:41:18: error: invalid conversion from 'unsigned int' to 'const char*' [-fpermissive]
+     printf(sizeof(int))
+                  ^
+In file included from /home/matt/qnx/qnx700/target/qnx7/usr/include/c++/v1/cstdio:100:0,
+                 from /home/matt/qnx/qnx700/target/qnx7/usr/include/c++/v1/string:437,
+                 from src/bitmap.h:9,
+                 from src/BitmapTest.cpp:7:
+/home/matt/qnx/qnx700/target/qnx7/usr/include/stdio.h:176:12: note:   initializing argument 1 of 'int printf(const char*, ...)'
+ extern int printf(const char *__format, ...);
+            ^
+src/BitmapTest.cpp:42:5: error: expected ';' before 'memcpy'
+     memcpy(fb, bitmap.pixel_data(), bitmap.width() * bitmap.height() * 3);
+     ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+23:56:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:41:18: error: invalid conversion from 'unsigned int' to 'const char*' [-fpermissive]
+     printf(sizeof(int));
+                  ^
+In file included from /home/matt/qnx/qnx700/target/qnx7/usr/include/c++/v1/cstdio:100:0,
+                 from /home/matt/qnx/qnx700/target/qnx7/usr/include/c++/v1/string:437,
+                 from src/bitmap.h:9,
+                 from src/BitmapTest.cpp:7:
+/home/matt/qnx/qnx700/target/qnx7/usr/include/stdio.h:176:12: note:   initializing argument 1 of 'int printf(const char*, ...)'
+ extern int printf(const char *__format, ...);
+            ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+23:56:36 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:41:18: error: invalid conversion from 'unsigned int' to 'const char*' [-fpermissive]
+     printf(sizeof(unsigned int));
+                  ^
+In file included from /home/matt/qnx/qnx700/target/qnx7/usr/include/c++/v1/cstdio:100:0,
+                 from /home/matt/qnx/qnx700/target/qnx7/usr/include/c++/v1/string:437,
+                 from src/bitmap.h:9,
+                 from src/BitmapTest.cpp:7:
+/home/matt/qnx/qnx700/target/qnx7/usr/include/stdio.h:176:12: note:   initializing argument 1 of 'int printf(const char*, ...)'
+ extern int printf(const char *__format, ...);
+            ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+23:57:02 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:00:55 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:02:35 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:08:35 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:10:05 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:20:53 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:38:16 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:26:44 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:04:24 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:04:44 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+14:57:12 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:49:9: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+     *fb = 0xDEADCAFEBEEFBABE;
+         ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+14:58:02 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:50:15: error: 'BEEFBABE' was not declared in this scope
+     *fb + 1 = BEEFBABE;
+               ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+14:58:09 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:50:13: error: lvalue required as left operand of assignment
+     *fb + 1 = 0xBEEFBABE;
+             ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+14:58:38 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+15:03:14 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+16:14:53 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+16:16:08 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:25:13 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:37:41 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:37:46 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+16:20:03 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+16:20:09 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+16:49:10 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:01:30 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+17:40:50 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+17:41:52 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+17:42:13 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:42:25 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:42:41 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:42:57 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+18:27:25 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+18:27:29 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+18:27:36 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+18:27:48 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+18:30:49 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+18:30:54 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+18:57:00 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+19:46:53 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:18:29 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:30:34 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:31:12 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:31:33 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:32:05 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:32:14 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:32:53 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:33:42 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:35:52 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:41:49 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:41:53 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:43:08 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:43:10 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:43:49 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:43:52 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+20:44:20 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+20:44:23 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:05:48 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:16:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:19:14 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:19:18 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:20:30 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:20:51 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:20:56 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:21:11 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:21:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:21:59 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:22:04 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:26:12 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:26:18 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:26:34 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:26:57 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:27:08 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:27:30 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:27:35 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:28:23 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:28:29 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:28:33 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:37:06 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:37:16 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:12:42 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:12:59 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:58:16: error: expected constructor, destructor, or type conversion before '(' token
+     std::printf("You should now have a nice bitmap on the screen!\nIf you don't, you fucking suck! Thanks!");
+                ^
+src/BitmapTest.cpp:59:5: error: expected unqualified-id before 'return'
+     return 0;
+     ^
+src/BitmapTest.cpp:60:1: error: expected declaration before '}' token
+ }
+ ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+23:13:09 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:14:01 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:14:07 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:17:10 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:17:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:25:37 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:25:49 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:25:56 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:26:07 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:26:32 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:26:43 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:29:21 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:29:48 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:31:33 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:31:37 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:32:49 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:32:59 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:39:51 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:40:13 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:40:20 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:47:14 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:47:19 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:54:38 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:55:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+src/BitmapTest.cpp:49:1: error: unterminated comment
+ /*
+ ^
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:48:5: error: expected '}' at end of input
+     }
+     ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+23:54:58 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:55:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+src/BitmapTest.cpp:49:1: error: unterminated comment
+ /*
+ ^
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:48:5: error: expected '}' at end of input
+     }
+     ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+23:55:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:55:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:55:22 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:56:12 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:56:19 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:56:41 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:56:45 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:57:39 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:57:42 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:58:01 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:58:05 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:08:52 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:08:58 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:09:46 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:09:51 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:10:11 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:10:17 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:10:38 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+02:05:47 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+02:05:50 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+02:08:39 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+02:08:42 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+02:09:11 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+02:09:16 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+02:09:52 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp: In function 'int main()':
+src/BitmapTest.cpp:63:31: error: expected primary-expression before '/' token
+       *(fb + i) = 0x0000FF00;*/
+                               ^
+src/BitmapTest.cpp:65:5: error: expected primary-expression before '}' token
+     }
+     ^
+cc: /home/matt/qnx/qnx700/host/linux/x86_64/usr/lib/gcc/arm-unknown-nto-qnx7.0.0eabi/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/armv7le-debug/src/BitmapTest.o' failed
+make: *** [build/armv7le-debug/src/BitmapTest.o] Error 1
+02:10:01 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+02:10:05 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+01:06:58 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+01:07:24 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:65:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+01:07:35 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:65:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+01:07:43 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+01:23:30 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:65:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+01:23:36 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+01:34:57 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+01:45:22 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:65:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+01:45:28 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+17:08:25 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:65:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:08:29 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:17:58 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:53:54 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:65:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:54:04 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:54:38 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+22:54:43 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+22:55:11 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:65:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:54:07 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:66:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:54:20 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+23:55:00 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+23:55:04 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:03:13 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:03:47 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:66:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:09:32 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:09:37 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:14:20 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:66:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:17:41 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+00:27:39 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+src/BitmapTest.cpp:66:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+00:27:46 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.

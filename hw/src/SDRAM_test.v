@@ -1,104 +1,202 @@
-
-// Simple test of the SDRAM interface.
+// SDRAM Test for DE-10 Nano SoC
+// The RAM has been mapped via the Avalon Memory Mapped Interface.
+// The inspiration for this test is from the Alice4 project.
+// Dr. Glenn Matthews
+// 23/04/2020
 
 module SDRAM_test(
-    input wire clock,
-    input wire reset_n,
-    output reg [28:0] address,
-    output wire [7:0] burstcount,
-    input wire waitrequest,
-    input wire [63:0] readdata,
-    input wire readdatavalid,
-    output reg read,
-    output reg [63:0] writedata,
+	input wire systemClock,								// 100MHz clock.
+    input wire reset_n,									// Active low reset.
+    output reg [28:0] address,						// DDR3 address
+	 
+    output wire [7:0] burstcount,					// Number of bursts in the transactions
+    input wire waitrequest,							// Wait request.
+	 
+    input wire [63:0] readdata,						// Data to write onto the bus? 
+    input wire readdatavalid,							// Marker to indicate whether the read is valid.
+    output reg read,										// Read data signal.
+
+
+    output reg [63:0] writedata,						// Data that has been written.
     output wire [7:0] byteenable,
     output reg write
+
+  //  output wire [31:0] debug_value0,
+   // output wire [31:0] debug_value1
+
+
 );
 
-// State machine.
-localparam STATE_INIT = 4'h0;
-localparam STATE_WRITE_START = 4'h1;
-localparam STATE_WRITE_WAIT = 4'h2;
-localparam STATE_READ_START = 4'h3;
-localparam STATE_READ_WAIT = 4'h4;
-localparam STATE_DONE = 4'h5;
-reg [3:0] state;
+// Parameters used to control the read / writes to memory.
+assign burstcount = 8'h01;			// Only send one byte at a time.
+assign byteenable = 8'hFF;			// Need to see what this one does.
 
-// Registers and assignments.
-assign burstcount = 8'h01;
-assign byteenable = 8'hFF;
-reg [63:0] data;
+reg [63:0] data;						// Data to be written / read from the DDR3
+
 // 1G minus 128M, in 64-bit units:
-// This ends up writing to 0x38000000 in actual memory space.
+parameter TEST_ADDRESS = 29'h0700_0000;
 
-localparam TEST_ADDRESS = 29'h0700_0000;
-//localparam TEST_ADDRESS = 29'h0000_0000;
+// State Machine Variables
+parameter stateReset = 4'h0;
+parameter stateInit = 4'h1;						// Initialisation
+parameter stateWriteStart = 4'h2;
+parameter stateWriteWait = 4'h3;
+parameter stateReadStart = 4'h4;
+parameter stateReadWait = 4'h5;
+parameter stateDone = 4'h6;
 
-always @(posedge clock or negedge reset_n) begin
-    if (!reset_n) begin
-        state <= STATE_INIT;
-        address <= 29'h0;
-        read <= 1'b0;
-        writedata <= 64'h0;
-        write <= 1'b0;
-    end else begin
-        case (state)
-            STATE_INIT: begin
-                // Dummy state to start.
-                state <= STATE_WRITE_START;
-                data <= 64'h2357_1113_1719_2329;
-            end
+// Current- and next-state varaibles.
+reg [3:0] currentState = stateReset;
+reg [3:0] nextState = stateReset;
 
-            STATE_WRITE_START: begin
-                // Initiate a write.
-                address <= TEST_ADDRESS;
-                writedata <= 64'hDEAD_BEEF_CAFE_BABE;
-                write <= 1;
-                state <= STATE_WRITE_WAIT;
-            end
+// Create the stateLogic
+always @(posedge(systemClock), negedge(reset_n))
+	begin: stateLogic
+		if(!reset_n)
+			currentState <= stateReset;
+		else
+			currentState <= nextState;
+	end
+	
+	
+// State Transition Logic
+always @(currentState, waitrequest, readdatavalid)
+		begin :nextStateLogic
+			case (currentState)
+				stateReset:			nextState = stateInit;
+				stateInit: 			nextState = stateWriteStart;
+				stateWriteStart:	nextState = stateWriteWait;
+				stateWriteWait:
+					begin
+						if(!waitrequest) nextState = stateReadStart;
+						else nextState = stateWriteWait;
+					end
+				stateReadStart:	nextState = stateReadWait;
+				stateReadWait:
+					begin
+						//if(!waitrequest) nextState = stateReadWait;
+						if(readdatavalid) nextState = stateDone;
+						else nextState = stateReadWait;
+					end
+				stateDone:			nextState = stateDone;
+			
+			default: nextState = stateInit;
+			
+			endcase	
+		end
 
-            STATE_WRITE_WAIT: begin
-                // Wait until we're not requested to wait.
-                if (!waitrequest) begin
-                    address <= 29'h0;
-                    writedata <= 64'h0;
-                    write <= 1'b0;
-                    state <= STATE_READ_START;
-                end
-            end
+// State output logic
+always @(currentState, waitrequest, readdatavalid)
+	begin
+	case (currentState)
+		stateReset: 
+			begin
+				address = 29'h0;								// Set the start address to 0.
+				read = 1'b0;									// Read bit low.
+				writedata = 64'h0;							// Data to write set to 0.
+				write = 1'b0;									// Write bit low.
+				data <= 64'h0;									// Data packet to 0.
+			end
+		
+		stateInit:
+			begin
+				address = 29'h0;								// Set the start address to 0.
+				read = 1'b0;									// Read bit low.
+				writedata = 64'h0;							// Data to write set to 0.
+				write = 1'b0;									// Write bit low.
+				data <= 64'h2357_1113_1719_2329;			// Data packet value
+		
+			end
+			
+		stateWriteStart:
+			begin
+				address = TEST_ADDRESS;						// Set the address to write to.
+				read = 1'b0;									// Read bit low.
+				writedata = 64'hDEAD_BEEF_CAFE_BABE;	// Data to write set to 0.
+				write = 1'b1;									// Write bit low.
+				data <= 64'h2357_1113_1719_2329;			// Data packet value
+			
+			end
 
-            STATE_READ_START: begin
-                // Initiate a read.
-                address <= TEST_ADDRESS;
-                read <= 1'b1;
-                state <= STATE_READ_WAIT;
-            end
+		stateWriteWait:
+			begin
+				if (!waitrequest) 
+					begin
+						address = 29'h0;								// Set the address to read from
+						read = 1'b0;									// Keep the read bit set low.
+						writedata = 64'h0;							// Data to write set to 0 (as we are in the read phase).
+						write = 1'b0;									// Write bit low.
+						data <= 64'h0;									// Data packet value
+					end
+				else
+					begin
+						address = TEST_ADDRESS;						// Set the address to write to.
+						read = 1'b0;									// Read bit low.
+						writedata = 64'hDEAD_BEEF_CAFE_BABE;	// Data to write set to 0.
+						write = 1'b1;									// Write bit low.
+						data <= 64'h2357_1113_1719_2329;			// Data packet value
+					end
+			end
+		
+		stateReadStart:
+			begin
+				address = TEST_ADDRESS;						// Set the address to read from
+				read = 1'b1;									// Enable the read bit.
+				writedata = 64'h0;							// Data to write set to 0 (as we are in the read phase).
+				write = 1'b0;									// Write bit low.
+				data <= 64'h0;									// Data packet value
+			end
+			
+			
+		stateReadWait:
+			begin
+				if(!waitrequest) 
+					begin
+						address = TEST_ADDRESS;				// Set the address to read from
+						read = 1'b0;							// Enable the read bit.
+						writedata = 64'h0;					// Data to write set to 0 (as we are in the read phase).
+						write = 1'b0;							// Write bit low.
+						data <= 64'h0;							// Data packet value
+					end
+				if(readdatavalid)
+					begin
+						address = TEST_ADDRESS;				// Set the address to read from
+						read = 1'b0;							// Enable the read bit.
+						writedata = 64'h0;					// Data to write set to 0 (as we are in the read phase).
+						write = 1'b0;							// Write bit low.
+						data <= readdata;						// Data packet value
+					end
+				else
+					begin
+						address = TEST_ADDRESS;						// Set the address to read from
+						read = 1'b1;									// Enable the read bit.
+						writedata = 64'h0;							// Data to write set to 0 (as we are in the read phase).
+						write = 1'b0;									// Write bit low.
+						data <= 64'h0;									// Data packet value
+					end
+					
+			end
+		
+		stateDone:
+			begin
+				address = 29'h0;
+				read = 1'b0;								// Enable the read bit.
+				writedata = 64'h0;							// Data to write set to 0 (as we are in the read phase).
+				write = 1'b0;								// Write bit low.
+				data <= readdata;							// Data packet value
+			end
+			
+		default: 
+			begin
+				address = 29'h0;							// Set the start address to 0.
+				read = 1'b0;								// Read bit low.
+				writedata = 64'h0;						// Data to write set to 0.
+				write = 1'b0;								// Write bit low.
+				data <= 64'h0;								// Data packet to 0.
+			end
+		endcase	
+	end
+	
 
-            STATE_READ_WAIT: begin
-                // When no longer told to wait, deassert the request lines.
-                if (!waitrequest) begin
-                    address <= 29'h0;
-                    read <= 1'b0;
-                end
-
-                // If we have data, grab it and we're done.
-                if (readdatavalid) begin
-                    data <= readdata;
-                    state <= STATE_DONE;
-                end
-            end
-
-            STATE_DONE: begin
-                // Nothing, stay here.
-            end
-
-            default: begin
-                // Bug. Just restart.
-                state <= STATE_INIT;
-            end
-        endcase
-    end
-end
 
 endmodule
-
