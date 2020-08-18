@@ -1293,3 +1293,14 @@ qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le
 00:27:46 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
 make -j12 all 
 make: Nothing to be done for 'all'.
+17:38:08 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/bitmap.d,-MT,build/armv7le-debug/src/bitmap.o -o build/armv7le-debug/src/bitmap.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/bitmap.cpp
+src/BitmapTest.cpp:66:6: warning: "/*" within comment [-Wcomment]
+     //*(fb + i) = i;
+      ^
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
+17:38:13 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
+make -j12 all 
+make: Nothing to be done for 'all'.

@@ -400,3 +400,39 @@ org.eclipse.core.runtime.CoreException: Target is not connected: 192.168.0.12
 !MESSAGE Target is not connected: 192.168.0.12
 !SUBENTRY 1 com.qnx.tools.ide.qde.debug.ui 4 0 2020-08-10 00:09:34.622
 !MESSAGE Target is not connected: 192.168.0.12
+!SESSION 2020-08-18 17:37:44.422 -----------------------------------------------
+eclipse.buildId=7.0.4
+java.version=1.8.0_265
+java.vendor=Private Build
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_AU
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-08-18 17:37:52.384
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-08-18 17:37:52.909
+!MESSAGE Enablement expression is missing for config provider for com.qnx.tools.ide.qde.core.recursiveMkProject
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-08-18 17:37:52.909
+!MESSAGE Enablement expression is missing for config provider for com.qnx.tools.ide.qde.debug.core.descriptorType.default
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-08-18 17:37:52.909
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-08-18 17:37:52.910
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-08-18 17:37:52.910
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY com.qnx.tools.ide.capabilities.ui 4 0 2020-08-18 17:37:55.043
+!MESSAGE activityProfiles.activityRequirementBinding: Invalid activityId com.qnx.tools.ide.capabilities.ui.activity.qnxSystemDeveloper
+
+!ENTRY com.qnx.tools.ide.capabilities.ui 4 0 2020-08-18 17:37:55.045
+!MESSAGE activityProfiles.activityRequirementBinding: Invalid requiredActivityId com.qnx.tools.ide.capabilities.ui.activity.qnxDeveloper
+
+!ENTRY org.eclipse.ui 4 4 2020-08-18 17:37:59.146
+!MESSAGE Plugin com.qnx.tools.ide.target.qconn.ui, extension org.eclipse.launchbar.ui.launchTargetTypeUI, id com.qnx.tools.ide.target.qconn: Unknown extension tag found: launchTargetTypeUI
+
+!ENTRY org.eclipse.ui 4 4 2020-08-18 17:37:59.147
+!MESSAGE Plugin com.qnx.tools.ide.target.serial.ui, extension org.eclipse.launchbar.ui.launchTargetTypeUI, id com.qnx.tools.ide.target.serial.core.connectionType: Unknown extension tag found: launchTargetTypeUI
