@@ -1,4 +1,4 @@
-// (C) 2001-2019 Intel Corporation. All rights reserved.
+// (C) 2001-2020 Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files from any of the foregoing (including device programming or simulation 
@@ -14,50 +14,50 @@
 module soc_system_hps_0_fpga_interfaces(
 // h2f_reset
   output wire [1 - 1 : 0 ] h2f_rst_n
-// h2f_lw_axi_clock
- ,input wire [1 - 1 : 0 ] h2f_lw_axi_clk
-// h2f_lw_axi_master
- ,output wire [12 - 1 : 0 ] h2f_lw_AWID
- ,output wire [21 - 1 : 0 ] h2f_lw_AWADDR
- ,output wire [4 - 1 : 0 ] h2f_lw_AWLEN
- ,output wire [3 - 1 : 0 ] h2f_lw_AWSIZE
- ,output wire [2 - 1 : 0 ] h2f_lw_AWBURST
- ,output wire [2 - 1 : 0 ] h2f_lw_AWLOCK
- ,output wire [4 - 1 : 0 ] h2f_lw_AWCACHE
- ,output wire [3 - 1 : 0 ] h2f_lw_AWPROT
- ,output wire [1 - 1 : 0 ] h2f_lw_AWVALID
- ,input wire [1 - 1 : 0 ] h2f_lw_AWREADY
- ,output wire [12 - 1 : 0 ] h2f_lw_WID
- ,output wire [32 - 1 : 0 ] h2f_lw_WDATA
- ,output wire [4 - 1 : 0 ] h2f_lw_WSTRB
- ,output wire [1 - 1 : 0 ] h2f_lw_WLAST
- ,output wire [1 - 1 : 0 ] h2f_lw_WVALID
- ,input wire [1 - 1 : 0 ] h2f_lw_WREADY
- ,input wire [12 - 1 : 0 ] h2f_lw_BID
- ,input wire [2 - 1 : 0 ] h2f_lw_BRESP
- ,input wire [1 - 1 : 0 ] h2f_lw_BVALID
- ,output wire [1 - 1 : 0 ] h2f_lw_BREADY
- ,output wire [12 - 1 : 0 ] h2f_lw_ARID
- ,output wire [21 - 1 : 0 ] h2f_lw_ARADDR
- ,output wire [4 - 1 : 0 ] h2f_lw_ARLEN
- ,output wire [3 - 1 : 0 ] h2f_lw_ARSIZE
- ,output wire [2 - 1 : 0 ] h2f_lw_ARBURST
- ,output wire [2 - 1 : 0 ] h2f_lw_ARLOCK
- ,output wire [4 - 1 : 0 ] h2f_lw_ARCACHE
- ,output wire [3 - 1 : 0 ] h2f_lw_ARPROT
- ,output wire [1 - 1 : 0 ] h2f_lw_ARVALID
- ,input wire [1 - 1 : 0 ] h2f_lw_ARREADY
- ,input wire [12 - 1 : 0 ] h2f_lw_RID
- ,input wire [32 - 1 : 0 ] h2f_lw_RDATA
- ,input wire [2 - 1 : 0 ] h2f_lw_RRESP
- ,input wire [1 - 1 : 0 ] h2f_lw_RLAST
- ,input wire [1 - 1 : 0 ] h2f_lw_RVALID
- ,output wire [1 - 1 : 0 ] h2f_lw_RREADY
+// h2f_axi_clock
+ ,input wire [1 - 1 : 0 ] h2f_axi_clk
+// h2f_axi_master
+ ,output wire [12 - 1 : 0 ] h2f_AWID
+ ,output wire [30 - 1 : 0 ] h2f_AWADDR
+ ,output wire [4 - 1 : 0 ] h2f_AWLEN
+ ,output wire [3 - 1 : 0 ] h2f_AWSIZE
+ ,output wire [2 - 1 : 0 ] h2f_AWBURST
+ ,output wire [2 - 1 : 0 ] h2f_AWLOCK
+ ,output wire [4 - 1 : 0 ] h2f_AWCACHE
+ ,output wire [3 - 1 : 0 ] h2f_AWPROT
+ ,output wire [1 - 1 : 0 ] h2f_AWVALID
+ ,input wire [1 - 1 : 0 ] h2f_AWREADY
+ ,output wire [12 - 1 : 0 ] h2f_WID
+ ,output wire [64 - 1 : 0 ] h2f_WDATA
+ ,output wire [8 - 1 : 0 ] h2f_WSTRB
+ ,output wire [1 - 1 : 0 ] h2f_WLAST
+ ,output wire [1 - 1 : 0 ] h2f_WVALID
+ ,input wire [1 - 1 : 0 ] h2f_WREADY
+ ,input wire [12 - 1 : 0 ] h2f_BID
+ ,input wire [2 - 1 : 0 ] h2f_BRESP
+ ,input wire [1 - 1 : 0 ] h2f_BVALID
+ ,output wire [1 - 1 : 0 ] h2f_BREADY
+ ,output wire [12 - 1 : 0 ] h2f_ARID
+ ,output wire [30 - 1 : 0 ] h2f_ARADDR
+ ,output wire [4 - 1 : 0 ] h2f_ARLEN
+ ,output wire [3 - 1 : 0 ] h2f_ARSIZE
+ ,output wire [2 - 1 : 0 ] h2f_ARBURST
+ ,output wire [2 - 1 : 0 ] h2f_ARLOCK
+ ,output wire [4 - 1 : 0 ] h2f_ARCACHE
+ ,output wire [3 - 1 : 0 ] h2f_ARPROT
+ ,output wire [1 - 1 : 0 ] h2f_ARVALID
+ ,input wire [1 - 1 : 0 ] h2f_ARREADY
+ ,input wire [12 - 1 : 0 ] h2f_RID
+ ,input wire [64 - 1 : 0 ] h2f_RDATA
+ ,input wire [2 - 1 : 0 ] h2f_RRESP
+ ,input wire [1 - 1 : 0 ] h2f_RLAST
+ ,input wire [1 - 1 : 0 ] h2f_RVALID
+ ,output wire [1 - 1 : 0 ] h2f_RREADY
 // f2h_sdram0_data
- ,input wire [30 - 1 : 0 ] f2h_sdram0_ADDRESS
+ ,input wire [29 - 1 : 0 ] f2h_sdram0_ADDRESS
  ,input wire [8 - 1 : 0 ] f2h_sdram0_BURSTCOUNT
  ,output wire [1 - 1 : 0 ] f2h_sdram0_WAITREQUEST
- ,output wire [32 - 1 : 0 ] f2h_sdram0_READDATA
+ ,output wire [64 - 1 : 0 ] f2h_sdram0_READDATA
  ,output wire [1 - 1 : 0 ] f2h_sdram0_READDATAVALID
  ,input wire [1 - 1 : 0 ] f2h_sdram0_READ
 // f2h_sdram0_clock
@@ -146,124 +146,120 @@ cyclonev_hps_interface_fpga2hps fpga2hps(
 );
 
 
-cyclonev_hps_interface_hps2fpga_light_weight hps2fpga_light_weight(
- .arsize({
-    h2f_lw_ARSIZE[2:0] // 2:0
-  })
-,.wvalid({
-    h2f_lw_WVALID[0:0] // 0:0
-  })
-,.rlast({
-    h2f_lw_RLAST[0:0] // 0:0
-  })
-,.clk({
-    h2f_lw_axi_clk[0:0] // 0:0
-  })
-,.rresp({
-    h2f_lw_RRESP[1:0] // 1:0
-  })
-,.arready({
-    h2f_lw_ARREADY[0:0] // 0:0
-  })
-,.arprot({
-    h2f_lw_ARPROT[2:0] // 2:0
-  })
-,.araddr({
-    h2f_lw_ARADDR[20:0] // 20:0
-  })
-,.bvalid({
-    h2f_lw_BVALID[0:0] // 0:0
-  })
-,.arid({
-    h2f_lw_ARID[11:0] // 11:0
-  })
-,.bid({
-    h2f_lw_BID[11:0] // 11:0
-  })
-,.arburst({
-    h2f_lw_ARBURST[1:0] // 1:0
-  })
-,.arcache({
-    h2f_lw_ARCACHE[3:0] // 3:0
-  })
-,.awvalid({
-    h2f_lw_AWVALID[0:0] // 0:0
-  })
-,.wdata({
-    h2f_lw_WDATA[31:0] // 31:0
-  })
-,.rid({
-    h2f_lw_RID[11:0] // 11:0
-  })
-,.rvalid({
-    h2f_lw_RVALID[0:0] // 0:0
-  })
-,.wready({
-    h2f_lw_WREADY[0:0] // 0:0
-  })
-,.awlock({
-    h2f_lw_AWLOCK[1:0] // 1:0
-  })
-,.bresp({
-    h2f_lw_BRESP[1:0] // 1:0
-  })
-,.arlen({
-    h2f_lw_ARLEN[3:0] // 3:0
-  })
-,.awsize({
-    h2f_lw_AWSIZE[2:0] // 2:0
-  })
-,.awlen({
-    h2f_lw_AWLEN[3:0] // 3:0
-  })
-,.bready({
-    h2f_lw_BREADY[0:0] // 0:0
-  })
-,.awid({
-    h2f_lw_AWID[11:0] // 11:0
-  })
-,.rdata({
-    h2f_lw_RDATA[31:0] // 31:0
-  })
-,.awready({
-    h2f_lw_AWREADY[0:0] // 0:0
-  })
-,.arvalid({
-    h2f_lw_ARVALID[0:0] // 0:0
-  })
-,.wlast({
-    h2f_lw_WLAST[0:0] // 0:0
-  })
-,.awprot({
-    h2f_lw_AWPROT[2:0] // 2:0
-  })
-,.awaddr({
-    h2f_lw_AWADDR[20:0] // 20:0
-  })
-,.wid({
-    h2f_lw_WID[11:0] // 11:0
-  })
-,.awcache({
-    h2f_lw_AWCACHE[3:0] // 3:0
-  })
-,.arlock({
-    h2f_lw_ARLOCK[1:0] // 1:0
-  })
-,.awburst({
-    h2f_lw_AWBURST[1:0] // 1:0
-  })
-,.rready({
-    h2f_lw_RREADY[0:0] // 0:0
-  })
-,.wstrb({
-    h2f_lw_WSTRB[3:0] // 3:0
-  })
-);
-
-
 cyclonev_hps_interface_hps2fpga hps2fpga(
  .port_size_config({
-    2'b11 // 1:0
+    2'b01 // 1:0
+  })
+,.arsize({
+    h2f_ARSIZE[2:0] // 2:0
+  })
+,.wvalid({
+    h2f_WVALID[0:0] // 0:0
+  })
+,.rlast({
+    h2f_RLAST[0:0] // 0:0
+  })
+,.clk({
+    h2f_axi_clk[0:0] // 0:0
+  })
+,.rresp({
+    h2f_RRESP[1:0] // 1:0
+  })
+,.arready({
+    h2f_ARREADY[0:0] // 0:0
+  })
+,.arprot({
+    h2f_ARPROT[2:0] // 2:0
+  })
+,.araddr({
+    h2f_ARADDR[29:0] // 29:0
+  })
+,.bvalid({
+    h2f_BVALID[0:0] // 0:0
+  })
+,.arid({
+    h2f_ARID[11:0] // 11:0
+  })
+,.bid({
+    h2f_BID[11:0] // 11:0
+  })
+,.arburst({
+    h2f_ARBURST[1:0] // 1:0
+  })
+,.arcache({
+    h2f_ARCACHE[3:0] // 3:0
+  })
+,.awvalid({
+    h2f_AWVALID[0:0] // 0:0
+  })
+,.wdata({
+    h2f_WDATA[63:0] // 63:0
+  })
+,.rid({
+    h2f_RID[11:0] // 11:0
+  })
+,.rvalid({
+    h2f_RVALID[0:0] // 0:0
+  })
+,.wready({
+    h2f_WREADY[0:0] // 0:0
+  })
+,.awlock({
+    h2f_AWLOCK[1:0] // 1:0
+  })
+,.bresp({
+    h2f_BRESP[1:0] // 1:0
+  })
+,.arlen({
+    h2f_ARLEN[3:0] // 3:0
+  })
+,.awsize({
+    h2f_AWSIZE[2:0] // 2:0
+  })
+,.awlen({
+    h2f_AWLEN[3:0] // 3:0
+  })
+,.bready({
+    h2f_BREADY[0:0] // 0:0
+  })
+,.awid({
+    h2f_AWID[11:0] // 11:0
+  })
+,.rdata({
+    h2f_RDATA[63:0] // 63:0
+  })
+,.awready({
+    h2f_AWREADY[0:0] // 0:0
+  })
+,.arvalid({
+    h2f_ARVALID[0:0] // 0:0
+  })
+,.wlast({
+    h2f_WLAST[0:0] // 0:0
+  })
+,.awprot({
+    h2f_AWPROT[2:0] // 2:0
+  })
+,.awaddr({
+    h2f_AWADDR[29:0] // 29:0
+  })
+,.wid({
+    h2f_WID[11:0] // 11:0
+  })
+,.awcache({
+    h2f_AWCACHE[3:0] // 3:0
+  })
+,.arlock({
+    h2f_ARLOCK[1:0] // 1:0
+  })
+,.awburst({
+    h2f_AWBURST[1:0] // 1:0
+  })
+,.rready({
+    h2f_RREADY[0:0] // 0:0
+  })
+,.wstrb({
+    h2f_WSTRB[7:0] // 7:0
   })
 );
 
@@ -278,8 +274,8 @@ cyclonev_hps_interface_fpga2sdram f2sdram(
 ,.cmd_data_0({
     18'b000000000000000000 // 59:42
    ,f2h_sdram0_BURSTCOUNT[7:0] // 41:34
-   ,2'b00 // 33:32
-   ,f2h_sdram0_ADDRESS[29:0] // 31:2
+   ,3'b000 // 33:31
+   ,f2h_sdram0_ADDRESS[28:0] // 30:2
    ,1'b0 // 1:1
    ,intermediate[3:3] // 0:0
   })
@@ -296,7 +292,7 @@ cyclonev_hps_interface_fpga2sdram f2sdram(
     intermediate[1:1] // 0:0
   })
 ,.cfg_port_width({
-    12'b000000000000 // 11:0
+    12'b000000000001 // 11:0
   })
 ,.rd_valid_0({
     f2h_sdram0_READDATAVALID[0:0] // 0:0
@@ -305,7 +301,7 @@ cyclonev_hps_interface_fpga2sdram f2sdram(
     1'b1 // 0:0
   })
 ,.rd_data_0({
-    f2h_sdram0_READDATA[31:0] // 31:0
+    f2h_sdram0_READDATA[63:0] // 63:0
   })
 ,.cmd_valid_0({
     intermediate[4:4] // 0:0

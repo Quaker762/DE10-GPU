@@ -6,8 +6,10 @@
    <connections preferredWidth="111" />
    <irq preferredWidth="34" />
    <inputclock preferredWidth="141" />
+   <name preferredWidth="243" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1920" height="1035" x="1920" y="0" />
+ <library expandedCategories="Project,Library" />
+ <window width="1545" height="874" x="445" y="128" />
+ <hdlexample language="VERILOG" />
 </preferences>

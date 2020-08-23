@@ -1,4 +1,4 @@
-// (C) 2001-2019 Intel Corporation. All rights reserved.
+// (C) 2001-2020 Intel Corporation. All rights reserved.
 // Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files from any of the foregoing (including device programming or simulation 
@@ -54,7 +54,7 @@ module hps_sdram_p0_phy_csr(
 
 localparam RESET_REQUEST_DELAY = 4;
 
-localparam CSR_IP_VERSION_NUMBER = 191;
+localparam CSR_IP_VERSION_NUMBER = 201;
 
 parameter CSR_ADDR_WIDTH       = 8;
 parameter CSR_DATA_WIDTH       = 32;

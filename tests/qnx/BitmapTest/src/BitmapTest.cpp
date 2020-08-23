@@ -17,6 +17,7 @@ static constexpr uint32_t FRAMEBUFFER_ADDRESS2 = 0x3812c000;
 
 int main()
 {
+    /*
     CMSBitmap bitmap("/fs/yikes.bmp");
 
     // for(int i = 0; i < (bitmap.width() * bitmap.height()); i++)
@@ -32,7 +33,7 @@ int main()
     }
 
     // Now let's map the framebuffer to a pointer that we can write to
-    uint32_t* fb = reinterpret_cast<uint32_t*>(mmap(NULL, FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4, PROT_READ | PROT_WRITE, MAP_SHARED, memfile, FRAMEBUFFER_ADDRESS));
+    uint32_t* fb = reinterpret_cast<uint32_t*>(mmap(NULL, FRAMEBUFFER_WIDTH * FRAMEBUFFER_HEIGHT * 4, PROT_READ | PROT_WRITE, MAP_SHARED, memfile, FRAMEBUFFER_ADDRESS2));
 
     if(fb == MAP_FAILED)
     {
@@ -48,7 +49,7 @@ int main()
       idx += 4;
     }
 
-/*
+
     for(int y = 0; y < 480; y++)
     {
         for(int x = 0; x < 640; x++)
@@ -63,9 +64,21 @@ int main()
     		*(fb + i) = 0x00FF0000;
     	else
     		*(fb + i) = 0x0000FF00;
-	   //*(fb + i) = i;
+	   // *(fb + i) = i;
     }
 */
+
+    int memfile = open("/dev/mem", O_RDWR);
+    if(memfile < 0)
+    {
+        std::printf("Failed to open a handle to /dev/mem!\n");
+        return -1;
+    }
+
+	uint32_t* fb = reinterpret_cast<uint32_t*>(mmap(NULL, 64, PROT_READ | PROT_WRITE, MAP_SHARED, memfile, 0xFFD0501C));
+    //uint32_t* ptr = (uint32_t*)0xc0000000;
+    *fb = 0xCAFEBABE;
+
     std::printf("You should now have a nice bitmap on the screen!\nIf you don't, you fucking suck! Thanks!");
     return 0;
 }
