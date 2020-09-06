@@ -1,7 +1,7 @@
 /**
  *  Address decoder module. 
  *
- *  Decodes a 3-bit input address from QSYS into a 4-bit output. Each bit a select
+ *  Decodes a 3-bit input address from QSYS into a 6-bit output. Each bit a select
  *  pin for a register loacated in a register file. 
  */
 module address_decoder
@@ -18,17 +18,17 @@ begin
     begin
         case(address)
         3'b000:
-            out <= 6'h01;   // Control register load enable (from HPS)
+            out <= 6'h01;
         3'b001:
-            out <= 6'h02;   // Control register load enable (from Card)     
+            out <= 6'h02;   
         3'b010:
-            out <= 6'h04;   // Address register load enable (from HPS)
+            out <= 6'h04;
         3'b011:
-            out <= 6'h08;   // Data register load enable (from HPS)
+            out <= 6'h08;
         3'b100:
-            out <= 6'h10;   // Data Register load enable (from Card)
-        3'b101:
-            out <= 6'h11;   //test
+            out <= 6'h10;
+		  3'b101:
+				out <= 6'h20;
         default:
             out <= 6'h00;
         endcase

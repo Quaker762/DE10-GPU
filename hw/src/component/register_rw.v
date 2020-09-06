@@ -3,7 +3,7 @@
  *
  *  Contains two WIDTH-bit data inputs, allowing for two data paths to be set 
  */
-module RegisterRW
+module register_rw
 #(parameter WIDTH = 32)
 (
     input       [WIDTH-1:0] D,

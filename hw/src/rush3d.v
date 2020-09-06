@@ -116,9 +116,15 @@ soc_system u0
 	//.hps_0_f2h_sdram0_data_byteenable(sdram0_byteenable),
 	//.hps_0_f2h_sdram0_data_write(sdram0_write),
 
-	.register_file_0_conduit_end_export_vertex_a(), //                            .export_vertex_a
-	.register_file_0_conduit_end_export_vertex_b(), //                            .export_vertex_b
-	.register_file_0_conduit_end_export_vertex_c(), // register_file_0_conduit_end.export_vertex_c
+	.register_file_0_conduit_end_export_vertex_c(),            // register_file_0_conduit_end.export_vertex_c
+	.register_file_0_conduit_end_export_vertex_a(),            //                            .export_vertex_a
+	.register_file_0_conduit_end_export_vertex_b(),            //                            .export_vertex_b
+	.register_file_0_conduit_end_export_control_status_out(),  //                            .export_control_status_out
+	.register_file_0_conduit_end_export_control_bit_load(),    //                            .export_control_bit_load
+	.register_file_0_conduit_end_export_control_bit_in(),      //                            .export_control_bit_in
+	.register_file_0_conduit_end_export_control_bit_out(),     //                            .export_control_bit_out
+	.register_file_0_conduit_end_export_back_colour_out(),     //                            .export_back_colour_out
+	.register_file_0_conduit_end_export_control_bit_address(), //                            .export_control_bit_address
 
 	// I2C is not used.
 	.hps_0_i2c1_out_data(),

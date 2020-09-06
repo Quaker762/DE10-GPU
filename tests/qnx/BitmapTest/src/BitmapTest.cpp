@@ -15,6 +15,28 @@ static constexpr int FRAMEBUFFER_HEIGHT = 480;
 static constexpr uint32_t FRAMEBUFFER_ADDRESS = 0x38000000;
 static constexpr uint32_t FRAMEBUFFER_ADDRESS2 = 0x3812c000;
 
+uint32_t* regfile_base;
+
+void bridge_init()
+{
+    int memdev;
+
+    memdev = open("/dev/mem", (O_RDWR | O_SYNC));
+    regfile_base = (uint32_t*)mmap(NULL,
+                        0x10,
+                        (PROT_READ | PROT_WRITE),
+                        MAP_SHARED, memdev,
+                        (0xC0000000));
+
+    if(regfile_base == MAP_FAILED)
+    {
+        printf("%s:%d: Failed to map register file to address space! Aborting...\n", __PRETTY_FUNCTION__, __LINE__);
+        exit(-1);
+    }
+
+    close(memdev);
+}
+
 int main()
 {
     /*
@@ -67,7 +89,7 @@ int main()
 	   // *(fb + i) = i;
     }
 */
-
+/*
     int memfile = open("/dev/mem", O_RDWR);
     if(memfile < 0)
     {
@@ -75,10 +97,25 @@ int main()
         return -1;
     }
 
-	uint32_t* fb = reinterpret_cast<uint32_t*>(mmap(NULL, 64, PROT_READ | PROT_WRITE, MAP_SHARED, memfile, 0xFFD0501C));
+	uint32_t* fb = reinterpret_cast<uint32_t*>(mmap(NULL, 64, PROT_READ | PROT_WRITE, MAP_SHARED, memfile, 0xc0000000));
     //uint32_t* ptr = (uint32_t*)0xc0000000;
-    *fb = 0xCAFEBABE;
+	for(int i = 0; i < 10; i++)
+	{
+		*(fb + i) = 0xDEADBEEF;
+	}
+
+	std::cout << *(fb + 10);
+*/
+
+	bridge_init();
+
+	for(int i = 0; i < 10; i++)
+	{
+		//*(regfile_base + i) = 0xcafebabe;
+	}
 
     std::printf("You should now have a nice bitmap on the screen!\nIf you don't, you fucking suck! Thanks!");
     return 0;
 }
+
+

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="system" version="20.1" fabric="QSYS">
  <!-- Format version 20.1 711 (Future versions may contain additional information.) -->
- <!-- 2020.08.20.21:36:38 -->
+ <!-- 2020.09.06.20:56:10 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1597923369</value>
+  <value>1599389741</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -40874,7 +40874,7 @@ parameters are a RESULT of the module parameters. -->
  <module
    name="register_file_0"
    kind="register_file"
-   version="0.1"
+   version="0.21"
    path="register_file_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -41404,6 +41404,42 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>64</width>
     <role>export_vertex_b</role>
+   </port>
+   <port>
+    <name>control_status_out</name>
+    <direction>Output</direction>
+    <width>64</width>
+    <role>export_control_status_out</role>
+   </port>
+   <port>
+    <name>control_bit_load</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>export_control_bit_load</role>
+   </port>
+   <port>
+    <name>control_bit_in</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>export_control_bit_in</role>
+   </port>
+   <port>
+    <name>control_bit_out</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>export_control_bit_out</role>
+   </port>
+   <port>
+    <name>back_colour_out</name>
+    <direction>Output</direction>
+    <width>64</width>
+    <role>export_back_colour_out</role>
+   </port>
+   <port>
+    <name>control_bit_address</name>
+    <direction>Input</direction>
+    <width>6</width>
+    <role>export_control_bit_address</role>
    </port>
   </interface>
  </module>
@@ -43540,7 +43576,7 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
   <displayName>register_file</displayName>
-  <version>0.1</version>
+  <version>0.21</version>
  </plugin>
  <plugin>
   <instanceCount>5</instanceCount>
@@ -43615,5 +43651,5 @@ parameters are a RESULT of the module parameters. -->
   <version>20.1</version>
  </plugin>
  <reportVersion>20.1 711</reportVersion>
- <uniqueIdentifier>DADFD569361C000001740BA7E1E2</uniqueIdentifier>
+ <uniqueIdentifier>2CF05D25B2B500000174630EF42D</uniqueIdentifier>
 </EnsembleReport>

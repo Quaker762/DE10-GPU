@@ -636,7 +636,7 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
- <module name="register_file_0" kind="register_file" version="0.1" enabled="1" />
+ <module name="register_file_0" kind="register_file" version="0.2" enabled="1" />
  <connection
    kind="avalon"
    version="20.1"

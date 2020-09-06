@@ -28,10 +28,16 @@ module soc_system (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	reset_reset_n,
-	register_file_0_conduit_end_c_out,
-	register_file_0_conduit_end_b_out,
-	register_file_0_conduit_end_a_out);	
+	register_file_0_conduit_end_export_vertex_c,
+	register_file_0_conduit_end_export_vertex_a,
+	register_file_0_conduit_end_export_vertex_b,
+	register_file_0_conduit_end_export_control_status_out,
+	register_file_0_conduit_end_export_control_bit_load,
+	register_file_0_conduit_end_export_control_bit_in,
+	register_file_0_conduit_end_export_control_bit_out,
+	register_file_0_conduit_end_export_back_colour_out,
+	register_file_0_conduit_end_export_control_bit_address,
+	reset_reset_n);	
 
 	input		clk_clk;
 	input	[28:0]	hps_0_f2h_sdram0_data_address;
@@ -61,8 +67,14 @@ module soc_system (
 	output		memory_mem_odt;
 	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
+	output	[63:0]	register_file_0_conduit_end_export_vertex_c;
+	output	[63:0]	register_file_0_conduit_end_export_vertex_a;
+	output	[63:0]	register_file_0_conduit_end_export_vertex_b;
+	output	[63:0]	register_file_0_conduit_end_export_control_status_out;
+	input		register_file_0_conduit_end_export_control_bit_load;
+	input		register_file_0_conduit_end_export_control_bit_in;
+	output		register_file_0_conduit_end_export_control_bit_out;
+	output	[63:0]	register_file_0_conduit_end_export_back_colour_out;
+	input	[5:0]	register_file_0_conduit_end_export_control_bit_address;
 	input		reset_reset_n;
-	output	[63:0]	register_file_0_conduit_end_c_out;
-	output	[63:0]	register_file_0_conduit_end_b_out;
-	output	[63:0]	register_file_0_conduit_end_a_out;
 endmodule
