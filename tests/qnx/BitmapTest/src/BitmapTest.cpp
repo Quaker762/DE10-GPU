@@ -111,7 +111,7 @@ int main()
 
 	for(int i = 0; i < 10; i++)
 	{
-		//*(regfile_base + i) = 0xcafebabe;
+		*(regfile_base + i) = 0xcafebabe;
 	}
 
     std::printf("You should now have a nice bitmap on the screen!\nIf you don't, you fucking suck! Thanks!");

@@ -1,0 +1,4 @@
+23:11:34 **** Build of configuration armv7le-debug for project r3d ****
+make -j12 all 
+qcc -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/r3d.d,-MT,build/armv7le-debug/src/r3d.o -o build/armv7le-debug/src/r3d.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/r3d.c
+qcc -Vgcc_ntoarmv7le -o build/armv7le-debug/r3d   build/armv7le-debug/src/r3d.o  

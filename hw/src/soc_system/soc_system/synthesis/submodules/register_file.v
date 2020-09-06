@@ -72,7 +72,7 @@ register #(64) back_colour
     .D(writedata),
     .clk(clk),
     .reset(reset),
-    .load(~back_color_load),
+    .load(~back_colour_load),
     
     .Q(back_colour_out)
 );

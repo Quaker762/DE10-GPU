@@ -120,11 +120,11 @@ soc_system u0
 	.register_file_0_conduit_end_export_vertex_a(),            //                            .export_vertex_a
 	.register_file_0_conduit_end_export_vertex_b(),            //                            .export_vertex_b
 	.register_file_0_conduit_end_export_control_status_out(),  //                            .export_control_status_out
-	.register_file_0_conduit_end_export_control_bit_load(),    //                            .export_control_bit_load
+	.register_file_0_conduit_end_export_control_bit_load(1'b1),    //                            .export_control_bit_load
 	.register_file_0_conduit_end_export_control_bit_in(),      //                            .export_control_bit_in
 	.register_file_0_conduit_end_export_control_bit_out(),     //                            .export_control_bit_out
 	.register_file_0_conduit_end_export_back_colour_out(),     //                            .export_back_colour_out
-	.register_file_0_conduit_end_export_control_bit_address(), //                            .export_control_bit_address
+	.register_file_0_conduit_end_export_control_bit_address(0), //                            .export_control_bit_address
 
 	// I2C is not used.
 	.hps_0_i2c1_out_data(),

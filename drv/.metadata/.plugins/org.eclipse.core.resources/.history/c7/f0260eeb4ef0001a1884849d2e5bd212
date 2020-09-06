@@ -1,0 +1,24 @@
+/**
+ *  Implementation of rush3d.c
+ *
+ */
+#include "rush3d.h"
+#include "bridge.h"
+#include "register.h"
+
+#include <stdio.h>
+
+int main()
+{
+    bridge_init();
+
+    printf("Kek");
+
+    //write_port(VERTEX_A_L, (uint32_t)0xDEADBEEF);
+    write_port(CONTROL_STATUS_H, (uint32_t)0xDEADBEEF);
+    write_port(CONTROL_STATUS_L, (uint32_t)0xCAFEBABE);
+
+    printf("\n%d", (uint32_t)read_port(0x01));
+
+    dump_ram();
+}
