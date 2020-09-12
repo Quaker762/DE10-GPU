@@ -1,6 +1,0 @@
-01:05:43 **** Incremental Build of configuration armv7le-debug for project r3d ****
-make -j12 all 
-make: Nothing to be done for 'all'.
-
-01:05:43 Build Finished (took 112ms)
-

@@ -1,0 +1,28 @@
+# Makefile for Rush3D Hardware Driver
+
+CXX_OBJS = \
+	altera.o \
+	rush3d.o
+
+export QNX_HOST=/home/quaker/qnx700/host/linux/x86_64/
+export QNX_TARGET=/home/quaker/qnx700/target/qnx7/
+PLATFORM ?= armv7le
+CC=qcc -Vgcc_nto$(PLATFORM)
+CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
+CXXFLAGS += -std=c++14 -Wall -Wextra -Werror
+CXXFLAGS += -I. -D_QNX_SOURCE
+CXXFLAGS += -mfloat-abi=softfp -mfpu=neon
+LD=$(CXX)
+
+OUTPUT=build/libdrv3d.a	
+
+OUTPUT: $(CXX_OBJS)
+	@mkdir -p ./build
+	@echo "AR $@"; $(AR) -rcs $(OUTPUT) $(CXX_OBJS)
+
+.cpp.o:
+	@echo "CXX $@"; $(CXX) $(CXXFLAGS) -o $@ -c $<
+
+clean:
+	rm -rf build
+	rm -f $(CXX_OBJS)
