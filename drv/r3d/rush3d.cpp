@@ -24,6 +24,8 @@
 int rush3d_card_init()
 {
     AlteraBridge::initialize();
+
+    return 0;
 }
 
 void rush3d_shutdown()

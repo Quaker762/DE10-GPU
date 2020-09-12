@@ -10,6 +10,8 @@
  */
 #pragma once
 
+#include <cstdint>
+
 #define VERTEX_A_L 0x00
 #define VERTEX_A_H 0x01
 

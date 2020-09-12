@@ -36,11 +36,12 @@ public:
     ~AlteraBridge();
 
     static void initialize();
+    void shutdown();
 
-    inline void write(uint32_t offset, uint32_t data);
-    inline void write(uint32_t offset, uint64_t data) = delete;
+    void write(uint32_t offset, uint32_t data);
+    void write(uint32_t offset, uint64_t data) = delete;
 
-    inline uint32_t read(uint32_t offset) const;
+    uint32_t read(uint32_t offset) const;
 
     static AlteraBridge& the(); // Reference to static instantiation of this class
 

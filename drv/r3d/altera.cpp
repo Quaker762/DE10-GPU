@@ -27,6 +27,10 @@ void AlteraBridge::initialize()
     s_the = new AlteraBridge(RUSH3D_ADDRESS); // Create a new bridge
 }
 
+void AlteraBridge::shutdown()
+{
+}
+
 AlteraBridge::AlteraBridge(uintptr_t device_address)
 {
     // First, let's try to map the device
