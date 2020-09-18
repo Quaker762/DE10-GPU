@@ -44,14 +44,14 @@ AlteraBridge::AlteraBridge(uintptr_t device_address)
     m_device_ptr = mapping;
 }
 
-inline void AlteraBridge::write(uint32_t offset, uint32_t data)
+void AlteraBridge::write(uint32_t offset, uint32_t data)
 {
-    out32(static_cast<uint32_t>(m_device_ptr + offset), data);
+    *reinterpret_cast<volatile uint64_t*>(m_device_ptr + offset) = data;
 }
 
-inline uint32_t AlteraBridge::read(uint32_t offset) const
+uint32_t AlteraBridge::read(uint32_t offset) const
 {
-    return in32(static_cast<uint32_t>(m_device_ptr + offset));
+    return *reinterpret_cast<volatile uint64_t*>(m_device_ptr + offset);
 }
 
 AlteraBridge& AlteraBridge::the()

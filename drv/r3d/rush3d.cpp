@@ -35,6 +35,7 @@ void rush3d_shutdown()
 
 void rush3d_register_write(uint32_t offset, uint32_t data)
 {
+    printf("register_write: writing 0x%x to offset 0x%x\n", data, offset);
     AlteraBridge::the().write(offset, data);
 }
 

@@ -39,7 +39,6 @@ public:
     void shutdown();
 
     void write(uint32_t offset, uint32_t data);
-    void write(uint32_t offset, uint64_t data) = delete;
 
     uint32_t read(uint32_t offset) const;
 

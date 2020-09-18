@@ -12,19 +12,14 @@
 
 #include <cstdint>
 
-#define VERTEX_A_L 0x00
-#define VERTEX_A_H 0x01
-
-#define VERTEX_B_L 0x02
-#define VERTEX_B_H 0x03
-
-#define VERTEX_C_L 0x04
-#define VERTEX_C_H 0x05
-
-#define BACK_COLOUR 0x06
-
-#define CONTROL_STATUS_L 0x08
-#define CONTROL_STATUS_H 0x09
+enum class RegisterOffset : uint16_t
+{
+    VERTEX_A = 0x00,
+    VERTEX_B = 0x08,
+    VERTEX_C = 0x10,
+    BACK_COLOUR = 0x18,
+    CONTROL_STATUS = 0x20
+};
 
 typedef struct
 {
@@ -48,5 +43,5 @@ typedef struct
 
 int rush3d_card_init();
 void rush3d_shutdown();
-void rush3d_register_write(uint32_t offset, uint32_t data);
-uint32_t rush3d_register_read(uint32_t offset);
+void rush3d_register_write(RegisterOffset offset, uint32_t data);
+uint32_t rush3d_register_read(RegisterOffset offset);

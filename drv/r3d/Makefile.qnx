@@ -11,7 +11,6 @@ CC=qcc -Vgcc_nto$(PLATFORM)
 CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
 CXXFLAGS += -std=c++14 -Wall -Wextra -Werror
 CXXFLAGS += -I. -D_QNX_SOURCE
-CXXFLAGS += -mfloat-abi=softfp -mfpu=neon
 LD=$(CXX)
 
 OUTPUT=build/libdrv3d.a	
