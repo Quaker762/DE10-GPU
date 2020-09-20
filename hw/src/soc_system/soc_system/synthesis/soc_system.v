@@ -11,6 +11,12 @@ module soc_system (
 		output wire [63:0] hps_0_f2h_sdram0_data_readdata,                         //                            .readdata
 		output wire        hps_0_f2h_sdram0_data_readdatavalid,                    //                            .readdatavalid
 		input  wire        hps_0_f2h_sdram0_data_read,                             //                            .read
+		input  wire [28:0] hps_0_f2h_sdram1_data_address,                          //       hps_0_f2h_sdram1_data.address
+		input  wire [7:0]  hps_0_f2h_sdram1_data_burstcount,                       //                            .burstcount
+		output wire        hps_0_f2h_sdram1_data_waitrequest,                      //                            .waitrequest
+		input  wire [63:0] hps_0_f2h_sdram1_data_writedata,                        //                            .writedata
+		input  wire [7:0]  hps_0_f2h_sdram1_data_byteenable,                       //                            .byteenable
+		input  wire        hps_0_f2h_sdram1_data_write,                            //                            .write
 		output wire        hps_0_h2f_reset_reset_n,                                //             hps_0_h2f_reset.reset_n
 		output wire        hps_0_i2c1_out_data,                                    //                  hps_0_i2c1.out_data
 		input  wire        hps_0_i2c1_sda,                                         //                            .sda
@@ -120,6 +126,13 @@ module soc_system (
 		.f2h_sdram0_READDATA      (hps_0_f2h_sdram0_data_readdata),      //                 .readdata
 		.f2h_sdram0_READDATAVALID (hps_0_f2h_sdram0_data_readdatavalid), //                 .readdatavalid
 		.f2h_sdram0_READ          (hps_0_f2h_sdram0_data_read),          //                 .read
+		.f2h_sdram1_clk           (clk_clk),                             // f2h_sdram1_clock.clk
+		.f2h_sdram1_ADDRESS       (hps_0_f2h_sdram1_data_address),       //  f2h_sdram1_data.address
+		.f2h_sdram1_BURSTCOUNT    (hps_0_f2h_sdram1_data_burstcount),    //                 .burstcount
+		.f2h_sdram1_WAITREQUEST   (hps_0_f2h_sdram1_data_waitrequest),   //                 .waitrequest
+		.f2h_sdram1_WRITEDATA     (hps_0_f2h_sdram1_data_writedata),     //                 .writedata
+		.f2h_sdram1_BYTEENABLE    (hps_0_f2h_sdram1_data_byteenable),    //                 .byteenable
+		.f2h_sdram1_WRITE         (hps_0_f2h_sdram1_data_write),         //                 .write
 		.h2f_axi_clk              (clk_clk),                             //    h2f_axi_clock.clk
 		.h2f_AWID                 (hps_0_h2f_axi_master_awid),           //   h2f_axi_master.awid
 		.h2f_AWADDR               (hps_0_h2f_axi_master_awaddr),         //                 .awaddr

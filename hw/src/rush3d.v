@@ -45,9 +45,22 @@ wire sdram0_waitrequest;
 wire [63:0] sdram0_readdata;
 wire sdram0_readdatavalid;
 wire sdram0_read;
-//wire [63:0] sdram0_writedata;	 
-//wire [7:0] sdram0_byteenable;	 
-//wire sdram0_write;
+wire [63:0] sdram0_writedata;	 
+wire [7:0] sdram0_byteenable;	 
+wire sdram0_write;
+
+wire [28:0] sdram1_address; 
+wire [7:0] sdram1_burstcount;
+wire sdram1_waitrequest;
+wire [63:0] sdram1_readdata;
+wire sdram1_readdatavalid;
+wire sdram1_read;
+wire [63:0] sdram1_writedata;	 
+wire [7:0] sdram1_byteenable;	 
+wire sdram1_write;
+
+
+
 
 wire hsbridge_clock;
 wire [31:0] pixel_data;
@@ -112,10 +125,18 @@ soc_system u0
 	.hps_0_f2h_sdram0_data_readdata(sdram0_readdata),
 	.hps_0_f2h_sdram0_data_readdatavalid(sdram0_readdatavalid),
 	.hps_0_f2h_sdram0_data_read(sdram0_read),
-	//.hps_0_f2h_sdram0_data_writedata(sdram0_writedata),
-	//.hps_0_f2h_sdram0_data_byteenable(sdram0_byteenable),
-	//.hps_0_f2h_sdram0_data_write(sdram0_write),
 
+	
+	.hps_0_f2h_sdram1_data_address(sdram1_address),
+	.hps_0_f2h_sdram1_data_burstcount(sdram1_burstcount),
+	.hps_0_f2h_sdram1_data_waitrequest(sdram1_waitrequest),	
+	.hps_0_f2h_sdram1_data_writedata(sdram1_writedata),
+	.hps_0_f2h_sdram1_data_byteenable(sdram1_byteenable),
+	.hps_0_f2h_sdram1_data_write(sdram1_write),	
+	
+	
+	
+	
 	.register_file_0_conduit_end_export_vertex_c(),            // register_file_0_conduit_end.export_vertex_c
 	.register_file_0_conduit_end_export_vertex_a(),            //                            .export_vertex_a
 	.register_file_0_conduit_end_export_vertex_b(),            //                            .export_vertex_b
@@ -132,22 +153,22 @@ soc_system u0
 	.hps_0_i2c1_clk_clk(),
 	.hps_0_i2c1_scl_in_clk()
 );
-/*
-SDRAM_test test
+
+SDRAM_test Glenn
 (
-	.systemClock(hsbridge_clock),
+	.systemClock(clock_50),
 	.reset_n(keys[0]),
-	.address(sdram0_address),
-	.burstcount(sdram0_burstcount),
-	.waitrequest(sdram0_waitrequest),
-	.readdata(sdram0_readdata),
-	.readdatavalid(sdram0_readdatavalid),
-	.read(sdram0_read),
-	.writedata(sdram0_writedata),
-	.byteenable(sdram0_byteenable),
-	.write(sdram0_write),
+	.address(sdram1_address),
+	.burstcount(sdram1_burstcount),
+	.waitrequest(sdram1_waitrequest),
+	.readdata(sdram1_readdata),
+	.readdatavalid(sdram1_readdatavalid),
+	.read(sdram1_read),
+	.writedata(sdram1_writedata),
+	.byteenable(sdram1_byteenable),
+	.write(sdram1_write),
 );
-*/
+
 
 framebuffer_read reader
 (

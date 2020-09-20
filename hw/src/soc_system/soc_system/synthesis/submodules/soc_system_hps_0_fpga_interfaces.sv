@@ -62,6 +62,15 @@ module soc_system_hps_0_fpga_interfaces(
  ,input wire [1 - 1 : 0 ] f2h_sdram0_READ
 // f2h_sdram0_clock
  ,input wire [1 - 1 : 0 ] f2h_sdram0_clk
+// f2h_sdram1_data
+ ,input wire [29 - 1 : 0 ] f2h_sdram1_ADDRESS
+ ,input wire [8 - 1 : 0 ] f2h_sdram1_BURSTCOUNT
+ ,output wire [1 - 1 : 0 ] f2h_sdram1_WAITREQUEST
+ ,input wire [64 - 1 : 0 ] f2h_sdram1_WRITEDATA
+ ,input wire [8 - 1 : 0 ] f2h_sdram1_BYTEENABLE
+ ,input wire [1 - 1 : 0 ] f2h_sdram1_WRITE
+// f2h_sdram1_clock
+ ,input wire [1 - 1 : 0 ] f2h_sdram1_clk
 // i2c1_scl_in
  ,input wire [1 - 1 : 0 ] i2c1_scl
 // i2c1_clk
@@ -72,14 +81,21 @@ module soc_system_hps_0_fpga_interfaces(
 );
 
 
-wire [7 - 1 : 0] intermediate;
+wire [14 - 1 : 0] intermediate;
 assign intermediate[0:0] = ~intermediate[1:1];
 assign intermediate[4:4] = intermediate[3:3];
 assign intermediate[2:2] = intermediate[5:5];
 assign intermediate[6:6] = intermediate[5:5];
+assign intermediate[7:7] = ~intermediate[8:8];
+assign intermediate[11:11] = intermediate[10:10];
+assign intermediate[9:9] = intermediate[12:12];
+assign intermediate[13:13] = intermediate[12:12];
 assign f2h_sdram0_WAITREQUEST[0:0] = intermediate[0:0];
+assign f2h_sdram1_WAITREQUEST[0:0] = intermediate[7:7];
 assign intermediate[3:3] = f2h_sdram0_READ[0:0];
 assign intermediate[5:5] = f2h_sdram0_clk[0:0];
+assign intermediate[10:10] = f2h_sdram1_WRITE[0:0];
+assign intermediate[12:12] = f2h_sdram1_clk[0:0];
 
 cyclonev_hps_interface_clocks_resets clocks_resets(
  .f2h_pending_rst_ack({
@@ -265,11 +281,13 @@ cyclonev_hps_interface_hps2fpga hps2fpga(
 
 
 cyclonev_hps_interface_fpga2sdram f2sdram(
- .cfg_wfifo_cport_map({
-    16'b0000000000000000 // 15:0
-  })
-,.cfg_cport_wfifo_map({
-    18'b000000000000000000 // 17:0
+ .cmd_data_1({
+    18'b000000000000000000 // 59:42
+   ,f2h_sdram1_BURSTCOUNT[7:0] // 41:34
+   ,3'b000 // 33:31
+   ,f2h_sdram1_ADDRESS[28:0] // 30:2
+   ,intermediate[10:10] // 1:1
+   ,1'b0 // 0:0
   })
 ,.cmd_data_0({
     18'b000000000000000000 // 59:42
@@ -279,38 +297,65 @@ cyclonev_hps_interface_fpga2sdram f2sdram(
    ,1'b0 // 1:1
    ,intermediate[3:3] // 0:0
   })
-,.cmd_port_clk_0({
-    intermediate[6:6] // 0:0
-  })
-,.rd_clk_0({
-    intermediate[2:2] // 0:0
-  })
-,.cfg_rfifo_cport_map({
-    16'b0000000000000000 // 15:0
-  })
-,.cmd_ready_0({
-    intermediate[1:1] // 0:0
-  })
 ,.cfg_port_width({
-    12'b000000000001 // 11:0
+    12'b000000000101 // 11:0
   })
 ,.rd_valid_0({
     f2h_sdram0_READDATAVALID[0:0] // 0:0
   })
+,.wr_clk_0({
+    intermediate[9:9] // 0:0
+  })
+,.cfg_cport_type({
+    12'b000000000110 // 11:0
+  })
+,.wr_data_0({
+    2'b00 // 89:88
+   ,f2h_sdram1_BYTEENABLE[7:0] // 87:80
+   ,16'b0000000000000000 // 79:64
+   ,f2h_sdram1_WRITEDATA[63:0] // 63:0
+  })
+,.cfg_rfifo_cport_map({
+    16'b0000000000000000 // 15:0
+  })
+,.cfg_cport_wfifo_map({
+    18'b000000000000000000 // 17:0
+  })
+,.cmd_port_clk_1({
+    intermediate[13:13] // 0:0
+  })
+,.cmd_port_clk_0({
+    intermediate[6:6] // 0:0
+  })
+,.cfg_cport_rfifo_map({
+    18'b000000000000000000 // 17:0
+  })
 ,.rd_ready_0({
     1'b1 // 0:0
   })
-,.rd_data_0({
-    f2h_sdram0_READDATA[63:0] // 63:0
+,.cmd_ready_1({
+    intermediate[8:8] // 0:0
+  })
+,.cmd_ready_0({
+    intermediate[1:1] // 0:0
+  })
+,.rd_clk_0({
+    intermediate[2:2] // 0:0
+  })
+,.cfg_wfifo_cport_map({
+    16'b0000000000000001 // 15:0
+  })
+,.wrack_ready_1({
+    1'b1 // 0:0
+  })
+,.cmd_valid_1({
+    intermediate[11:11] // 0:0
   })
 ,.cmd_valid_0({
     intermediate[4:4] // 0:0
   })
-,.cfg_cport_type({
-    12'b000000000010 // 11:0
-  })
-,.cfg_cport_rfifo_map({
-    18'b000000000000000000 // 17:0
+,.rd_data_0({
+    f2h_sdram0_READDATA[63:0] // 63:0
   })
 ,.cfg_axi_mm_select({
     6'b000000 // 5:0

@@ -7,6 +7,12 @@ module soc_system (
 	hps_0_f2h_sdram0_data_readdata,
 	hps_0_f2h_sdram0_data_readdatavalid,
 	hps_0_f2h_sdram0_data_read,
+	hps_0_f2h_sdram1_data_address,
+	hps_0_f2h_sdram1_data_burstcount,
+	hps_0_f2h_sdram1_data_waitrequest,
+	hps_0_f2h_sdram1_data_writedata,
+	hps_0_f2h_sdram1_data_byteenable,
+	hps_0_f2h_sdram1_data_write,
 	hps_0_h2f_reset_reset_n,
 	hps_0_i2c1_out_data,
 	hps_0_i2c1_sda,
@@ -46,6 +52,12 @@ module soc_system (
 	output	[63:0]	hps_0_f2h_sdram0_data_readdata;
 	output		hps_0_f2h_sdram0_data_readdatavalid;
 	input		hps_0_f2h_sdram0_data_read;
+	input	[28:0]	hps_0_f2h_sdram1_data_address;
+	input	[7:0]	hps_0_f2h_sdram1_data_burstcount;
+	output		hps_0_f2h_sdram1_data_waitrequest;
+	input	[63:0]	hps_0_f2h_sdram1_data_writedata;
+	input	[7:0]	hps_0_f2h_sdram1_data_byteenable;
+	input		hps_0_f2h_sdram1_data_write;
 	output		hps_0_h2f_reset_reset_n;
 	output		hps_0_i2c1_out_data;
 	input		hps_0_i2c1_sda;

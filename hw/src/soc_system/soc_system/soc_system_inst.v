@@ -6,6 +6,12 @@
 		.hps_0_f2h_sdram0_data_readdata                         (<connected-to-hps_0_f2h_sdram0_data_readdata>),                         //                            .readdata
 		.hps_0_f2h_sdram0_data_readdatavalid                    (<connected-to-hps_0_f2h_sdram0_data_readdatavalid>),                    //                            .readdatavalid
 		.hps_0_f2h_sdram0_data_read                             (<connected-to-hps_0_f2h_sdram0_data_read>),                             //                            .read
+		.hps_0_f2h_sdram1_data_address                          (<connected-to-hps_0_f2h_sdram1_data_address>),                          //       hps_0_f2h_sdram1_data.address
+		.hps_0_f2h_sdram1_data_burstcount                       (<connected-to-hps_0_f2h_sdram1_data_burstcount>),                       //                            .burstcount
+		.hps_0_f2h_sdram1_data_waitrequest                      (<connected-to-hps_0_f2h_sdram1_data_waitrequest>),                      //                            .waitrequest
+		.hps_0_f2h_sdram1_data_writedata                        (<connected-to-hps_0_f2h_sdram1_data_writedata>),                        //                            .writedata
+		.hps_0_f2h_sdram1_data_byteenable                       (<connected-to-hps_0_f2h_sdram1_data_byteenable>),                       //                            .byteenable
+		.hps_0_f2h_sdram1_data_write                            (<connected-to-hps_0_f2h_sdram1_data_write>),                            //                            .write
 		.hps_0_h2f_reset_reset_n                                (<connected-to-hps_0_h2f_reset_reset_n>),                                //             hps_0_h2f_reset.reset_n
 		.hps_0_i2c1_out_data                                    (<connected-to-hps_0_i2c1_out_data>),                                    //                  hps_0_i2c1.out_data
 		.hps_0_i2c1_sda                                         (<connected-to-hps_0_i2c1_sda>),                                         //                            .sda
