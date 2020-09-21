@@ -1,26 +1,35 @@
 # Makefile for Rush3D MiniGL driver for QNX
 
 CXX_OBJS = \
-	glvert.o
+    glcolor.o \
+    glmat.o \
+	glstate.o \
+	glutil.o \
+	glvert.o \
 
 export QNX_HOST=/home/quaker/qnx700/host/linux/x86_64/
 export QNX_TARGET=/home/quaker/qnx700/target/qnx7/
 PLATFORM ?= armv7le
 CC=qcc -Vgcc_nto$(PLATFORM)
 CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
-CXXFLAGS += -std=c++14 -Wall -Wextra
+CXXFLAGS += -std=c++14 -Wall -Wextra -DUSE_NEON -D_QNX_SOURCE
 CXXFLAGS += -I.
-CXXFLAGS += -mfloat-abi=softfp -mfpu=neon
+CXXFLAGS += -march=armv7 -mfloat-abi=softfp -mfpu=neon
+CXXFLAGS += -DDEBUG
+CXXFLAGS += -I./
+CXXFLAGS += -I../
+CXXFLAGS += -I../r3d/
 LD=$(CXX)
 
-PROGRAM=test
+OUTPUT=build/libgl.a
 
-PROGRAM : $(CXX_OBJS)
-	@echo "LINK $@"; $(CXX) $(CXX_OBJS) -o $(PROGRAM)
+OUTPUT: $(CXX_OBJS)
+	@mkdir -p ./build
+	@echo "AR $@"; $(AR) -rcs $(OUTPUT) $(CXX_OBJS)
 
 .cpp.o:
 	@echo "CXX $@"; $(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
-	rm -f $(PROGRAM)
+	rm -rf build
 	rm -f $(CXX_OBJS)

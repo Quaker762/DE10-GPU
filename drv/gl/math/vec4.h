@@ -14,8 +14,10 @@
     #include <array>
 #endif
 
+#define UNUSED_VAR(x) (void)x
+
 #ifdef USE_NEON
-union data
+union udata
 {
     struct
     {
@@ -25,9 +27,9 @@ union data
     struct
     {
         float32_t r, g, b, a;
-    }
+    };
 
-    float32_t data[4];
+    float32_t raw[4];
 };
 
 class Vec4
@@ -45,57 +47,62 @@ public:
 
     float32_t x() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
-        return data.x;
+        return m_data.x;
     }
 
     float32_t y() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
-        return data.y;
+        return m_data.y;
     }
 
     float32_t z() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
-        return data.z;
+        return m_data.z;
     }
 
     float32_t w() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
         return m_data.w;
     }
 
+    void x(float32_t x) { m_vec[0] = x; }
+    void y(float32_t y) { m_vec[1] = y; }
+    void z(float32_t z) { m_vec[2] = z; }
+    void w(float32_t w) { m_vec[3] = w; }
+
     ////////////////////////////////////
     float32_t r() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
-        return data.r;
+        return m_data.r;
     }
 
     float32_t g() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
-        return data.g;
+        return m_data.g;
     }
 
     float32_t b() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
-        return data.b;
+        return m_data.b;
     }
 
     float32_t a() const
     {
-        vst1q_f32(data, m_vec);
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
 
         return m_data.a;
     }
@@ -119,6 +126,14 @@ public:
         return Vec4(ret);
     }
 
+    // TODO: Implement me!
+    Vec4 operator*(const Mat4& rhs)
+    {
+        Vec4 ret;
+
+        return ret;
+    }
+
     Vec4& operator+=(const Vec4& rhs)
     {
         m_vec = vaddq_f32(m_vec, rhs.m_vec);
@@ -137,9 +152,41 @@ public:
         return *this;
     }
 
-    float dot(const Vec4& b) const { return 0; }
+    // I'd just like thank ARM for not including any kind of lane summation or
+    // vector dot product in the ARMv7 NEON instruction set.
+    float32_t dot(const Vec4& b) const
+    {
+        float32x4_t product = vmulq_f32(m_vec, b.m_vec);
+        float32_t ret = 0.0f;
 
-    float cross(const Vec4& b) const {}
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), product); // Move product to float32_t array
+        for(int i = 0; i < 4; i++)
+            ret += m_data.raw[i];
+
+        return ret;
+    }
+
+    float32_t cross(const Vec4& b) const
+    {
+        UNUSED_VAR(b);
+        std::printf("WARNING: Vec4::cross() is unimplemented!!!!!!!!!!\n");
+        return 0.0f;
+    }
+
+    void normalize()
+    {
+        float32x4_t div_vec = vmovq_n_f32(length()); // Create a new vector in which all elements are the length of the vector
+        div_vec = vrecpeq_f32(div_vec);              // Calculate the reciprocal
+        m_vec = vmulq_f32(m_vec, div_vec);           // Multiply the vector by the reciprocal (which is a division)
+    }
+
+    float32_t length() const
+    {
+        float32x4_t product = vmulq_f32(m_vec, m_vec); // Multiply vector parts by themselves
+
+        vst1q_f32(const_cast<float32_t*>(m_data.raw), product);                     // Move product to float32_t array
+        return sqrt(m_data.raw[0] + m_data.raw[1] + m_data.raw[2] + m_data.raw[3]); // TODO: Can this be an intrinsic???
+    }
 
     void print() const
     {
@@ -150,7 +197,7 @@ public:
 
 private:
     float32x4_t m_vec = { 0 };
-    data m_data;
+    udata m_data;
 };
 #else
 class Vec4
