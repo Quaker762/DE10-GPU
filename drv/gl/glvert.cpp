@@ -26,6 +26,25 @@ static std::vector<R3DVertex> vertex_list;
 static std::vector<R3DTriangle> triangle_list;
 static std::vector<R3DTriangle> processed_triangles;
 
+#ifdef USE_NEON
+static Vec4 clip_planes[] = {
+    { { -1, 0, 0, 1 } }, // Left Plane
+    { { 1, 0, 0, 1 } },  // Right Plane
+    { { 0, 1, 0, 1 } },  // Top Plane
+    { { 0, -1, 0, 1 } }, // Bottom plane
+    { { 0, 0, 1, 1 } },  // Near Plane
+    { { 0, 0, -1, 1 } }  // Far Plane
+};
+
+static Vec4 clip_plane_normals[] = {
+    { { 1, 0, 0, 1 } },  // Left Plane
+    { { -1, 0, 0, 1 } }, // Right Plane
+    { { 0, -1, 0, 1 } }, // Top Plane
+    { { 0, 1, 0, 1 } },  // Bottom plane
+    { { 0, 0, -1, 1 } }, // Near Plane
+    { { 0, 0, 1, 1 } }   // Far Plane
+};
+#else
 static Vec4 clip_planes[] = {
     { -1, 0, 0, 1 }, // Left Plane
     { 1, 0, 0, 1 },  // Right Plane
@@ -43,6 +62,7 @@ static Vec4 clip_plane_normals[] = {
     { 0, 0, -1, 1 }, // Near Plane
     { 0, 0, 1, 1 }   // Far Plane
 };
+#endif
 
 enum ClippingPlane
 {
@@ -161,6 +181,10 @@ void glEnd()
 #ifdef USE_SIM
     float scr_width = static_cast<float>(g_card.read_register(RegisterOffsets::fbWIDTH));
     float scr_height = static_cast<float>(g_card.read_register(RegisterOffsets::fbHEIGHT));
+#elif
+    // Hahahaha!
+    float scr_width = 640.0f;
+    float scr_height = 480.0f;
 #endif
 
     ASSERT(g_gl_state->curr_draw_mode == GL_TRIANGLES); // We only support GL_TRIANGLES at the moment
@@ -382,7 +406,7 @@ void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 
 void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-    Vec4 vec = { x, y, z, 0 };
+    Vec4 vec = { { x, y, z, 0 } };
     Mat4 rotation_mat;
     float cosangle = cos(angle * (M_PI / 180));
     float sinangle = sin(angle * (M_PI / 180));
