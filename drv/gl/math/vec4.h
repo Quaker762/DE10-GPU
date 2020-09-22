@@ -9,8 +9,6 @@
 #include <cmath>
 #include <cstdio>
 
-#define USE_NEON
-
 #ifdef USE_NEON
     #include <arm_neon.h>
     #include <array>
