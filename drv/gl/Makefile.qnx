@@ -14,7 +14,7 @@ CC=qcc -Vgcc_nto$(PLATFORM)
 CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
 CXXFLAGS += -std=c++14 -Wall -Wextra -DUSE_NEON -D_QNX_SOURCE
 CXXFLAGS += -I.
-CXXFLAGS += -march=armv7 -mfloat-abi=softfp -mfpu=neon
+CXXFLAGS += -march=armv7-a -mcpu=cortex-a9 -mfpu=neon
 CXXFLAGS += -DDEBUG
 CXXFLAGS += -I./
 CXXFLAGS += -I../

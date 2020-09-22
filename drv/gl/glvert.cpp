@@ -181,7 +181,7 @@ void glEnd()
 #ifdef USE_SIM
     float scr_width = static_cast<float>(g_card.read_register(RegisterOffsets::fbWIDTH));
     float scr_height = static_cast<float>(g_card.read_register(RegisterOffsets::fbHEIGHT));
-#elif
+#else
     // Hahahaha!
     float scr_width = 640.0f;
     float scr_height = 480.0f;
