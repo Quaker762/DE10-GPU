@@ -1,6 +1,7 @@
 # Makefile for Rush3D MiniGL driver for QNX
 
 CXX_OBJS = \
+	arm/fixed.o \
     glcolor.o \
     glmat.o \
 	glstate.o \
