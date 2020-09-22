@@ -4,10 +4,12 @@
 #pragma once
 
 #include "assertions.h"
-#include "math/mat4.h"
+#include "mat4.h"
 
 #include <cmath>
 #include <cstdio>
+
+#define USE_NEON
 
 #ifdef USE_NEON
     #include <arm_neon.h>
@@ -45,33 +47,13 @@ public:
 
     float32x4_t data() const { return m_vec; }
 
-    float32_t x() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
+    float32_t x() const { return vgetq_lane_f32(m_vec, 0); }
 
-        return m_data.x;
-    }
+    float32_t y() const { return vgetq_lane_f32(m_vec, 1); }
 
-    float32_t y() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
+    float32_t z() const { return vgetq_lane_f32(m_vec, 2); }
 
-        return m_data.y;
-    }
-
-    float32_t z() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
-
-        return m_data.z;
-    }
-
-    float32_t w() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
-
-        return m_data.w;
-    }
+    float32_t w() const { return vgetq_lane_f32(m_vec, 3); }
 
     void x(float32_t x) { m_vec[0] = x; }
     void y(float32_t y) { m_vec[1] = y; }
@@ -79,33 +61,13 @@ public:
     void w(float32_t w) { m_vec[3] = w; }
 
     ////////////////////////////////////
-    float32_t r() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
+    float32_t r() const { return vgetq_lane_f32(m_vec, 0); }
 
-        return m_data.r;
-    }
+    float32_t g() const { return vgetq_lane_f32(m_vec, 1); }
 
-    float32_t g() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
+    float32_t b() const { return vgetq_lane_f32(m_vec, 2); }
 
-        return m_data.g;
-    }
-
-    float32_t b() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
-
-        return m_data.b;
-    }
-
-    float32_t a() const
-    {
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), m_vec);
-
-        return m_data.a;
-    }
+    float32_t a() const { return vgetq_lane_f32(m_vec, 3); }
     ////////////////////////////////////
 
     Vec4 operator+(const Vec4& rhs)
@@ -159,9 +121,10 @@ public:
         float32x4_t product = vmulq_f32(m_vec, b.m_vec);
         float32_t ret = 0.0f;
 
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), product); // Move product to float32_t array
-        for(int i = 0; i < 4; i++)
-            ret += m_data.raw[i];
+        ret += vgetq_lane_f32(product, 0);
+        ret += vgetq_lane_f32(product, 1);
+        ret += vgetq_lane_f32(product, 2);
+        ret += vgetq_lane_f32(product, 3);
 
         return ret;
     }
@@ -183,9 +146,14 @@ public:
     float32_t length() const
     {
         float32x4_t product = vmulq_f32(m_vec, m_vec); // Multiply vector parts by themselves
+        float32_t sum = 0.0f;
 
-        vst1q_f32(const_cast<float32_t*>(m_data.raw), product);                     // Move product to float32_t array
-        return sqrt(m_data.raw[0] + m_data.raw[1] + m_data.raw[2] + m_data.raw[3]); // TODO: Can this be an intrinsic???
+        sum += vgetq_lane_f32(product, 0);
+        sum += vgetq_lane_f32(product, 1);
+        sum += vgetq_lane_f32(product, 2);
+        sum += vgetq_lane_f32(product, 3);
+
+        return sqrt(sum); // TODO: Can this be an intrinsic???
     }
 
     void print() const
