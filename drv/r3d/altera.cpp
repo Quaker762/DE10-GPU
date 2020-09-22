@@ -17,8 +17,8 @@
 #include <stdio.h>
 #include <sys/mman.h>
 
-#define RUSH3D_ADDRESS       0xc0000000
-#define RUSH3D_ADDRESS_RANGE 0x3f
+static constexpr uint32_t RUSH3D_ADDRESS = 0xc0000000;
+static constexpr uint8_t RUSH3D_ADDRESS_RANGE = 0x3f;
 
 static AlteraBridge* s_the = nullptr;
 
@@ -29,6 +29,15 @@ void AlteraBridge::initialize()
 
 void AlteraBridge::shutdown()
 {
+    if(s_the == nullptr)
+        return;
+
+    delete s_the;
+}
+
+AlteraBridge::~AlteraBridge()
+{
+    // Do munmap here!
 }
 
 AlteraBridge::AlteraBridge(uintptr_t device_address)
