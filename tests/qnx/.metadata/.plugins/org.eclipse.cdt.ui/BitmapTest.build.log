@@ -1,7 +1,0 @@
-22:30:05 **** Incremental Build of configuration armv7le-debug for project BitmapTest ****
-make -j12 all 
-qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/BitmapTest.d,-MT,build/armv7le-debug/src/BitmapTest.o -o build/armv7le-debug/src/BitmapTest.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/BitmapTest.cpp
-qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/BitmapTest   build/armv7le-debug/src/bitmap.o build/armv7le-debug/src/BitmapTest.o  
-
-22:30:05 Build Finished (took 363ms)
-
