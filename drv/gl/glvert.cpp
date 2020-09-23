@@ -221,14 +221,14 @@ void glEnd()
         Vec4 vecc({ vertexc.x, vertexc.y, vertexc.z, 1.0f });
 
         // First multiply the vertex by the MODELVIEW matrix and then the PROJECTION matrix
-        veca = veca * g_gl_state->model_view_matrix;
-        veca = veca * g_gl_state->projection_matrix;
+        veca = g_gl_state->model_view_matrix * veca;
+        veca = g_gl_state->projection_matrix * veca;
 
-        vecb = vecb * g_gl_state->model_view_matrix;
-        vecb = vecb * g_gl_state->projection_matrix;
+        vecb = g_gl_state->model_view_matrix * vecb;
+        vecb = g_gl_state->projection_matrix * vecb;
 
-        vecc = vecc * g_gl_state->model_view_matrix;
-        vecc = vecc * g_gl_state->projection_matrix;
+        vecc = g_gl_state->model_view_matrix * vecc;
+        vecc = g_gl_state->projection_matrix * vecc;
 
         // At this point, we're in clip space
         // Here's where we do the clipping. This is a really crude implementation of the
@@ -414,7 +414,12 @@ void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 
 void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
+#ifdef USE_SIM
+    Vec4 vec = { x, y, z, 0 };
+#else
     Vec4 vec = { { x, y, z, 0 } };
+#endif
+
     Mat4 rotation_mat;
     float cosangle = cos(angle * (M_PI / 180));
     float sinangle = sin(angle * (M_PI / 180));

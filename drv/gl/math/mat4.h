@@ -9,12 +9,16 @@
  */
 #pragma once
 
+#include "vec4.h"
+
 #include <cstdio>
 #include <cstring>
 
 #ifdef USE_NEON
     #include <arm_neon.h>
 #endif
+
+class Vec4;
 
 class Mat4 final
 {
@@ -373,6 +377,25 @@ public:
         ret.m_data[3][2] = (m_data[3][0] * rhs.m_data[0][2]) + (m_data[3][1] * rhs.m_data[1][2]) + (m_data[3][2] * rhs.m_data[2][2]) + (m_data[3][3] * rhs.m_data[3][2]);
         ret.m_data[3][3] = (m_data[3][0] * rhs.m_data[0][3]) + (m_data[3][1] * rhs.m_data[1][3]) + (m_data[3][2] * rhs.m_data[2][3]) + (m_data[3][3] * rhs.m_data[3][3]);
 #endif
+        return ret;
+    }
+
+    Vec4 operator*(const Vec4& rhs)
+    {
+        Vec4 ret;
+
+#ifdef USE_NEON
+        ret.x(rhs.x() * m_data[0][0] + rhs.y() * m_data[1][0] + rhs.z() * m_data[2][0] + rhs.w() * m_data[3][0]);
+        ret.y(rhs.x() * m_data[0][1] + rhs.y() * m_data[1][1] + rhs.z() * m_data[2][1] + rhs.w() * m_data[3][1]);
+        ret.z(rhs.x() * m_data[0][2] + rhs.y() * m_data[1][2] + rhs.z() * m_data[2][2] + rhs.w() * m_data[3][2]);
+        ret.w(rhs.x() * m_data[0][3] + rhs.y() * m_data[1][3] + rhs.z() * m_data[2][3] + rhs.w() * m_data[3][3]);
+#else
+        ret.x(rhs.x() * m_data[0][0] + rhs.y() * m_data[1][0] + rhs.z() * m_data[2][0] + rhs.w() * m_data[3][0]);
+        ret.y(rhs.x() * m_data[0][1] + rhs.y() * m_data[1][1] + rhs.z() * m_data[2][1] + rhs.w() * m_data[3][1]);
+        ret.z(rhs.x() * m_data[0][2] + rhs.y() * m_data[1][2] + rhs.z() * m_data[2][2] + rhs.w() * m_data[3][2]);
+        ret.w(rhs.x() * m_data[0][3] + rhs.y() * m_data[1][3] + rhs.z() * m_data[2][3] + rhs.w() * m_data[3][3]);
+#endif
+
         return ret;
     }
 

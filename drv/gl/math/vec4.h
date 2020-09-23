@@ -16,6 +16,8 @@
 
 #define UNUSED_VAR(x) (void)x
 
+class Mat4;
+
 #ifdef USE_NEON
 union udata
 {
@@ -200,17 +202,19 @@ public:
     Vec4 operator*(const float scalar) { return Vec4(m_x * scalar, m_y * scalar, m_z * scalar, m_w * scalar); }
     Vec4 operator/(const float scalar) { return Vec4(m_x / scalar, m_y / scalar, m_z / scalar, m_w / scalar); }
 
-    Vec4 operator*(const Mat4& rhs)
-    {
-        Vec4 ret;
+    /**
+        Vec4 operator*(const Mat4& rhs)
+        {
+            Vec4 ret;
 
-        ret.m_x = m_x * rhs(0, 0) + m_y * rhs(1, 0) + m_z * rhs(2, 0) + m_w * rhs(3, 0);
-        ret.m_y = m_x * rhs(0, 1) + m_y * rhs(1, 1) + m_z * rhs(2, 1) + m_w * rhs(3, 1);
-        ret.m_z = m_x * rhs(0, 2) + m_y * rhs(1, 2) + m_z * rhs(2, 2) + m_w * rhs(3, 2);
-        ret.m_w = m_x * rhs(0, 3) + m_y * rhs(1, 3) + m_z * rhs(2, 3) + m_w * rhs(3, 3);
+            ret.m_x = m_x * rhs(0, 0) + m_y * rhs(1, 0) + m_z * rhs(2, 0) + m_w * rhs(3, 0);
+            ret.m_y = m_x * rhs(0, 1) + m_y * rhs(1, 1) + m_z * rhs(2, 1) + m_w * rhs(3, 1);
+            ret.m_z = m_x * rhs(0, 2) + m_y * rhs(1, 2) + m_z * rhs(2, 2) + m_w * rhs(3, 2);
+            ret.m_w = m_x * rhs(0, 3) + m_y * rhs(1, 3) + m_z * rhs(2, 3) + m_w * rhs(3, 3);
 
-        return ret;
-    }
+            return ret;
+        }
+    */
 
     Vec4& operator+=(const Vec4& rhs)
     {
