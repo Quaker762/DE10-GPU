@@ -8,6 +8,7 @@
  * Date: 8/4/2020
  *
  */
+#include "arm/fixed.h"
 #include "assertions.h"
 #include "gl.h"
 #include "glcontext.h"
@@ -376,6 +377,13 @@ void glEnd()
             g_card.write_register(RegisterOffsets::triGdY, static_cast<uint32_t>(1.0f));
             g_card.write_register(RegisterOffsets::triBdY, static_cast<uint32_t>(0.0f));
             g_card.write_register(RegisterOffsets::cmdTriangle, (uint32_t)area); // Write the area to the draw command
+#else
+            int32_t vertexAx = f32_to_fx32(triangle.vertices[0].x);
+            int32_t vertexAy = f32_to_fx32(triangle.vertices[0].y);
+            int32_t vertexBx = f32_to_fx32(triangle.vertices[1].x);
+            int32_t vertexBy = f32_to_fx32(triangle.vertices[1].y);
+            int32_t vertexCx = f32_to_fx32(triangle.vertices[2].x);
+            int32_t vertexCy = f32_to_fx32(triangle.vertices[2].y);
 #endif
         }
 
