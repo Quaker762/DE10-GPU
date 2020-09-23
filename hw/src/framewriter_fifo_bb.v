@@ -1,12 +1,12 @@
 // megafunction wizard: %FIFO%VBB%
 // GENERATION: STANDARD
 // VERSION: WM1.0
-// MODULE: dcfifo_mixed_widths 
+// MODULE: dcfifo 
 
 // ============================================================
-// File Name: framebuffer_write_fifo.v
+// File Name: framewriter_fifo.v
 // Megafunction Name(s):
-// 			dcfifo_mixed_widths
+// 			dcfifo
 //
 // Simulation Library Files(s):
 // 			altera_mf
@@ -32,7 +32,7 @@
 //refer to the applicable agreement for further details, at
 //https://fpgasoftware.intel.com/eula.
 
-module framebuffer_write_fifo (
+module framewriter_fifo (
 	aclr,
 	data,
 	rdclk,
@@ -41,11 +41,10 @@ module framebuffer_write_fifo (
 	wrreq,
 	q,
 	rdempty,
-	wrfull,
-	wrusedw);
+	wrfull);
 
 	input	  aclr;
-	input	[31:0]  data;
+	input	[63:0]  data;
 	input	  rdclk;
 	input	  rdreq;
 	input	  wrclk;
@@ -53,7 +52,6 @@ module framebuffer_write_fifo (
 	output	[63:0]  q;
 	output	  rdempty;
 	output	  wrfull;
-	output	[5:0]  wrusedw;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
@@ -73,12 +71,12 @@ endmodule
 // Retrieval info: PRIVATE: AlmostFullThr NUMERIC "-1"
 // Retrieval info: PRIVATE: CLOCKS_ARE_SYNCHRONIZED NUMERIC "0"
 // Retrieval info: PRIVATE: Clock NUMERIC "4"
-// Retrieval info: PRIVATE: Depth NUMERIC "64"
+// Retrieval info: PRIVATE: Depth NUMERIC "128"
 // Retrieval info: PRIVATE: Empty NUMERIC "1"
 // Retrieval info: PRIVATE: Full NUMERIC "1"
 // Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
 // Retrieval info: PRIVATE: LE_BasedFIFO NUMERIC "0"
-// Retrieval info: PRIVATE: LegacyRREQ NUMERIC "1"
+// Retrieval info: PRIVATE: LegacyRREQ NUMERIC "0"
 // Retrieval info: PRIVATE: MAX_DEPTH_BY_9 NUMERIC "0"
 // Retrieval info: PRIVATE: OVERFLOW_CHECKING NUMERIC "0"
 // Retrieval info: PRIVATE: Optimize NUMERIC "0"
@@ -86,9 +84,9 @@ endmodule
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 // Retrieval info: PRIVATE: UNDERFLOW_CHECKING NUMERIC "0"
 // Retrieval info: PRIVATE: UsedW NUMERIC "1"
-// Retrieval info: PRIVATE: Width NUMERIC "32"
+// Retrieval info: PRIVATE: Width NUMERIC "64"
 // Retrieval info: PRIVATE: dc_aclr NUMERIC "1"
-// Retrieval info: PRIVATE: diff_widths NUMERIC "1"
+// Retrieval info: PRIVATE: diff_widths NUMERIC "0"
 // Retrieval info: PRIVATE: msb_usedw NUMERIC "0"
 // Retrieval info: PRIVATE: output_width NUMERIC "64"
 // Retrieval info: PRIVATE: rsEmpty NUMERIC "1"
@@ -98,16 +96,14 @@ endmodule
 // Retrieval info: PRIVATE: sc_sclr NUMERIC "0"
 // Retrieval info: PRIVATE: wsEmpty NUMERIC "0"
 // Retrieval info: PRIVATE: wsFull NUMERIC "1"
-// Retrieval info: PRIVATE: wsUsedW NUMERIC "1"
+// Retrieval info: PRIVATE: wsUsedW NUMERIC "0"
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
-// Retrieval info: CONSTANT: LPM_NUMWORDS NUMERIC "64"
-// Retrieval info: CONSTANT: LPM_SHOWAHEAD STRING "OFF"
-// Retrieval info: CONSTANT: LPM_TYPE STRING "dcfifo_mixed_widths"
-// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "32"
-// Retrieval info: CONSTANT: LPM_WIDTHU NUMERIC "6"
-// Retrieval info: CONSTANT: LPM_WIDTHU_R NUMERIC "5"
-// Retrieval info: CONSTANT: LPM_WIDTH_R NUMERIC "64"
+// Retrieval info: CONSTANT: LPM_NUMWORDS NUMERIC "128"
+// Retrieval info: CONSTANT: LPM_SHOWAHEAD STRING "ON"
+// Retrieval info: CONSTANT: LPM_TYPE STRING "dcfifo"
+// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "64"
+// Retrieval info: CONSTANT: LPM_WIDTHU NUMERIC "7"
 // Retrieval info: CONSTANT: OVERFLOW_CHECKING STRING "ON"
 // Retrieval info: CONSTANT: RDSYNC_DELAYPIPE NUMERIC "4"
 // Retrieval info: CONSTANT: READ_ACLR_SYNCH STRING "OFF"
@@ -116,7 +112,7 @@ endmodule
 // Retrieval info: CONSTANT: WRITE_ACLR_SYNCH STRING "OFF"
 // Retrieval info: CONSTANT: WRSYNC_DELAYPIPE NUMERIC "4"
 // Retrieval info: USED_PORT: aclr 0 0 0 0 INPUT GND "aclr"
-// Retrieval info: USED_PORT: data 0 0 32 0 INPUT NODEFVAL "data[31..0]"
+// Retrieval info: USED_PORT: data 0 0 64 0 INPUT NODEFVAL "data[63..0]"
 // Retrieval info: USED_PORT: q 0 0 64 0 OUTPUT NODEFVAL "q[63..0]"
 // Retrieval info: USED_PORT: rdclk 0 0 0 0 INPUT NODEFVAL "rdclk"
 // Retrieval info: USED_PORT: rdempty 0 0 0 0 OUTPUT NODEFVAL "rdempty"
@@ -124,9 +120,8 @@ endmodule
 // Retrieval info: USED_PORT: wrclk 0 0 0 0 INPUT NODEFVAL "wrclk"
 // Retrieval info: USED_PORT: wrfull 0 0 0 0 OUTPUT NODEFVAL "wrfull"
 // Retrieval info: USED_PORT: wrreq 0 0 0 0 INPUT NODEFVAL "wrreq"
-// Retrieval info: USED_PORT: wrusedw 0 0 6 0 OUTPUT NODEFVAL "wrusedw[5..0]"
 // Retrieval info: CONNECT: @aclr 0 0 0 0 aclr 0 0 0 0
-// Retrieval info: CONNECT: @data 0 0 32 0 data 0 0 32 0
+// Retrieval info: CONNECT: @data 0 0 64 0 data 0 0 64 0
 // Retrieval info: CONNECT: @rdclk 0 0 0 0 rdclk 0 0 0 0
 // Retrieval info: CONNECT: @rdreq 0 0 0 0 rdreq 0 0 0 0
 // Retrieval info: CONNECT: @wrclk 0 0 0 0 wrclk 0 0 0 0
@@ -134,11 +129,10 @@ endmodule
 // Retrieval info: CONNECT: q 0 0 64 0 @q 0 0 64 0
 // Retrieval info: CONNECT: rdempty 0 0 0 0 @rdempty 0 0 0 0
 // Retrieval info: CONNECT: wrfull 0 0 0 0 @wrfull 0 0 0 0
-// Retrieval info: CONNECT: wrusedw 0 0 6 0 @wrusedw 0 0 6 0
-// Retrieval info: GEN_FILE: TYPE_NORMAL framebuffer_write_fifo.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL framebuffer_write_fifo.inc FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL framebuffer_write_fifo.cmp FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL framebuffer_write_fifo.bsf FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL framebuffer_write_fifo_inst.v FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL framebuffer_write_fifo_bb.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo.inc FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo.cmp FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo.bsf FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo_inst.v FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo_bb.v TRUE
 // Retrieval info: LIB_FILE: altera_mf

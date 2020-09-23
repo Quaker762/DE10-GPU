@@ -68,7 +68,11 @@
    internal="hps_0.f2h_sdram0_data"
    type="avalon"
    dir="end" />
- <interface name="hps_0_f2h_sdram1_data" internal="hps_0.f2h_sdram1_data" />
+ <interface
+   name="hps_0_f2h_sdram1_data"
+   internal="hps_0.f2h_sdram1_data"
+   type="avalon"
+   dir="end" />
  <interface name="hps_0_f2h_sdram2_data" internal="hps_0.f2h_sdram2_data" />
  <interface name="hps_0_f2h_sdram3_data" internal="hps_0.f2h_sdram3_data" />
  <interface name="hps_0_f2h_sdram4_data" internal="hps_0.f2h_sdram4_data" />
@@ -204,7 +208,7 @@
   <parameter name="EXTRA_SETTINGS" value="" />
   <parameter name="F2H_AXI_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM0_CLOCK_FREQ" value="50000000" />
-  <parameter name="F2H_SDRAM1_CLOCK_FREQ" value="100" />
+  <parameter name="F2H_SDRAM1_CLOCK_FREQ" value="50000000" />
   <parameter name="F2H_SDRAM2_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM3_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM4_CLOCK_FREQ" value="100" />
@@ -216,8 +220,8 @@
   <parameter name="F2SCLK_SDRAMCLK_Enable" value="false" />
   <parameter name="F2SCLK_SDRAMCLK_FREQ" value="0" />
   <parameter name="F2SCLK_WARMRST_Enable" value="false" />
-  <parameter name="F2SDRAM_Type" value="Avalon-MM Read-Only" />
-  <parameter name="F2SDRAM_Width" value="64" />
+  <parameter name="F2SDRAM_Type">Avalon-MM Read-Only,Avalon-MM Write-Only</parameter>
+  <parameter name="F2SDRAM_Width" value="64,64" />
   <parameter name="F2SINTERRUPT_Enable" value="false" />
   <parameter name="F2S_Width" value="0" />
   <parameter name="FIX_READ_LATENCY" value="8" />
@@ -636,7 +640,11 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
- <module name="register_file_0" kind="register_file" version="0.1" enabled="1" />
+ <module
+   name="register_file_0"
+   kind="register_file"
+   version="0.21"
+   enabled="1" />
  <connection
    kind="avalon"
    version="20.1"
@@ -656,6 +664,11 @@
    version="20.1"
    start="clk_0.clk"
    end="hps_0.f2h_sdram0_clock" />
+ <connection
+   kind="clock"
+   version="20.1"
+   start="clk_0.clk"
+   end="hps_0.f2h_sdram1_clock" />
  <connection
    kind="clock"
    version="20.1"

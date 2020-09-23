@@ -52,14 +52,11 @@ wire sdram0_write;
 wire [28:0] sdram1_address; 
 wire [7:0] sdram1_burstcount;
 wire sdram1_waitrequest;
-wire [63:0] sdram1_readdata;
-wire sdram1_readdatavalid;
-wire sdram1_read;
 wire [63:0] sdram1_writedata;	 
 wire [7:0] sdram1_byteenable;	 
 wire sdram1_write;
 
-
+wire [63:0] vertex_a;
 
 
 wire hsbridge_clock;
@@ -138,7 +135,7 @@ soc_system u0
 	
 	
 	.register_file_0_conduit_end_export_vertex_c(),            // register_file_0_conduit_end.export_vertex_c
-	.register_file_0_conduit_end_export_vertex_a(),            //                            .export_vertex_a
+	.register_file_0_conduit_end_export_vertex_a(vertex_a),            //                            .export_vertex_a
 	.register_file_0_conduit_end_export_vertex_b(),            //                            .export_vertex_b
 	.register_file_0_conduit_end_export_control_status_out(),  //                            .export_control_status_out
 	.register_file_0_conduit_end_export_control_bit_load(1'b1),    //                            .export_control_bit_load
@@ -154,21 +151,31 @@ soc_system u0
 	.hps_0_i2c1_scl_in_clk()
 );
 
-SDRAM_test Glenn
+
+framebuffer_write writer
 (
-	.systemClock(clock_50),
+	.clock(clock_50),
 	.reset_n(keys[0]),
 	.address(sdram1_address),
 	.burstcount(sdram1_burstcount),
 	.waitrequest(sdram1_waitrequest),
-	.readdata(sdram1_readdata),
-	.readdatavalid(sdram1_readdatavalid),
-	.read(sdram1_read),
 	.writedata(sdram1_writedata),
 	.byteenable(sdram1_byteenable),
 	.write(sdram1_write),
+	.buffer(current_buffer),
+	.writing_done(),
+	.data_done(),
+	.fill_background(~keys[2]),
+	.backround_colour(32'h00FF0000),
+	 
+	.pixel_data({13'b0, slide_switches[9:7], 14'b0, slide_switches[6:5], 27'b0, slide_switches[4:0]}),
+	.pixel_data_valid(1'b1),
+	.pixel_fifo_full(),
+	.pixel_data_clock(~keys[1])
 );
 
+
+//SDRAM_test memes
 
 framebuffer_read reader
 (
