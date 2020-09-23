@@ -33,6 +33,44 @@ public:
     {
         Mat4 ret;
 
+#ifdef USE_NEON
+        float32x4_t mat0_col0;
+        float32x4_t mat0_col1;
+        float32x4_t mat0_col2;
+        float32x4_t mat0_col3;
+
+        float32x4_t mat1_col0;
+        float32x4_t mat1_col1;
+        float32x4_t mat1_col2;
+        float32x4_t mat1_col3;
+
+        float32x4_t ret_col0;
+        float32x4_t ret_col1;
+        float32x4_t ret_col2;
+        float32x4_t ret_col3;
+
+        // Load LHS matrix
+        mat0_col0 = vld1q_f32(m_data[0]);
+        mat0_col1 = vld1q_f32(m_data[1]);
+        mat0_col2 = vld1q_f32(m_data[2]);
+        mat0_col3 = vld1q_f32(m_data[3]);
+
+        // Load RHS matrix
+        mat1_col0 = vld1q_f32(rhs.m_data[0]);
+        mat1_col1 = vld1q_f32(rhs.m_data[1]);
+        mat1_col2 = vld1q_f32(rhs.m_data[2]);
+        mat1_col3 = vld1q_f32(rhs.m_data[3]);
+
+        ret_col0 = vaddq_f32(mat0_col0, mat1_col0);
+        ret_col1 = vaddq_f32(mat0_col1, mat1_col1);
+        ret_col2 = vaddq_f32(mat0_col2, mat1_col2);
+        ret_col3 = vaddq_f32(mat0_col3, mat1_col3);
+
+        vst1q_f32(ret.m_data[0], ret_col0);
+        vst1q_f32(ret.m_data[1], ret_col1);
+        vst1q_f32(ret.m_data[2], ret_col2);
+        vst1q_f32(ret.m_data[3], ret_col3);
+#else
         ret.m_data[0][0] = m_data[0][0] + rhs.m_data[0][0];
         ret.m_data[0][1] = m_data[0][1] + rhs.m_data[0][1];
         ret.m_data[0][2] = m_data[0][2] + rhs.m_data[0][2];
@@ -52,12 +90,51 @@ public:
         ret.m_data[3][1] = m_data[3][1] + rhs.m_data[3][1];
         ret.m_data[3][2] = m_data[3][2] + rhs.m_data[3][2];
         ret.m_data[3][3] = m_data[3][3] + rhs.m_data[3][3];
+#endif
 
         return ret;
     }
 
     Mat4& operator+=(const Mat4& rhs)
     {
+#ifdef USE_NEON
+        float32x4_t mat0_col0;
+        float32x4_t mat0_col1;
+        float32x4_t mat0_col2;
+        float32x4_t mat0_col3;
+
+        float32x4_t mat1_col0;
+        float32x4_t mat1_col1;
+        float32x4_t mat1_col2;
+        float32x4_t mat1_col3;
+
+        float32x4_t ret_col0;
+        float32x4_t ret_col1;
+        float32x4_t ret_col2;
+        float32x4_t ret_col3;
+
+        // Load LHS matrix
+        mat0_col0 = vld1q_f32(m_data[0]);
+        mat0_col1 = vld1q_f32(m_data[1]);
+        mat0_col2 = vld1q_f32(m_data[2]);
+        mat0_col3 = vld1q_f32(m_data[3]);
+
+        // Load RHS matrix
+        mat1_col0 = vld1q_f32(rhs.m_data[0]);
+        mat1_col1 = vld1q_f32(rhs.m_data[1]);
+        mat1_col2 = vld1q_f32(rhs.m_data[2]);
+        mat1_col3 = vld1q_f32(rhs.m_data[3]);
+
+        ret_col0 = vaddq_f32(mat0_col0, mat1_col0);
+        ret_col1 = vaddq_f32(mat0_col1, mat1_col1);
+        ret_col2 = vaddq_f32(mat0_col2, mat1_col2);
+        ret_col3 = vaddq_f32(mat0_col3, mat1_col3);
+
+        vst1q_f32(m_data[0], ret_col0);
+        vst1q_f32(m_data[1], ret_col1);
+        vst1q_f32(m_data[2], ret_col2);
+        vst1q_f32(m_data[3], ret_col3);
+#else
         m_data[0][0] += rhs.m_data[0][0];
         m_data[0][1] += rhs.m_data[0][1];
         m_data[0][2] += rhs.m_data[0][2];
@@ -77,6 +154,7 @@ public:
         m_data[3][1] += rhs.m_data[3][1];
         m_data[3][2] += rhs.m_data[3][2];
         m_data[3][3] += rhs.m_data[3][3];
+#endif
 
         return *this;
     }
@@ -84,6 +162,45 @@ public:
     Mat4 operator-(const Mat4& rhs)
     {
         Mat4 ret;
+
+#ifdef USE_NEON
+        float32x4_t mat0_col0;
+        float32x4_t mat0_col1;
+        float32x4_t mat0_col2;
+        float32x4_t mat0_col3;
+
+        float32x4_t mat1_col0;
+        float32x4_t mat1_col1;
+        float32x4_t mat1_col2;
+        float32x4_t mat1_col3;
+
+        float32x4_t ret_col0;
+        float32x4_t ret_col1;
+        float32x4_t ret_col2;
+        float32x4_t ret_col3;
+
+        // Load LHS matrix
+        mat0_col0 = vld1q_f32(m_data[0]);
+        mat0_col1 = vld1q_f32(m_data[1]);
+        mat0_col2 = vld1q_f32(m_data[2]);
+        mat0_col3 = vld1q_f32(m_data[3]);
+
+        // Load RHS matrix
+        mat1_col0 = vld1q_f32(rhs.m_data[0]);
+        mat1_col1 = vld1q_f32(rhs.m_data[1]);
+        mat1_col2 = vld1q_f32(rhs.m_data[2]);
+        mat1_col3 = vld1q_f32(rhs.m_data[3]);
+
+        ret_col0 = vsubq_f32(mat0_col0, mat1_col0);
+        ret_col1 = vsubq_f32(mat0_col1, mat1_col1);
+        ret_col2 = vsubq_f32(mat0_col2, mat1_col2);
+        ret_col3 = vsubq_f32(mat0_col3, mat1_col3);
+
+        vst1q_f32(ret.m_data[0], ret_col0);
+        vst1q_f32(ret.m_data[1], ret_col1);
+        vst1q_f32(ret.m_data[2], ret_col2);
+        vst1q_f32(ret.m_data[3], ret_col3);
+#endif
 
         ret.m_data[0][0] = m_data[0][0] - rhs.m_data[0][0];
         ret.m_data[0][1] = m_data[0][1] - rhs.m_data[0][1];
@@ -110,6 +227,44 @@ public:
 
     Mat4& operator-=(const Mat4& rhs)
     {
+#ifdef USE_NEON
+        float32x4_t mat0_col0;
+        float32x4_t mat0_col1;
+        float32x4_t mat0_col2;
+        float32x4_t mat0_col3;
+
+        float32x4_t mat1_col0;
+        float32x4_t mat1_col1;
+        float32x4_t mat1_col2;
+        float32x4_t mat1_col3;
+
+        float32x4_t ret_col0;
+        float32x4_t ret_col1;
+        float32x4_t ret_col2;
+        float32x4_t ret_col3;
+
+        // Load LHS matrix
+        mat0_col0 = vld1q_f32(m_data[0]);
+        mat0_col1 = vld1q_f32(m_data[1]);
+        mat0_col2 = vld1q_f32(m_data[2]);
+        mat0_col3 = vld1q_f32(m_data[3]);
+
+        // Load RHS matrix
+        mat1_col0 = vld1q_f32(rhs.m_data[0]);
+        mat1_col1 = vld1q_f32(rhs.m_data[1]);
+        mat1_col2 = vld1q_f32(rhs.m_data[2]);
+        mat1_col3 = vld1q_f32(rhs.m_data[3]);
+
+        ret_col0 = vsubq_f32(mat0_col0, mat1_col0);
+        ret_col1 = vsubq_f32(mat0_col1, mat1_col1);
+        ret_col2 = vsubq_f32(mat0_col2, mat1_col2);
+        ret_col3 = vsubq_f32(mat0_col3, mat1_col3);
+
+        vst1q_f32(m_data[0], ret_col0);
+        vst1q_f32(m_data[1], ret_col1);
+        vst1q_f32(m_data[2], ret_col2);
+        vst1q_f32(m_data[3], ret_col3);
+#else
         m_data[0][0] -= rhs.m_data[0][0];
         m_data[0][1] -= rhs.m_data[0][1];
         m_data[0][2] -= rhs.m_data[0][2];
@@ -129,6 +284,7 @@ public:
         m_data[3][1] -= rhs.m_data[3][1];
         m_data[3][2] -= rhs.m_data[3][2];
         m_data[3][2] -= rhs.m_data[3][2];
+#endif
 
         return *this;
     }
