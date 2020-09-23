@@ -22,6 +22,8 @@ inline int32_t f32_to_fx32(float value)
             : "=r"(ret) // Output Operands
             :           // Input Operands
             :);         // Clobbered Registers
+
+    return ret;
 }
 
 inline uint32_t f32_to_ufx32(float value)
