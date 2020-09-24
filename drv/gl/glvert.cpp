@@ -384,6 +384,13 @@ void glEnd()
             int32_t vertexBy = f32_to_fx32(triangle.vertices[1].y);
             int32_t vertexCx = f32_to_fx32(triangle.vertices[2].x);
             int32_t vertexCy = f32_to_fx32(triangle.vertices[2].y);
+
+            uint64_t vertexA = (static_cast<uint64_t>(vertexAx) << 32) | vertexAy;
+            uint64_t vertexB = (static_cast<uint64_t>(vertexBx) << 32) | vertexBy;
+            uint64_t vertexC = (static_cast<uint64_t>(vertexCx) << 32) | vertexCy;
+            rush3d_register_write(VERTEX_A, vertexA);
+            rush3d_register_write(VERTEX_B, vertexB);
+            rush3d_register_write(VERTEX_C, vertexC);
 #endif
         }
 

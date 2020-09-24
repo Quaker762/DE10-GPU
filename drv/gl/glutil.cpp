@@ -7,10 +7,12 @@
  * Author: Jesse Buhagiar
  * Date: 4/4/2020
  */
+#include "arm/fixed.h"
 #include "assertions.h"
 #include "gl.h"
 #include "glcontext.h"
 #include "log.hpp"
+#include "r3d/rush3d.h"
 
 #include <cmath>
 #include <string>
@@ -30,6 +32,9 @@ void glClear(GLbitfield mask)
 #ifdef USE_SIM
         g_card.write_register(RegisterOffsets::fbCOLOR, (r << 16) | (g << 8) | b);
         g_card.write_register(RegisterOffsets::fbFILL, 1); // Execute fill command
+#else
+        uint64_t color = r << 16 | g << 8 | b;
+        rush3d_register_write(BACK_COLOR, color);
 #endif
     }
     else
@@ -73,7 +78,9 @@ void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
     g_card.write_register(RegisterOffsets::fbWIDTH, width);
     g_card.write_register(RegisterOffsets::fbHEIGHT, height);
 #else
+    UNUSED_VAR(x);
+    UNUSED_VAR(y);
 
-    ASSERT_NOT_REACHED;
+    rush3d_register_write(WIN_SIZE, (static_cast<uint64_t>(width) << 32) | height);
 #endif
 }
