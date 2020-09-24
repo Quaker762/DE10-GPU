@@ -4,50 +4,52 @@
 
 `timescale 1 ps / 1 ps
 module soc_system (
-		input  wire        clk_clk,                                                //                         clk.clk
-		input  wire [28:0] hps_0_f2h_sdram0_data_address,                          //       hps_0_f2h_sdram0_data.address
-		input  wire [7:0]  hps_0_f2h_sdram0_data_burstcount,                       //                            .burstcount
-		output wire        hps_0_f2h_sdram0_data_waitrequest,                      //                            .waitrequest
-		output wire [63:0] hps_0_f2h_sdram0_data_readdata,                         //                            .readdata
-		output wire        hps_0_f2h_sdram0_data_readdatavalid,                    //                            .readdatavalid
-		input  wire        hps_0_f2h_sdram0_data_read,                             //                            .read
-		input  wire [28:0] hps_0_f2h_sdram1_data_address,                          //       hps_0_f2h_sdram1_data.address
-		input  wire [7:0]  hps_0_f2h_sdram1_data_burstcount,                       //                            .burstcount
-		output wire        hps_0_f2h_sdram1_data_waitrequest,                      //                            .waitrequest
-		input  wire [63:0] hps_0_f2h_sdram1_data_writedata,                        //                            .writedata
-		input  wire [7:0]  hps_0_f2h_sdram1_data_byteenable,                       //                            .byteenable
-		input  wire        hps_0_f2h_sdram1_data_write,                            //                            .write
-		output wire        hps_0_h2f_reset_reset_n,                                //             hps_0_h2f_reset.reset_n
-		output wire        hps_0_i2c1_out_data,                                    //                  hps_0_i2c1.out_data
-		input  wire        hps_0_i2c1_sda,                                         //                            .sda
-		output wire        hps_0_i2c1_clk_clk,                                     //              hps_0_i2c1_clk.clk
-		input  wire        hps_0_i2c1_scl_in_clk,                                  //           hps_0_i2c1_scl_in.clk
-		output wire [14:0] memory_mem_a,                                           //                      memory.mem_a
-		output wire [2:0]  memory_mem_ba,                                          //                            .mem_ba
-		output wire        memory_mem_ck,                                          //                            .mem_ck
-		output wire        memory_mem_ck_n,                                        //                            .mem_ck_n
-		output wire        memory_mem_cke,                                         //                            .mem_cke
-		output wire        memory_mem_cs_n,                                        //                            .mem_cs_n
-		output wire        memory_mem_ras_n,                                       //                            .mem_ras_n
-		output wire        memory_mem_cas_n,                                       //                            .mem_cas_n
-		output wire        memory_mem_we_n,                                        //                            .mem_we_n
-		output wire        memory_mem_reset_n,                                     //                            .mem_reset_n
-		inout  wire [31:0] memory_mem_dq,                                          //                            .mem_dq
-		inout  wire [3:0]  memory_mem_dqs,                                         //                            .mem_dqs
-		inout  wire [3:0]  memory_mem_dqs_n,                                       //                            .mem_dqs_n
-		output wire        memory_mem_odt,                                         //                            .mem_odt
-		output wire [3:0]  memory_mem_dm,                                          //                            .mem_dm
-		input  wire        memory_oct_rzqin,                                       //                            .oct_rzqin
-		output wire [63:0] register_file_0_conduit_end_export_vertex_c,            // register_file_0_conduit_end.export_vertex_c
-		output wire [63:0] register_file_0_conduit_end_export_vertex_a,            //                            .export_vertex_a
-		output wire [63:0] register_file_0_conduit_end_export_vertex_b,            //                            .export_vertex_b
-		output wire [63:0] register_file_0_conduit_end_export_control_status_out,  //                            .export_control_status_out
-		input  wire        register_file_0_conduit_end_export_control_bit_load,    //                            .export_control_bit_load
-		input  wire        register_file_0_conduit_end_export_control_bit_in,      //                            .export_control_bit_in
-		output wire        register_file_0_conduit_end_export_control_bit_out,     //                            .export_control_bit_out
-		output wire [63:0] register_file_0_conduit_end_export_back_colour_out,     //                            .export_back_colour_out
-		input  wire [5:0]  register_file_0_conduit_end_export_control_bit_address, //                            .export_control_bit_address
-		input  wire        reset_reset_n                                           //                       reset.reset_n
+		input  wire        clk_clk,                                                     //                         clk.clk
+		input  wire [28:0] hps_0_f2h_sdram0_data_address,                               //       hps_0_f2h_sdram0_data.address
+		input  wire [7:0]  hps_0_f2h_sdram0_data_burstcount,                            //                            .burstcount
+		output wire        hps_0_f2h_sdram0_data_waitrequest,                           //                            .waitrequest
+		output wire [63:0] hps_0_f2h_sdram0_data_readdata,                              //                            .readdata
+		output wire        hps_0_f2h_sdram0_data_readdatavalid,                         //                            .readdatavalid
+		input  wire        hps_0_f2h_sdram0_data_read,                                  //                            .read
+		input  wire [28:0] hps_0_f2h_sdram1_data_address,                               //       hps_0_f2h_sdram1_data.address
+		input  wire [7:0]  hps_0_f2h_sdram1_data_burstcount,                            //                            .burstcount
+		output wire        hps_0_f2h_sdram1_data_waitrequest,                           //                            .waitrequest
+		input  wire [63:0] hps_0_f2h_sdram1_data_writedata,                             //                            .writedata
+		input  wire [7:0]  hps_0_f2h_sdram1_data_byteenable,                            //                            .byteenable
+		input  wire        hps_0_f2h_sdram1_data_write,                                 //                            .write
+		output wire        hps_0_h2f_reset_reset_n,                                     //             hps_0_h2f_reset.reset_n
+		output wire        hps_0_i2c1_out_data,                                         //                  hps_0_i2c1.out_data
+		input  wire        hps_0_i2c1_sda,                                              //                            .sda
+		output wire        hps_0_i2c1_clk_clk,                                          //              hps_0_i2c1_clk.clk
+		input  wire        hps_0_i2c1_scl_in_clk,                                       //           hps_0_i2c1_scl_in.clk
+		output wire [14:0] memory_mem_a,                                                //                      memory.mem_a
+		output wire [2:0]  memory_mem_ba,                                               //                            .mem_ba
+		output wire        memory_mem_ck,                                               //                            .mem_ck
+		output wire        memory_mem_ck_n,                                             //                            .mem_ck_n
+		output wire        memory_mem_cke,                                              //                            .mem_cke
+		output wire        memory_mem_cs_n,                                             //                            .mem_cs_n
+		output wire        memory_mem_ras_n,                                            //                            .mem_ras_n
+		output wire        memory_mem_cas_n,                                            //                            .mem_cas_n
+		output wire        memory_mem_we_n,                                             //                            .mem_we_n
+		output wire        memory_mem_reset_n,                                          //                            .mem_reset_n
+		inout  wire [31:0] memory_mem_dq,                                               //                            .mem_dq
+		inout  wire [3:0]  memory_mem_dqs,                                              //                            .mem_dqs
+		inout  wire [3:0]  memory_mem_dqs_n,                                            //                            .mem_dqs_n
+		output wire        memory_mem_odt,                                              //                            .mem_odt
+		output wire [3:0]  memory_mem_dm,                                               //                            .mem_dm
+		input  wire        memory_oct_rzqin,                                            //                            .oct_rzqin
+		output wire [63:0] register_file_0_conduit_end_export_vertex_c,                 // register_file_0_conduit_end.export_vertex_c
+		output wire [63:0] register_file_0_conduit_end_export_vertex_a,                 //                            .export_vertex_a
+		output wire [63:0] register_file_0_conduit_end_export_vertex_b,                 //                            .export_vertex_b
+		output wire [63:0] register_file_0_conduit_end_export_control_status_out,       //                            .export_control_status_out
+		output wire [63:0] register_file_0_conduit_end_export_back_colour_out,          //                            .export_back_colour_out
+		output wire [63:0] register_file_0_conduit_end_export_color_a_out,              //                            .export_color_a_out
+		output wire [63:0] register_file_0_conduit_end_export_color_b_out,              //                            .export_color_b_out
+		output wire [63:0] register_file_0_conduit_end_export_color_c_out,              //                            .export_color_c_out
+		output wire [63:0] register_file_0_conduit_end_export_win_size_out,             //                            .export_win_size_out
+		input  wire        register_file_0_conduit_end_export_control_status_load_fpga, //                            .export_control_status_load_fpga
+		input  wire [63:0] register_file_0_conduit_end_export_control_status_in,        //                            .export_control_status_in
+		input  wire        reset_reset_n                                                //                       reset.reset_n
 	);
 
 	wire   [1:0] hps_0_h2f_axi_master_awburst;                               // hps_0:h2f_AWBURST -> mm_interconnect_0:hps_0_h2f_axi_master_awburst
@@ -87,7 +89,7 @@ module soc_system (
 	wire         hps_0_h2f_axi_master_awvalid;                               // hps_0:h2f_AWVALID -> mm_interconnect_0:hps_0_h2f_axi_master_awvalid
 	wire         hps_0_h2f_axi_master_rvalid;                                // mm_interconnect_0:hps_0_h2f_axi_master_rvalid -> hps_0:h2f_RVALID
 	wire  [63:0] mm_interconnect_0_register_file_0_avalon_slave_0_readdata;  // register_file_0:readdata -> mm_interconnect_0:register_file_0_avalon_slave_0_readdata
-	wire   [2:0] mm_interconnect_0_register_file_0_avalon_slave_0_address;   // mm_interconnect_0:register_file_0_avalon_slave_0_address -> register_file_0:address
+	wire   [3:0] mm_interconnect_0_register_file_0_avalon_slave_0_address;   // mm_interconnect_0:register_file_0_avalon_slave_0_address -> register_file_0:address
 	wire         mm_interconnect_0_register_file_0_avalon_slave_0_read;      // mm_interconnect_0:register_file_0_avalon_slave_0_read -> register_file_0:read
 	wire         mm_interconnect_0_register_file_0_avalon_slave_0_write;     // mm_interconnect_0:register_file_0_avalon_slave_0_write -> register_file_0:write
 	wire  [63:0] mm_interconnect_0_register_file_0_avalon_slave_0_writedata; // mm_interconnect_0:register_file_0_avalon_slave_0_writedata -> register_file_0:writedata
@@ -173,22 +175,24 @@ module soc_system (
 	);
 
 	Register_File register_file_0 (
-		.write               (mm_interconnect_0_register_file_0_avalon_slave_0_write),     // avalon_slave_0.write
-		.read                (mm_interconnect_0_register_file_0_avalon_slave_0_read),      //               .read
-		.writedata           (mm_interconnect_0_register_file_0_avalon_slave_0_writedata), //               .writedata
-		.readdata            (mm_interconnect_0_register_file_0_avalon_slave_0_readdata),  //               .readdata
-		.address             (mm_interconnect_0_register_file_0_avalon_slave_0_address),   //               .address
-		.clk                 (clk_clk),                                                    //          clock.clk
-		.reset               (~rst_controller_reset_out_reset),                            //          reset.reset_n
-		.vertex_c_out        (register_file_0_conduit_end_export_vertex_c),                //    conduit_end.export_vertex_c
-		.vertex_a_out        (register_file_0_conduit_end_export_vertex_a),                //               .export_vertex_a
-		.vertex_b_out        (register_file_0_conduit_end_export_vertex_b),                //               .export_vertex_b
-		.control_status_out  (register_file_0_conduit_end_export_control_status_out),      //               .export_control_status_out
-		.control_bit_load    (register_file_0_conduit_end_export_control_bit_load),        //               .export_control_bit_load
-		.control_bit_in      (register_file_0_conduit_end_export_control_bit_in),          //               .export_control_bit_in
-		.control_bit_out     (register_file_0_conduit_end_export_control_bit_out),         //               .export_control_bit_out
-		.back_colour_out     (register_file_0_conduit_end_export_back_colour_out),         //               .export_back_colour_out
-		.control_bit_address (register_file_0_conduit_end_export_control_bit_address)      //               .export_control_bit_address
+		.write                    (mm_interconnect_0_register_file_0_avalon_slave_0_write),      // avalon_slave_0.write
+		.read                     (mm_interconnect_0_register_file_0_avalon_slave_0_read),       //               .read
+		.writedata                (mm_interconnect_0_register_file_0_avalon_slave_0_writedata),  //               .writedata
+		.readdata                 (mm_interconnect_0_register_file_0_avalon_slave_0_readdata),   //               .readdata
+		.address                  (mm_interconnect_0_register_file_0_avalon_slave_0_address),    //               .address
+		.clk                      (clk_clk),                                                     //          clock.clk
+		.reset                    (~rst_controller_reset_out_reset),                             //          reset.reset_n
+		.vertex_c_out             (register_file_0_conduit_end_export_vertex_c),                 //    conduit_end.export_vertex_c
+		.vertex_a_out             (register_file_0_conduit_end_export_vertex_a),                 //               .export_vertex_a
+		.vertex_b_out             (register_file_0_conduit_end_export_vertex_b),                 //               .export_vertex_b
+		.control_status_out       (register_file_0_conduit_end_export_control_status_out),       //               .export_control_status_out
+		.back_colour_out          (register_file_0_conduit_end_export_back_colour_out),          //               .export_back_colour_out
+		.color_a_out              (register_file_0_conduit_end_export_color_a_out),              //               .export_color_a_out
+		.color_b_out              (register_file_0_conduit_end_export_color_b_out),              //               .export_color_b_out
+		.color_c_out              (register_file_0_conduit_end_export_color_c_out),              //               .export_color_c_out
+		.win_size_out             (register_file_0_conduit_end_export_win_size_out),             //               .export_win_size_out
+		.control_status_load_fpga (register_file_0_conduit_end_export_control_status_load_fpga), //               .export_control_status_load_fpga
+		.control_status_in        (register_file_0_conduit_end_export_control_status_in)         //               .export_control_status_in
 	);
 
 	soc_system_mm_interconnect_0 mm_interconnect_0 (

@@ -4,31 +4,37 @@ module Register_File
     input           read,
     input   [63:0]  writedata,
     output  [63:0]  readdata,
-    input   [2:0]   address,
+    input   [3:0]   address,
     input           clk,
     
     input           reset,
 	 
-	 input 	[5:0]	  control_bit_address,
-	 input   		  control_bit_load,
-	 input           control_bit_in,
-	 output 	        control_bit_out,
+	 input 	[63:0]  control_status_in,
+	 input			  control_status_load_fpga,
     
     output  [63:0]  vertex_a_out,
     output  [63:0]  vertex_b_out,
     output  [63:0]  vertex_c_out,
+	 output  [63:0]  color_a_out,
+    output  [63:0]  color_b_out,
+    output  [63:0]  color_c_out,
 	 output  [63:0]  back_colour_out,
-	 output  [63:0]  control_status_out
+	 output  [63:0]  control_status_out,
+	 output  [63:0]  win_size_out
 );
 
-wire [5:0] decodedAddr;
+wire [10:0] decodedAddr;
 
 wire vertex_a_load			= decodedAddr[0];
 wire vertex_b_load			= decodedAddr[1];
 wire vertex_c_load 			= decodedAddr[2];
-wire back_colour_load 		= decodedAddr[3];
-wire control_status_load_w = decodedAddr[4];
-wire control_status_load_r = decodedAddr[5];
+wire color_a_load				= decodedAddr[3];
+wire color_b_load				= decodedAddr[4];
+wire color_c_load 			= decodedAddr[5];
+wire back_colour_load 		= decodedAddr[6];
+wire control_status_load_w = decodedAddr[7];
+wire control_status_load_r = decodedAddr[8];
+wire win_size_load		   = decodedAddr[9];
 
 address_decoder decoder
 (
@@ -67,6 +73,36 @@ register #(64) vertex_c
     .Q(vertex_c_out)
 );
 
+register #(64) color_a
+(
+    .D(writedata),
+    .clk(clk),
+    .reset(reset),
+    .load(~color_a_load),
+    
+    .Q(color_a_out)
+);
+
+register #(64) color_b
+(
+    .D(writedata),
+    .clk(clk),
+    .reset(reset),
+    .load(~color_b_load),
+    
+    .Q(color_b_out)
+);
+
+register #(64) color_c
+(
+    .D(writedata),
+    .clk(clk),
+    .reset(reset),
+    .load(~color_c_load),
+    
+    .Q(color_c_out)
+);
+
 register #(64) back_colour
 (
     .D(writedata),
@@ -77,17 +113,26 @@ register #(64) back_colour
     .Q(back_colour_out)
 );
 
-register_csr #(64) control_status
+register_rw #(64) control_status
 (
-    .D_all(writedata),
-	 .D_bit(control_bit_in),
+    .D(writedata),
+    .D2(control_status_in),
     .clk(clk),
     .reset(reset),
-    .load_all(~control_status_load_w),
-	 .load_bit(control_bit_load),
+    .load(~control_status_load_w),
+    .load2(~control_status_load_fpga),
     
-    .Q_all(control_status_out),
-	 .Q_bit(control_bit_out)
+    .Q(control_status_out)
+);
+
+register #(64) win_size
+(
+    .D(writedata),
+    .clk(clk),
+    .reset(reset),
+    .load(~win_size_load),
+    
+    .Q(win_size_out)
 );
 
 // We only have one thing to read currently
