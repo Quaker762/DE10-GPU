@@ -1,0 +1,7 @@
+00:04:29 **** Build of configuration armv7le-debug for project GLTest1 ****
+make -j24 all 
+qcc -lang-c++ -Vgcc_ntoarmv7le -c -Wp,-MMD,build/armv7le-debug/src/GLTest1.d,-MT,build/armv7le-debug/src/GLTest1.o -o build/armv7le-debug/src/GLTest1.o -I./include -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/GLTest1.cpp
+qcc -lang-c++ -Vgcc_ntoarmv7le -o build/armv7le-debug/GLTest1   build/armv7le-debug/src/GLTest1.o  -L./lib/ -ldrv3d -lgl
+
+00:04:29 Build Finished (took 474ms)
+

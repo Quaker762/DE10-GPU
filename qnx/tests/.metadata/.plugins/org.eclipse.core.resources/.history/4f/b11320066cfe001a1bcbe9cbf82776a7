@@ -1,0 +1,2 @@
+build/armv7le-debug/src/GLTest1.o: src/GLTest1.cpp include/gl.h \
+ include/r3d/rush3d.h
