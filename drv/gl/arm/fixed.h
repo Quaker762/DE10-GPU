@@ -14,5 +14,7 @@
 
 #include <cstdint>
 
+extern "C" {
 int32_t f32_to_fx32(float value);
 uint32_t f32_to_ufx32(float value);
+}
