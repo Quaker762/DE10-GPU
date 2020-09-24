@@ -38,9 +38,9 @@ public:
     static void initialize();
     void shutdown();
 
-    void write(uint32_t offset, uint32_t data);
+    void write(uint32_t offset, uint64_t data);
 
-    uint32_t read(uint32_t offset) const;
+    uint64_t read(uint32_t offset) const;
 
     static AlteraBridge& the(); // Reference to static instantiation of this class
 
