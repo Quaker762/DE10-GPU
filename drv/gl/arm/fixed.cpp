@@ -11,7 +11,7 @@
 
 int32_t f32_to_fx32(float value)
 {
-    uint32_t ret = 0;
+    int32_t ret = 0;
 
     __asm__("vmov.32 s0, %0"
             :            // Output Operands
