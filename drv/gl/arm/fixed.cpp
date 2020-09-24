@@ -17,7 +17,7 @@ int32_t f32_to_fx32(float value)
             :            // Output Operands
             : "r"(value) // Input Operands
             : "s0");     // Clobbered Registers
-    __asm__("vcvt.U32.F32 s0, s0, 20");
+    __asm__("vcvt.S32.F32 s0, s0, 20");
     __asm__("vmov %0, s0"
             : "=r"(ret) // Output Operands
             :           // Input Operands
