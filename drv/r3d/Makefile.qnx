@@ -2,15 +2,17 @@
 
 CXX_OBJS = \
 	altera.o \
-	rush3d.o
+	rush3d.o \
 
 export QNX_HOST=/home/quaker/qnx700/host/linux/x86_64/
 export QNX_TARGET=/home/quaker/qnx700/target/qnx7/
 PLATFORM ?= armv7le
 CC=qcc -Vgcc_nto$(PLATFORM)
 CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
-CXXFLAGS += -std=c++14 -Wall -Wextra -Werror
-CXXFLAGS += -I. -D_QNX_SOURCE
+CXXFLAGS += -std=c++14 -g -O0 -Wall -Wextra -D_QNX_SOURCE
+CXXFLAGS += -march=armv7-a -mcpu=cortex-a9
+CXXFLAGS += -DDEBUG
+CXXFLAGS += -I./
 LD=$(CXX)
 
 OUTPUT=build/libdrv3d.a	

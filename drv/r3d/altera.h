@@ -47,5 +47,3 @@ public:
 private:
     uintptr_t m_device_ptr{ 0 }; //
 };
-
-AlteraBridge::the()

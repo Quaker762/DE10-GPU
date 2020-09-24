@@ -33,13 +33,13 @@ void rush3d_shutdown()
     AlteraBridge::the().shutdown();
 }
 
-void rush3d_register_write(uint32_t offset, uint32_t data)
+void rush3d_register_write(uint32_t offset, uint64_t data)
 {
-    printf("register_write: writing 0x%x to offset 0x%x\n", data, offset);
+    printf("register_write: writing 0x%llx to offset 0x%x\n", data, offset);
     AlteraBridge::the().write(offset, data);
 }
 
-uint32_t rush3d_register_read(uint32_t offset)
+uint64_t rush3d_register_read(uint32_t offset)
 {
     return AlteraBridge::the().read(offset);
 }
