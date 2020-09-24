@@ -46,6 +46,7 @@ public:
     // float angle() { return atan(m_y / m_x); }
 
     float32x4_t data() const { return m_vec; }
+    void set_vec(float32x4_t data) { m_vec = data; }
 
     float32_t x() const { return vgetq_lane_f32(m_vec, 0); }
 
@@ -86,14 +87,6 @@ public:
     {
         float32x4_t ret = vmulq_n_f32(m_vec, scalar);
         return Vec4(ret);
-    }
-
-    // TODO: Implement me!
-    Vec4 operator*(const Mat4& rhs)
-    {
-        Vec4 ret;
-
-        return ret;
     }
 
     Vec4& operator+=(const Vec4& rhs)
