@@ -56,7 +56,7 @@ wire [63:0] sdram1_writedata;
 wire [7:0] sdram1_byteenable;	 
 wire sdram1_write;
 
-wire [63:0] vertex_a;
+
 
 
 wire hsbridge_clock;
@@ -135,14 +135,14 @@ soc_system u0
 	.register_file_0_conduit_end_export_vertex_c(),            // register_file_0_conduit_end.export_vertex_c
 	.register_file_0_conduit_end_export_vertex_a(vertex_a),            //                            .export_vertex_a
 	.register_file_0_conduit_end_export_vertex_b(),            //                            .export_vertex_b
-	.register_file_0_conduit_end_export_control_status_out(),  //                            .export_control_status_out
-	.register_file_0_conduit_end_export_back_colour_out(),     //                            .export_back_colour_out
-	.register_file_0_conduit_end_export_color_a_out(),              //                            .export_color_a_out
+	.register_file_0_conduit_end_export_control_status_out(control_status_out),  //                            .export_control_status_out
+	.register_file_0_conduit_end_export_back_colour_out(back_colour_out),     //                            .export_back_colour_out
+	.register_file_0_conduit_end_export_color_a_out(color_a),              //                            .export_color_a_out
 	.register_file_0_conduit_end_export_color_b_out(),              //                            .export_color_b_out
 	.register_file_0_conduit_end_export_color_c_out(),              //                            .export_color_c_out
 	.register_file_0_conduit_end_export_win_size_out(),             //                            .export_win_size_out
-	.register_file_0_conduit_end_export_control_status_load_fpga(0), //                            .export_control_status_load_fpga
-	.register_file_0_conduit_end_export_control_status_in(123),        //                            .export_control_status_in
+	.register_file_0_conduit_end_export_control_status_load_fpga(control_status_load_fpga), //                            .export_control_status_load_fpga
+	.register_file_0_conduit_end_export_control_status_in(control_status_in),        //                            .export_control_status_in
 
 	// I2C is not used.
 	.hps_0_i2c1_out_data(),
@@ -151,6 +151,16 @@ soc_system u0
 	.hps_0_i2c1_scl_in_clk()
 );
 
+wire [63:0] vertex_a;
+wire [63:0] color_a;
+wire [63:0] control_status_out;
+wire [63:0] control_status_in;
+wire [31:0] back_colour_out;
+wire control_status_load_fpga;
+
+wire fill_background_flag;
+wire clock_verticies_flag;
+wire [3:0] framebuffer_write_state;
 
 framebuffer_write writer
 (
@@ -165,17 +175,33 @@ framebuffer_write writer
 	.buffer(current_buffer),
 	.writing_done(),
 	.data_done(),
-	.fill_background(~keys[2]),
-	.backround_colour(32'h00FF0000),
+	.fill_background(fill_background_flag),
+	.backround_colour(back_colour_out),
 	 
-	.pixel_data({13'b0, slide_switches[9:7], 14'b0, slide_switches[6:5], 27'b0, slide_switches[4:0]}),
+	.pixel_data({4'b0, vertex_a[63:52], 4'b0, vertex_a[31:20], color_a[31:0]}),
 	.pixel_data_valid(1'b1),
 	.pixel_fifo_full(),
-	.pixel_data_clock(~keys[1])
+	.pixel_data_clock(clock_verticies_flag || ~keys[1]),
+	.state(framebuffer_write_state)
 );
 
 
-//SDRAM_test memes
+rush3d_controller controller
+(
+	.clock(clock_50),
+	.reset_n(keys[0]),
+	
+	.control_status_in(control_status_out),
+	.control_status_out(control_status_in),
+	.control_status_load(control_status_load_fpga),
+	
+	.fill_background_flag(fill_background_flag),
+	.clock_verticies_flag(clock_verticies_flag),
+	
+	.framebuffer_write_state(framebuffer_write_state)
+);
+
+
 
 framebuffer_read reader
 (

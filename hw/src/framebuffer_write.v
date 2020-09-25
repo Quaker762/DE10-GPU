@@ -24,7 +24,9 @@ module framebuffer_write(
 	 input wire [63:0] pixel_data,
 	 input wire pixel_data_valid,
 	 output wire pixel_fifo_full,
-	 input wire pixel_data_clock
+	 input wire pixel_data_clock,
+	 
+	 output [3:0] state
 
 );
 
@@ -49,9 +51,11 @@ parameter TEST_DATA_B = 64'hFF0F_00FF_FF0F_FF00;
 
 // State Machine Variables
 parameter STATE_WAIT = 4'h0;
-parameter STATE_WRITE = 4'h2;
-parameter STATE_PURGE = 4'h3;
-parameter STATE_BACKGROUND = 4'h4;
+parameter STATE_WRITE = 4'h1;
+parameter STATE_PURGE = 4'h2;
+parameter STATE_BACKGROUND = 4'h3;
+
+assign state = current_state;
 
 // Current- and next-state varaibles.
 reg [3:0] current_state = STATE_WAIT;
