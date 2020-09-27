@@ -36,6 +36,8 @@ void glClear(GLbitfield mask)
         uint64_t color = r << 16 | g << 8 | b;
         rush3d_register_write(BACK_COLOR_REGISTER, color);
         rush3d_register_write(CONTROL_STATUS_REGISTER, CLEAR_FRAMEBUFFER);
+        while(static_cast<volatile uint64_t>(CONTROL_STATUS_REGISTER) & CLEAR_FRAMEBUFFER)
+            ;
 #endif
     }
     else
@@ -82,6 +84,6 @@ void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
     UNUSED_VAR(x);
     UNUSED_VAR(y);
 
-    rush3d_register_write(WIN_SIZE, (static_cast<uint64_t>(width) << 32) | height);
+    rush3d_register_write(WIN_SIZE_REGISTER, (static_cast<uint64_t>(width) << 32) | height);
 #endif
 }

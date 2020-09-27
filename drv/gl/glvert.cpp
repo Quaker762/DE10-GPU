@@ -388,9 +388,12 @@ void glEnd()
             uint64_t vertexA = (static_cast<uint64_t>(vertexAx) << 32) | vertexAy;
             uint64_t vertexB = (static_cast<uint64_t>(vertexBx) << 32) | vertexBy;
             uint64_t vertexC = (static_cast<uint64_t>(vertexCx) << 32) | vertexCy;
-            rush3d_register_write(VERTEX_A, vertexA);
-            rush3d_register_write(VERTEX_B, vertexB);
-            rush3d_register_write(VERTEX_C, vertexC);
+            rush3d_register_write(VERTEX_A_REGISTER, vertexA);
+            rush3d_register_write(VERTEX_B_REGISTER, vertexB);
+            rush3d_register_write(VERTEX_C_REGISTER, vertexC);
+            rush3d_register_write(CONTROL_STATUS_REGISTER, VERTEX_DATA_VALID);
+            while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER)) & VERTEX_DATA_VALID)
+                ;
 #endif
         }
 

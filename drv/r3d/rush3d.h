@@ -23,7 +23,7 @@
 #define WIN_SIZE_REGISTER       0x40
 
 #define VERTEX_DATA_VALID 0x1
-#define CLEAR_FRAMEBUFFER 0x2
+#define CLEAR_FRAMEBUFFER 0x10
 
 typedef struct
 {
@@ -50,4 +50,5 @@ int rush3d_card_init();
 void rush3d_shutdown();
 void rush3d_register_write(uint32_t offset, uint64_t data);
 uint64_t rush3d_register_read(uint32_t offset);
+void rush3d_screenshot();
 }
