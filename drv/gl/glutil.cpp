@@ -25,9 +25,9 @@ void glClear(GLbitfield mask)
 {
     if(mask & GL_COLOR_BUFFER_BIT)
     {
-        uint8_t r = static_cast<uint8_t>(floor(g_gl_state->clear_color.r));
-        uint8_t g = static_cast<uint8_t>(floor(g_gl_state->clear_color.g));
-        uint8_t b = static_cast<uint8_t>(floor(g_gl_state->clear_color.b));
+        uint8_t r = static_cast<uint8_t>(floor(g_gl_state->clear_color.r * 255.0f));
+        uint8_t g = static_cast<uint8_t>(floor(g_gl_state->clear_color.g * 255.0f));
+        uint8_t b = static_cast<uint8_t>(floor(g_gl_state->clear_color.b * 255.0f));
 
 #ifdef USE_SIM
         g_card.write_register(RegisterOffsets::fbCOLOR, (r << 16) | (g << 8) | b);
