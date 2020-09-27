@@ -25,9 +25,9 @@ void glClear(GLbitfield mask)
 {
     if(mask & GL_COLOR_BUFFER_BIT)
     {
-        uint8_t r = floor(g_gl_state->clear_color.r * 255.0);
-        uint8_t g = floor(g_gl_state->clear_color.g * 255.0);
-        uint8_t b = floor(g_gl_state->clear_color.b * 255.0);
+        uint8_t r = static_cast<uint8_t>(floor(g_gl_state->clear_color.r));
+        uint8_t g = static_cast<uint8_t>(floor(g_gl_state->clear_color.g));
+        uint8_t b = static_cast<uint8_t>(floor(g_gl_state->clear_color.b));
 
 #ifdef USE_SIM
         g_card.write_register(RegisterOffsets::fbCOLOR, (r << 16) | (g << 8) | b);
@@ -36,7 +36,7 @@ void glClear(GLbitfield mask)
         uint64_t color = r << 16 | g << 8 | b;
         rush3d_register_write(BACK_COLOR_REGISTER, color);
         rush3d_register_write(CONTROL_STATUS_REGISTER, CLEAR_FRAMEBUFFER);
-        while(static_cast<volatile uint64_t>(CONTROL_STATUS_REGISTER) & CLEAR_FRAMEBUFFER)
+        while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER)) & CLEAR_FRAMEBUFFER)
             ;
 #endif
     }
