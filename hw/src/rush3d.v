@@ -132,14 +132,14 @@ soc_system u0
 	.hps_0_f2h_sdram1_data_write(sdram1_write),	
 		
 	
-	.register_file_0_conduit_end_export_vertex_c(),            // register_file_0_conduit_end.export_vertex_c
+	.register_file_0_conduit_end_export_vertex_c(vertex_c),            // register_file_0_conduit_end.export_vertex_c
 	.register_file_0_conduit_end_export_vertex_a(vertex_a),            //                            .export_vertex_a
-	.register_file_0_conduit_end_export_vertex_b(),            //                            .export_vertex_b
+	.register_file_0_conduit_end_export_vertex_b(vertex_b),            //                            .export_vertex_b
 	.register_file_0_conduit_end_export_control_status_out(control_status_out),  //                            .export_control_status_out
 	.register_file_0_conduit_end_export_back_colour_out(back_colour_out),     //                            .export_back_colour_out
 	.register_file_0_conduit_end_export_color_a_out(color_a),              //                            .export_color_a_out
-	.register_file_0_conduit_end_export_color_b_out(),              //                            .export_color_b_out
-	.register_file_0_conduit_end_export_color_c_out(),              //                            .export_color_c_out
+	.register_file_0_conduit_end_export_color_b_out(color_b),              //                            .export_color_b_out
+	.register_file_0_conduit_end_export_color_c_out(color_c),              //                            .export_color_c_out
 	.register_file_0_conduit_end_export_win_size_out(),             //                            .export_win_size_out
 	.register_file_0_conduit_end_export_control_status_load_fpga(control_status_load_fpga), //                            .export_control_status_load_fpga
 	.register_file_0_conduit_end_export_control_status_in(control_status_in),        //                            .export_control_status_in
@@ -152,11 +152,17 @@ soc_system u0
 );
 
 wire [63:0] vertex_a;
-wire [63:0] color_a;
+wire [63:0] vertex_b;
+wire [63:0] vertex_c;
+wire [31:0] color_a;
+wire [31:0] color_b;
+wire [31:0] color_c;
 wire [63:0] control_status_out;
 wire [63:0] control_status_in;
 wire [31:0] back_colour_out;
 wire control_status_load_fpga;
+wire pixel_data_valid;
+wire [63:0] rasterised_pixel_data;
 
 wire fill_background_flag;
 wire clock_verticies_flag;
@@ -173,18 +179,32 @@ framebuffer_write writer
 	.byteenable(sdram1_byteenable),
 	.write(sdram1_write),
 	.buffer(current_buffer),
-	.writing_done(),
-	.data_done(),
 	.fill_background(fill_background_flag),
 	.backround_colour(back_colour_out),
 	 
-	.pixel_data({4'b0, vertex_a[63:52], 4'b0, vertex_a[31:20], color_a[31:0]}),
-	.pixel_data_valid(1'b1),
+	//.pixel_data({4'b0, vertex_a[63:52], 4'b0, vertex_a[31:20], color_a[31:0]}),
+	.pixel_data(rasterised_pixel_data),
+	.pixel_data_valid(pixel_data_valid),
 	.pixel_fifo_full(),
-	.pixel_data_clock(clock_verticies_flag || ~keys[1]),
+	//.pixel_data_clock(clock_verticies_flag || ~keys[1]), /// ??????
+	.pixel_data_clock(clock_50),
 	.state(framebuffer_write_state)
 );
 
+rasteriser raster
+(
+	.clock(clock_50),
+	.reset_n(keys[0]),
+	
+	.vertex_data({vertex_a, vertex_b, vertex_c, color_a, color_b, color_c}),
+	.vertex_data_valid(clock_verticies_flag),
+	.vertex_data_fifo_full(),
+	.vertex_data_clock(clock_50),
+	 
+	.pixel_data(rasterised_pixel_data),
+   .pixel_data_valid(pixel_data_valid),
+	.pixel_fifo_full()
+);
 
 rush3d_controller controller
 (
@@ -200,8 +220,6 @@ rush3d_controller controller
 	
 	.framebuffer_write_state(framebuffer_write_state)
 );
-
-
 
 framebuffer_read reader
 (

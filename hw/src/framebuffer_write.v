@@ -16,8 +16,6 @@ module framebuffer_write(
     output reg write,
 	 
 	 input wire buffer,
-	 output wire writing_done,
-	 input wire data_done,
 	 input wire fill_background,
 	 input wire [31:0] backround_colour,
 	 

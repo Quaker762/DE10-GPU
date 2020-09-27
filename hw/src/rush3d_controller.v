@@ -32,6 +32,7 @@ always @(posedge(clock), negedge(reset_n)) begin
 		control_status_out <= 0;
 		control_status_load <= 0;
 		fill_background_flag <= 0;
+		clock_verticies_flag <= 0;
 		current_state <= STATE_IDLE;
 	end else begin
 		case(current_state)
