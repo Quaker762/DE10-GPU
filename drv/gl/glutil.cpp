@@ -34,7 +34,8 @@ void glClear(GLbitfield mask)
         g_card.write_register(RegisterOffsets::fbFILL, 1); // Execute fill command
 #else
         uint64_t color = r << 16 | g << 8 | b;
-        rush3d_register_write(BACK_COLOR, color);
+        rush3d_register_write(BACK_COLOR_REGISTER, color);
+        rush3d_register_write(CONTROL_STATUS_REGISTER, CLEAR_FRAMEBUFFER);
 #endif
     }
     else

@@ -12,15 +12,18 @@
 
 #include <cstdint>
 
-#define VERTEX_A       0x00
-#define VERTEX_B       0x08
-#define VERTEX_C       0x10
-#define COLOR_A        0x18
-#define COLOR_B        0x20
-#define COLOR_C        0x28
-#define BACK_COLOR     0x30
-#define CONTROL_STATUS 0x38
-#define WIN_SIZE       0x40
+#define VERTEX_A_REGISTER       0x00
+#define VERTEX_B_REGISTER       0x08
+#define VERTEX_C_REGISTER       0x10
+#define COLOR_A_REGISTER        0x18
+#define COLOR_B_REGISTER        0x20
+#define COLOR_C_REGISTER        0x28
+#define BACK_COLOR_REGISTER     0x30
+#define CONTROL_STATUS_REGISTER 0x38
+#define WIN_SIZE_REGISTER       0x40
+
+#define VERTEX_DATA_VALID 0x1
+#define CLEAR_FRAMEBUFFER 0x2
 
 typedef struct
 {
