@@ -424,10 +424,10 @@ void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 
 void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-#ifdef USE_SIM
-    Vec4 vec = { x, y, z, 0 };
-#else
+#ifdef USE_NEON
     Vec4 vec = { { x, y, z, 0 } };
+#else
+    Vec4 vec = { x, y, z, 0 };
 #endif
 
     Mat4 rotation_mat;
