@@ -24,6 +24,7 @@
 
 #define VERTEX_DATA_VALID 0x1
 #define CLEAR_FRAMEBUFFER 0x10
+#define SWAP_FRAMEBUFFER  0x100
 
 typedef struct
 {
@@ -51,4 +52,5 @@ void rush3d_shutdown();
 void rush3d_register_write(uint32_t offset, uint64_t data);
 uint64_t rush3d_register_read(uint32_t offset);
 void rush3d_screenshot();
+void rush3d_swap_buffers();
 }
