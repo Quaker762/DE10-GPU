@@ -46,7 +46,7 @@ module framewriter_fifo (
 	wrreq,
 	q,
 	rdempty,
-	wrfull);
+	wrusedw);
 
 	input	  aclr;
 	input	[63:0]  data;
@@ -56,7 +56,7 @@ module framewriter_fifo (
 	input	  wrreq;
 	output	[63:0]  q;
 	output	  rdempty;
-	output	  wrfull;
+	output	[8:0]  wrusedw;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
@@ -67,10 +67,10 @@ module framewriter_fifo (
 
 	wire [63:0] sub_wire0;
 	wire  sub_wire1;
-	wire  sub_wire2;
+	wire [8:0] sub_wire2;
 	wire [63:0] q = sub_wire0[63:0];
 	wire  rdempty = sub_wire1;
-	wire  wrfull = sub_wire2;
+	wire [8:0] wrusedw = sub_wire2[8:0];
 
 	dcfifo	dcfifo_component (
 				.aclr (aclr),
@@ -81,19 +81,19 @@ module framewriter_fifo (
 				.wrreq (wrreq),
 				.q (sub_wire0),
 				.rdempty (sub_wire1),
-				.wrfull (sub_wire2),
+				.wrusedw (sub_wire2),
 				.eccstatus (),
 				.rdfull (),
 				.rdusedw (),
 				.wrempty (),
-				.wrusedw ());
+				.wrfull ());
 	defparam
 		dcfifo_component.intended_device_family = "Cyclone V",
-		dcfifo_component.lpm_numwords = 128,
+		dcfifo_component.lpm_numwords = 512,
 		dcfifo_component.lpm_showahead = "ON",
 		dcfifo_component.lpm_type = "dcfifo",
 		dcfifo_component.lpm_width = 64,
-		dcfifo_component.lpm_widthu = 7,
+		dcfifo_component.lpm_widthu = 9,
 		dcfifo_component.overflow_checking = "ON",
 		dcfifo_component.rdsync_delaypipe = 4,
 		dcfifo_component.read_aclr_synch = "OFF",
@@ -114,7 +114,7 @@ endmodule
 // Retrieval info: PRIVATE: AlmostFullThr NUMERIC "-1"
 // Retrieval info: PRIVATE: CLOCKS_ARE_SYNCHRONIZED NUMERIC "0"
 // Retrieval info: PRIVATE: Clock NUMERIC "4"
-// Retrieval info: PRIVATE: Depth NUMERIC "128"
+// Retrieval info: PRIVATE: Depth NUMERIC "512"
 // Retrieval info: PRIVATE: Empty NUMERIC "1"
 // Retrieval info: PRIVATE: Full NUMERIC "1"
 // Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
@@ -138,15 +138,15 @@ endmodule
 // Retrieval info: PRIVATE: sc_aclr NUMERIC "0"
 // Retrieval info: PRIVATE: sc_sclr NUMERIC "0"
 // Retrieval info: PRIVATE: wsEmpty NUMERIC "0"
-// Retrieval info: PRIVATE: wsFull NUMERIC "1"
-// Retrieval info: PRIVATE: wsUsedW NUMERIC "0"
+// Retrieval info: PRIVATE: wsFull NUMERIC "0"
+// Retrieval info: PRIVATE: wsUsedW NUMERIC "1"
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
-// Retrieval info: CONSTANT: LPM_NUMWORDS NUMERIC "128"
+// Retrieval info: CONSTANT: LPM_NUMWORDS NUMERIC "512"
 // Retrieval info: CONSTANT: LPM_SHOWAHEAD STRING "ON"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "dcfifo"
 // Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "64"
-// Retrieval info: CONSTANT: LPM_WIDTHU NUMERIC "7"
+// Retrieval info: CONSTANT: LPM_WIDTHU NUMERIC "9"
 // Retrieval info: CONSTANT: OVERFLOW_CHECKING STRING "ON"
 // Retrieval info: CONSTANT: RDSYNC_DELAYPIPE NUMERIC "4"
 // Retrieval info: CONSTANT: READ_ACLR_SYNCH STRING "OFF"
@@ -161,8 +161,8 @@ endmodule
 // Retrieval info: USED_PORT: rdempty 0 0 0 0 OUTPUT NODEFVAL "rdempty"
 // Retrieval info: USED_PORT: rdreq 0 0 0 0 INPUT NODEFVAL "rdreq"
 // Retrieval info: USED_PORT: wrclk 0 0 0 0 INPUT NODEFVAL "wrclk"
-// Retrieval info: USED_PORT: wrfull 0 0 0 0 OUTPUT NODEFVAL "wrfull"
 // Retrieval info: USED_PORT: wrreq 0 0 0 0 INPUT NODEFVAL "wrreq"
+// Retrieval info: USED_PORT: wrusedw 0 0 9 0 OUTPUT NODEFVAL "wrusedw[8..0]"
 // Retrieval info: CONNECT: @aclr 0 0 0 0 aclr 0 0 0 0
 // Retrieval info: CONNECT: @data 0 0 64 0 data 0 0 64 0
 // Retrieval info: CONNECT: @rdclk 0 0 0 0 rdclk 0 0 0 0
@@ -171,7 +171,7 @@ endmodule
 // Retrieval info: CONNECT: @wrreq 0 0 0 0 wrreq 0 0 0 0
 // Retrieval info: CONNECT: q 0 0 64 0 @q 0 0 64 0
 // Retrieval info: CONNECT: rdempty 0 0 0 0 @rdempty 0 0 0 0
-// Retrieval info: CONNECT: wrfull 0 0 0 0 @wrfull 0 0 0 0
+// Retrieval info: CONNECT: wrusedw 0 0 9 0 @wrusedw 0 0 9 0
 // Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo.v TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo.inc FALSE
 // Retrieval info: GEN_FILE: TYPE_NORMAL framewriter_fifo.cmp FALSE

@@ -165,6 +165,8 @@ wire [63:0] rasterised_pixel_data;
 
 wire vertex_data_fifo_empty;
 wire pixel_fifo_empty;
+wire vertex_data_fifo_full;
+wire pixel_fifo_full;
 
 wire fill_background_flag;
 wire clock_verticies_flag;
@@ -187,7 +189,7 @@ framebuffer_write writer
 	//.pixel_data({4'b0, vertex_a[63:52], 4'b0, vertex_a[31:20], color_a[31:0]}),
 	.pixel_data(rasterised_pixel_data),
 	.pixel_data_valid(pixel_data_valid),
-	.pixel_fifo_full(),
+	.pixel_fifo_full(pixel_fifo_full),
 	.pixel_fifo_empty(pixel_fifo_empty),
 	//.pixel_data_clock(clock_verticies_flag || ~keys[1]), /// ??????
 	.pixel_data_clock(clock_50),
@@ -207,7 +209,7 @@ rasteriser raster
 	 
 	.pixel_data(rasterised_pixel_data),
    .pixel_data_valid(pixel_data_valid),
-	.pixel_fifo_full()
+	.pixel_fifo_full(pixel_fifo_full)
 );
 
 rush3d_controller controller
@@ -230,6 +232,25 @@ rush3d_controller controller
 	.vsync(~sync)
 );
 
+/*
+draw_line bresenham
+(
+	.clock(~keys[1]),
+	.reset_n(keys[0]),
+	
+	.x1(12'd40),
+	.x2(12'd70),
+	.y1(12'd30),
+	.y2(12'd50),
+	
+	.draw(1),
+	
+	.x(),
+	.y(),
+	.valid(),
+	.done()
+);
+*/
 framebuffer_read reader
 (
 	.clock(clock_50),

@@ -73,6 +73,10 @@ wire [31:0] pixel_colour;
 //assign address = (base_address + pixel_x_address + (pixel_y_address * WIDTH_OFFSET));
 //assign address = base_address;
 
+wire [8:0] fifo_count;
+
+assign pixel_fifo_full = fifo_count[8];
+
 framewriter_fifo pixels(
 	.aclr(clear_fifo),
 	.data(pixel_data),
@@ -82,7 +86,7 @@ framewriter_fifo pixels(
 	.wrreq(pixel_data_valid),
 	.q({pixel_x_address, pixel_y_address, pixel_colour}),
 	.rdempty(pixel_fifo_empty),
-	.wrfull(pixel_fifo_full)
+	.wrusedw(fifo_count)
 );
 
 always @(posedge(clock), negedge(reset_n)) begin

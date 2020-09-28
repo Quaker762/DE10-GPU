@@ -9,8 +9,8 @@ module rasteriser
 	output vertex_data_empty,
 	input vertex_data_clock,
 	
-	output reg [63:0] pixel_data,
-   output reg pixel_data_valid,
+	output wire [63:0] pixel_data,
+   output wire pixel_data_valid,
 	input pixel_fifo_full
 	 
 
@@ -48,42 +48,94 @@ rasteriser_fifo vertex_data_fifo(
 	.wrfull(vertex_data_full)
 );
 
+assign pixel_data[31:0] = vertex_a_colour;
+
+reg draw_line;
+wire draw_done;
+reg [11:0] x1, x2, y1, y2;
+
+draw_line bresenham
+(
+	.clock(clock),
+	.reset_n(reset_n),
+	
+	.x1(x1),
+	.x2(x2),
+	.y1(y1),
+	.y2(y2),
+	
+	.draw(draw_line),
+	.stall(pixel_fifo_full),
+	
+	.x(pixel_data[63:48]),
+	.y(pixel_data[47:32]),
+	.valid(pixel_data_valid),
+	.done(draw_done)
+);
+
 always @(posedge(clock), negedge(reset_n)) begin
 	if(!reset_n) begin
 		clear_fifo <= 1;
 		vertex_data_rasterised <= 0;
-		pixel_data_valid <= 0;
-		pixel_data <= 0;
+//		pixel_data_valid <= 0;
+//		pixel_data <= 0;
+		draw_line <= 0;
 		current_state <= STATE_WAIT;
 	end else begin
 		case(current_state)
 			STATE_WAIT: begin
 				if(!vertex_data_empty) begin
+					draw_line <= 1;
 					current_state <= STATE_A;
+					x1 <= vertex_a_x[31:20];
+					x2 <= vertex_b_x[31:20];
+					y1 <= vertex_a_y[31:20];
+					y2 <= vertex_b_y[31:20];
 				end
 				
 				clear_fifo <= 0;
-				pixel_data_valid <= 0;
+	//			pixel_data_valid <= 0;
 				vertex_data_rasterised <= 0;
+				//draw_line <= 0;
 			end
 			
 			STATE_A: begin
-				pixel_data <= {4'b0, vertex_a_x[31:20], 4'b0, vertex_a_y[31:20], vertex_a_colour};
-				pixel_data_valid <= 1;
-				current_state <= STATE_B;
+			//	pixel_data <= {4'b0, vertex_a_x[31:20], 4'b0, vertex_a_y[31:20], vertex_a_colour};
+		//		pixel_data_valid <= 1;
+				draw_line <= 0;
+				if(draw_done) begin
+					draw_line <= 1;
+					current_state <= STATE_B;
+					x1 <= vertex_b_x[31:20];
+					x2 <= vertex_c_x[31:20];
+					y1 <= vertex_b_y[31:20];
+					y2 <= vertex_c_y[31:20];
+				end
 			end
 			
 			STATE_B: begin
-				pixel_data <= {4'b0, vertex_b_x[31:20], 4'b0, vertex_b_y[31:20], vertex_b_colour};
-				pixel_data_valid <= 1;
-				current_state <= STATE_C;
+	//			pixel_data <= {4'b0, vertex_b_x[31:20], 4'b0, vertex_b_y[31:20], vertex_b_colour};
+		//		pixel_data_valid <= 1;
+				draw_line <= 0;
+				if(draw_done) begin
+					draw_line <= 1;
+					current_state <= STATE_C;
+					x1 <= vertex_c_x[31:20];
+					x2 <= vertex_a_x[31:20];
+					y1 <= vertex_c_y[31:20];
+					y2 <= vertex_a_y[31:20];
+				end
 			end
 			
 			STATE_C: begin
-				pixel_data <= {4'b0, vertex_c_x[31:20], 4'b0, vertex_c_y[31:20], vertex_c_colour};
-				pixel_data_valid <= 1;
-				vertex_data_rasterised <= 1;
-				current_state <= STATE_WAIT;
+		//		pixel_data <= {4'b0, vertex_c_x[31:20], 4'b0, vertex_c_y[31:20], vertex_c_colour};
+		//		pixel_data_valid <= 1;
+				
+				draw_line <= 0;
+				if(draw_done) begin
+					vertex_data_rasterised <= 1;
+					current_state <= STATE_WAIT;
+				end
 			end
 		endcase
 	end
