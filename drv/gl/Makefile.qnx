@@ -22,7 +22,7 @@ CXXFLAGS += -I../
 CXXFLAGS += -I../r3d/
 LD=$(CXX)
 
-OUTPUT=build/libgl.a
+OUTPUT=build/libGL.a
 
 OUTPUT: $(CXX_OBJS)
 	@mkdir -p ./build
