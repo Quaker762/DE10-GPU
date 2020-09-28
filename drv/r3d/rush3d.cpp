@@ -52,7 +52,7 @@ void rush3d_screenshot()
 {
     // Let's map the framebuffer to a pointer that we can read..
     std::vector<uint32_t> data;
-    uintptr_t framebuffer = mmap_device_io(FRAMEBUFFER_SIZE, 0x38000000);
+    uintptr_t framebuffer = mmap_device_io(FRAMEBUFFER_SIZE + 1, 0x38000000);
     if(framebuffer == MAP_DEVICE_FAILED)
     {
         fputs("rush3d_screenshot: failed to mape framebuffer!\n", stderr);
@@ -60,13 +60,23 @@ void rush3d_screenshot()
     }
 
     // Hahahaha, pixel loop go brrrrrrr
-    for(int i = 0; i < FRAMEBUFFER_SIZE / 4; i += 4)
+    size_t count = FRAMEBUFFER_SIZE / 4;
+    volatile uint32_t* fb_ptr = reinterpret_cast<volatile uint32_t*>(framebuffer);
+    while(count)
     {
-        uint32_t pixel = *(volatile uint32_t*)(framebuffer + i);
+        uint32_t pixel = *fb_ptr++;
         pixel |= 0xff000000; // Make sure it's not transparent!
         data.push_back(pixel);
+        count--;
     }
 
     tga_write_file(data);
     munmap_device_io(framebuffer, FRAMEBUFFER_SIZE);
+}
+
+void rush3d_swap_buffers()
+{
+    rush3d_register_write(CONTROL_STATUS_REGISTER, SWAP_FRAMEBUFFER);
+    while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER) & SWAP_FRAMEBUFFER))
+        ;
 }

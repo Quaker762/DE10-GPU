@@ -10,6 +10,7 @@
  */
 #include "tga.h"
 
+#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
@@ -35,6 +36,6 @@ void tga_write_file(std::vector<uint32_t>& data)
     header.height = 480;
 
     file.write(reinterpret_cast<const char*>(&header), sizeof(header));
-    file.write(reinterpret_cast<const char*>(data.data()), static_cast<std::streamsize>(data.size()));
+    file.write(reinterpret_cast<const char*>(data.data()), static_cast<std::streamsize>(data.size() * 4));
     file.close();
 }
