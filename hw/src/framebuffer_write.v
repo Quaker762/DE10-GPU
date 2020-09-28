@@ -22,6 +22,7 @@ module framebuffer_write(
 	 input wire [63:0] pixel_data,
 	 input wire pixel_data_valid,
 	 output wire pixel_fifo_full,
+	 output wire pixel_fifo_empty,
 	 input wire pixel_data_clock,
 	 
 	 output [3:0] state
@@ -62,7 +63,6 @@ reg [28:0] current_pixel = 30'h0;
 
 reg clear_fifo;
 reg pixel_written;
-wire pixel_fifo_empty;
 
 wire [15:0] pixel_x_address;
 wire [15:0] pixel_y_address;
@@ -110,7 +110,7 @@ always @(posedge(clock), negedge(reset_n)) begin
 				clear_fifo <= 1'b0;
 				pixel_written <= 1'b0;
 			
-				if(buffer) begin
+				if(!buffer) begin
 					base_address <= FRAMEBUFFER1_START;
 				end else begin
 					base_address <= FRAMEBUFFER2_START;

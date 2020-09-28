@@ -6,6 +6,7 @@ module rasteriser
 	input [287:0] vertex_data,
 	input vertex_data_valid,
 	output vertex_data_full,
+	output vertex_data_empty,
 	input vertex_data_clock,
 	
 	output reg [63:0] pixel_data,
@@ -17,7 +18,6 @@ module rasteriser
 
 reg clear_fifo;
 reg vertex_data_rasterised;
-wire vertex_data_empty;
 
 wire [31:0] vertex_a_x;
 wire [31:0] vertex_a_y;

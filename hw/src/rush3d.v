@@ -65,7 +65,6 @@ wire pixel_clock;
 wire display_active;
 wire sync;
 wire current_buffer;
-assign current_buffer= keys[3];
 assign vga_vs = sync;
 assign leds = slide_switches;
 
@@ -164,6 +163,9 @@ wire control_status_load_fpga;
 wire pixel_data_valid;
 wire [63:0] rasterised_pixel_data;
 
+wire vertex_data_fifo_empty;
+wire pixel_fifo_empty;
+
 wire fill_background_flag;
 wire clock_verticies_flag;
 wire [3:0] framebuffer_write_state;
@@ -186,6 +188,7 @@ framebuffer_write writer
 	.pixel_data(rasterised_pixel_data),
 	.pixel_data_valid(pixel_data_valid),
 	.pixel_fifo_full(),
+	.pixel_fifo_empty(pixel_fifo_empty),
 	//.pixel_data_clock(clock_verticies_flag || ~keys[1]), /// ??????
 	.pixel_data_clock(clock_50),
 	.state(framebuffer_write_state)
@@ -198,7 +201,8 @@ rasteriser raster
 	
 	.vertex_data({vertex_a, vertex_b, vertex_c, color_a, color_b, color_c}),
 	.vertex_data_valid(clock_verticies_flag),
-	.vertex_data_fifo_full(),
+	.vertex_data_full(),
+	.vertex_data_empty(vertex_data_fifo_empty),
 	.vertex_data_clock(clock_50),
 	 
 	.pixel_data(rasterised_pixel_data),
@@ -217,8 +221,13 @@ rush3d_controller controller
 	
 	.fill_background_flag(fill_background_flag),
 	.clock_verticies_flag(clock_verticies_flag),
+	.current_buffer_flag(current_buffer),
 	
-	.framebuffer_write_state(framebuffer_write_state)
+	.framebuffer_write_state(framebuffer_write_state),
+	
+	.pixel_fifo_empty(pixel_fifo_empty),
+	.vertex_data_fifo_empty(vertex_data_fifo_empty),
+	.vsync(~sync)
 );
 
 framebuffer_read reader
