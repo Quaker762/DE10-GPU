@@ -13,10 +13,14 @@
 #include "rush3d.h"
 
 #include "altera.h"
+#include "tga.h"
 
 #include <cstdio>
 #include <cstdlib>
+#include <sys/mman.h>
 #include <sys/neutrino.h>
+
+#define FRAMEBUFFER_SIZE 640 * 480 * 4
 
 /**
  * Initialise the Rush3D driver (and any global state we need)
@@ -42,4 +46,27 @@ void rush3d_register_write(uint32_t offset, uint64_t data)
 uint64_t rush3d_register_read(uint32_t offset)
 {
     return AlteraBridge::the().read(offset);
+}
+
+void rush3d_screenshot()
+{
+    // Let's map the framebuffer to a pointer that we can read..
+    std::vector<uint32_t> data;
+    uintptr_t framebuffer = mmap_device_io(FRAMEBUFFER_SIZE, 0x38000000);
+    if(framebuffer == MAP_DEVICE_FAILED)
+    {
+        fputs("rush3d_screenshot: failed to mape framebuffer!\n", stderr);
+        abort();
+    }
+
+    // Hahahaha, pixel loop go brrrrrrr
+    for(int i = 0; i < FRAMEBUFFER_SIZE / 4; i += 4)
+    {
+        uint32_t pixel = *(volatile uint32_t*)(framebuffer + i);
+        pixel |= 0xff000000; // Make sure it's not transparent!
+        data.push_back(pixel);
+    }
+
+    tga_write_file(data);
+    munmap_device_io(framebuffer, FRAMEBUFFER_SIZE);
 }

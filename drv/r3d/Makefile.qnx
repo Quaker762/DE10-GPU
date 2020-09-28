@@ -3,6 +3,7 @@
 CXX_OBJS = \
 	altera.o \
 	rush3d.o \
+	tga.o \
 
 export QNX_HOST=$(HOME)/qnx700/host/linux/x86_64/
 export QNX_TARGET=$(HOME)/qnx700/target/qnx7/
