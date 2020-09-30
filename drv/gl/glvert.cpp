@@ -141,6 +141,10 @@ static void clip_triangle_against_frustum(std::vector<Vec4>& in_vec)
         in_vec = clipped_polygon;
         clipped_polygon.clear();
 
+        // Prevent a crash from .at() undeflow
+        if(in_vec.size() == 0)
+            return;
+
         Vec4 prev_vec = in_vec.at(in_vec.size() - 1);
 
         for(size_t j = 0; j < in_vec.size(); j++) // Perform this for each vertex
