@@ -475,3 +475,38 @@ void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
         g_gl_state->projection_matrix = g_gl_state->projection_matrix * rotation_mat;
     }
 }
+
+void glTranslatef(GLfloat x, GLfloat y, GLfloat z)
+{
+    Mat4 translation_mat;
+
+    translation_mat(0, 0, 1.0f);
+    translation_mat(0, 1, 0.0f);
+    translation_mat(0, 2, 0.0f);
+    translation_mat(0, 3, 0.0f);
+
+    translation_mat(1, 0, 0.0f);
+    translation_mat(1, 1, 1.0f);
+    translation_mat(1, 2, 0.0f);
+    translation_mat(1, 3, 0.0f);
+
+    translation_mat(2, 0, 0.0f);
+    translation_mat(2, 1, 0.0f);
+    translation_mat(2, 2, 1.0f);
+    translation_mat(2, 3, 0.0f);
+
+    translation_mat(3, 0, x);
+    translation_mat(3, 1, y);
+    translation_mat(3, 2, z);
+    translation_mat(3, 3, 1.0f);
+
+    // Phew...
+    if(g_gl_state->curr_matrix_mode == GL_MODELVIEW)
+    {
+        g_gl_state->model_view_matrix = g_gl_state->model_view_matrix * translation_mat;
+    }
+    else if(g_gl_state->curr_matrix_mode == GL_PROJECTION)
+    {
+        g_gl_state->projection_matrix = g_gl_state->projection_matrix * translation_mat;
+    }
+}
