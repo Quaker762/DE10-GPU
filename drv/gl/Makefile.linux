@@ -14,7 +14,7 @@ LD=$(CXX)
 
 CXXFLAGS += -std=c++17 -O0 -g3
 CXXFLAGS += -Wall -Wextra
-CXXFLAGS += -DDEBUG
+CXXFLAGS += -DDEBUG -DUSE_SIM
 CXXFLAGS += -I./
 CXXFLAGS += -I../
 CXXFLAGS += -I../r3d/

@@ -13,7 +13,7 @@ export QNX_TARGET=$(HOME)/qnx700/target/qnx7/
 PLATFORM ?= armv7le
 CC=qcc -Vgcc_nto$(PLATFORM)
 CXX=qcc -lang-c++ -Vgcc_nto$(PLATFORM)
-CXXFLAGS += -std=c++14 -g -O0 -Wall -Wextra -DUSE_NEON -D_QNX_SOURCE
+CXXFLAGS += -std=c++14 -g -O0 -Wall -Wextra -D_QNX_SOURCE
 CXXFLAGS += -I.
 CXXFLAGS += -march=armv7-a -mcpu=cortex-a9 -mfpu=neon
 CXXFLAGS += -DDEBUG
