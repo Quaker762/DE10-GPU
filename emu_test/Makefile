@@ -5,7 +5,7 @@ CXX=g++
 LD=g++
 
 CXXFLAGS += -std=c++14 -Wall -Wextra -Wold-style-cast
-CXXFLAGS += -O0 -g3
+CXXFLAGS += -O0 -g3 -DUSE_SIM
 
 LDFLAGS += -L../chipsim/build
 LDFLAGS += -L../drv/gl/build
@@ -17,6 +17,7 @@ DEP = $(CXX_OBJS:%.o=%.d)
 PROGRAM=test
 
 PROGRAM : $(CXX_OBJS)
+	@cd ../drv/gl && make -f Makefile.linux clean
 	@cd ../drv/gl && make -f Makefile.linux
 	@cd ../chipsim && make
 	@echo "LD $@"; $(LD) $(CXX_OBJS) -o test $(LDFLAGS) -lSDL2

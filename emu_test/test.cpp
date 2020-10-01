@@ -12,6 +12,28 @@
 
 extern Rush3D g_card;
 
+#define NUM_CUBE_VERTICES 108
+
+static const GLfloat g_vertex_buffer_data[] = { -1.0f, -1.0f, -1.0f,                      // triangle 1 : begin
+                                                -1.0f, -1.0f, 1.0f,  -1.0f, 1.0f,  1.0f,  // triangle 1 : end
+                                                1.0f,  1.0f,  -1.0f,                      // triangle 2 : begin
+                                                -1.0f, -1.0f, -1.0f, -1.0f, 1.0f,  -1.0f, // triangle 2 : end
+                                                1.0f,  -1.0f, 1.0f,  -1.0f, -1.0f, -1.0f, 1.0f,  -1.0f, -1.0f, 1.0f,  1.0f,  -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 1.0f,  -1.0f, 1.0f,  -1.0f, 1.0f, -1.0f, 1.0f,
+                                                -1.0f, -1.0f, 1.0f,  -1.0f, -1.0f, -1.0f, -1.0f, 1.0f,  1.0f,  -1.0f, -1.0f, 1.0f,  1.0f, -1.0f, 1.0f,  1.0f,  1.0f,  1.0f,  1.0f,  -1.0f, -1.0f, 1.0f,  1.0f, -1.0f, 1.0f,  -1.0f, -1.0f, 1.0f, 1.0f,  1.0f,
+                                                1.0f,  -1.0f, 1.0f,  1.0f,  1.0f,  1.0f,  1.0f,  1.0f,  -1.0f, -1.0f, 1.0f,  -1.0f, 1.0f, 1.0f,  1.0f,  -1.0f, 1.0f,  -1.0f, -1.0f, 1.0f,  1.0f,  1.0f,  1.0f, 1.0f,  -1.0f, 1.0f,  1.0f,  1.0f, -1.0f, 1.0f };
+
+void draw_cube()
+{
+    for(int i = 0; i < NUM_CUBE_VERTICES; i += 9)
+    {
+        glBegin(GL_TRIANGLES);
+        glVertex3f(g_vertex_buffer_data[i], g_vertex_buffer_data[i + 1], g_vertex_buffer_data[i + 2]);
+        glVertex3f(g_vertex_buffer_data[i + 3], g_vertex_buffer_data[i + 4], g_vertex_buffer_data[i + 5]);
+        glVertex3f(g_vertex_buffer_data[i + 6], g_vertex_buffer_data[i + 7], g_vertex_buffer_data[i + 8]);
+        glEnd();
+    }
+}
+
 int main(int, char**)
 {
     SDL_Event event;
@@ -30,12 +52,13 @@ int main(int, char**)
     xmax = ymax * aspect;
     glFrustum(xmin, xmax, ymin, ymax, 4, 10);
 
-    GLfloat z = -7;
+    GLfloat z = -9.0f;
     GLfloat x_inc = 0.0f;
     GLfloat angle = 0.0f;
     glViewport(0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
     while(running)
     {
+        angle -= 0.1f;
         while(SDL_PollEvent(&event))
         {
             if(event.type == SDL_QUIT)
@@ -47,25 +70,11 @@ int main(int, char**)
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-        glBegin(GL_TRIANGLES);
+        glTranslatef(0.0f, 0.0f, 0.0f);
+        glRotatef(angle, 0.0f, 1.0f, 1.0f);
+        glTranslatef(0.0f, 0.0f, z);
+        draw_cube();
 
-        // Triangle 1
-        glColor3f(255.0f, 0.0f, 0.0f);
-        glVertex3f(-2.0f, 1.0f, z);
-        glColor3f(0.0f, 255.0f, 0.0f);
-        glVertex3f(-4.0f, -1.0f, z);
-        glColor3f(0.0f, 0.0f, 255.0f);
-        glVertex3f(2.0f, -1.0f, z);
-
-        // Triangle 2
-        /**
-        glVertex3f(-1.0f, -1.0f, -0.01f); // Top left corner (the origin)
-        glVertex3f(-1.0f, 1.0f, -0.01f);  // Bottom left corner
-        glVertex3f(1.0f, 1.0f, -0.01f);   // Bottom right corner
-        **/
-        glEnd();
-
-        // z += 0.001f;
         g_card.flip(); // THIS SHOULD BE A REGISTER WRITE!
         SDL_UpdateWindowSurface(const_cast<SDL_Window*>(g_card.monitor()));
     }

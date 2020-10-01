@@ -15,7 +15,7 @@
 #pragma once
 
 // Comment this shit out for the actual board!
-#define USE_SIM
+//#define USE_SIM
 #ifdef USE_SIM
     #include "../chipsim/rush3d/card.h"
 extern Rush3D g_card;
@@ -84,6 +84,7 @@ GLAPI void glMatrixMode(GLenum mode);
 GLAPI void glPushMatrix();
 GLAPI void glPopMatrix();
 GLAPI void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+GLAPI void glTranslatef(GLfloat x, GLfloat y, GLfloat z);
 GLAPI void glVertex3f(GLfloat x, GLfloat y, GLfloat z);
 GLAPI void glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
 
