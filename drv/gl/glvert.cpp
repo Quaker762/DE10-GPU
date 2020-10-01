@@ -267,8 +267,8 @@ void glEnd()
             }
 
             vertex.x = vec.x();
-            vertex.x = vec.x();
-            vertex.x = vec.x();
+            vertex.y = vec.y();
+            vertex.z = vec.z();
 
             if(vec_idx == 0)
             {
