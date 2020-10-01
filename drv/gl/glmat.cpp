@@ -104,7 +104,7 @@ void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLd
     a = (right + left) / (right - left);
     b = (top + bottom) / (top - bottom);
     c = -((farVal + nearVal) / (farVal - nearVal));
-    d = -((2 * (farVal + nearVal)) / (farVal - nearVal));
+    d = -((2 * (farVal * nearVal)) / (farVal - nearVal));
 
     frustum(0, 0, ((2 * nearVal) / (right - left)));
     frustum(1, 1, ((2 * nearVal) / (top - bottom)));
