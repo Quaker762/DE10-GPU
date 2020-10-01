@@ -9,7 +9,7 @@
  */
 #pragma once
 
-#include "gl.h"
+#include "GL/gl.h"
 
 typedef struct
 {

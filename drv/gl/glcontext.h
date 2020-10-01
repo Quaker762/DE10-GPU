@@ -19,7 +19,7 @@
  */
 #pragma once
 
-#include "gl.h"
+#include "GL/gl.h"
 #include "glstruct.h"
 #include "math/mat4.h"
 

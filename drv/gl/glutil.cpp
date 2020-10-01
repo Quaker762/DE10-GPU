@@ -7,9 +7,9 @@
  * Author: Jesse Buhagiar
  * Date: 4/4/2020
  */
+#include "GL/gl.h"
 #include "arm/fixed.h"
 #include "assertions.h"
-#include "gl.h"
 #include "glcontext.h"
 #include "log.hpp"
 #include "r3d/rush3d.h"

@@ -8,7 +8,7 @@
  * Date: 16/5/2020
  *
  */
-#include "gl.h"
+#include "GL/gl.h"
 #include "glcontext.h"
 
 #include <algorithm>
