@@ -395,8 +395,8 @@ void glEnd()
             rush3d_register_write(VERTEX_A_REGISTER, vertexA);
             rush3d_register_write(VERTEX_B_REGISTER, vertexB);
             rush3d_register_write(VERTEX_C_REGISTER, vertexC);
-            rush3d_register_write(CONTROL_STATUS_REGISTER, VERTEX_DATA_VALID);
-            while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER)) & VERTEX_DATA_VALID)
+            rush3d_register_write(CONTROL_STATUS_REGISTER_WRITE, VERTEX_DATA_VALID);
+            while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER_READ)) & VERTEX_DATA_VALID)
                 ;
 #endif
         }

@@ -35,8 +35,8 @@ void glClear(GLbitfield mask)
 #else
         uint64_t color = r << 16 | g << 8 | b;
         rush3d_register_write(BACK_COLOR_REGISTER, color);
-        rush3d_register_write(CONTROL_STATUS_REGISTER, CLEAR_FRAMEBUFFER);
-        while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER)) & CLEAR_FRAMEBUFFER)
+        rush3d_register_write(CONTROL_STATUS_REGISTER_WRITE, CLEAR_FRAMEBUFFER);
+        while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER_READ)) & CLEAR_FRAMEBUFFER)
             ;
 #endif
     }

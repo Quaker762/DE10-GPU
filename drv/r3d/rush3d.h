@@ -12,15 +12,16 @@
 
 #include <cstdint>
 
-#define VERTEX_A_REGISTER       0x00
-#define VERTEX_B_REGISTER       0x08
-#define VERTEX_C_REGISTER       0x10
-#define COLOR_A_REGISTER        0x18
-#define COLOR_B_REGISTER        0x20
-#define COLOR_C_REGISTER        0x28
-#define BACK_COLOR_REGISTER     0x30
-#define CONTROL_STATUS_REGISTER 0x38
-#define WIN_SIZE_REGISTER       0x40
+#define VERTEX_A_REGISTER             0x00
+#define VERTEX_B_REGISTER             0x08
+#define VERTEX_C_REGISTER             0x10
+#define COLOR_A_REGISTER              0x18
+#define COLOR_B_REGISTER              0x20
+#define COLOR_C_REGISTER              0x28
+#define BACK_COLOR_REGISTER           0x30
+#define CONTROL_STATUS_REGISTER_WRITE 0x38
+#define CONTROL_STATUS_REGISTER_READ  0x40
+#define WIN_SIZE_REGISTER             0x48
 
 #define VERTEX_DATA_VALID 0x1
 #define CLEAR_FRAMEBUFFER 0x10

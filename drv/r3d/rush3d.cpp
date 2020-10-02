@@ -39,7 +39,9 @@ void rush3d_shutdown()
 
 void rush3d_register_write(uint32_t offset, uint64_t data)
 {
+#ifdef R3D_DEBUG
     printf("register_write: writing 0x%llx to offset 0x%x\n", data, offset);
+#endif
     AlteraBridge::the().write(offset, data);
 }
 
@@ -76,7 +78,7 @@ void rush3d_screenshot()
 
 void rush3d_swap_buffers()
 {
-    rush3d_register_write(CONTROL_STATUS_REGISTER, SWAP_FRAMEBUFFER);
-    while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER) & SWAP_FRAMEBUFFER))
+    rush3d_register_write(CONTROL_STATUS_REGISTER_WRITE, SWAP_FRAMEBUFFER);
+    while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER_READ) & SWAP_FRAMEBUFFER))
         ;
 }
