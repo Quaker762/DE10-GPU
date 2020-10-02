@@ -21,7 +21,7 @@ LD = $(CXX)
 INCLUDES += -I./include
 #INCLUDES += -I../mylib/public
 
-LIBS += -L./lib/ -ldrv3d -lgl
+LIBS += -L./lib/ -ldrv3d -lGL
 #LIBS += -L../mylib/$(OUTPUT_DIR) -lmylib
 
 #Compiler flags for build profiles
