@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;GLTest2/src/GLTest1.cpp&apos; to &apos;GLTest2.cpp&apos;" description="Rename resource &apos;GLTest1.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/GLTest1.cpp" name="GLTest2.cpp" stamp="1600955037900" updateReferences="true"/>
-</session>
