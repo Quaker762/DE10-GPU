@@ -4,6 +4,7 @@ module register
     input       [WIDTH-1:0] D,
     input                   clk,
     input                   reset,
+	 input 		 [WIDTH-1:0] reset_value,
     input                   load,
     
     output reg  [WIDTH-1:0] Q
@@ -13,7 +14,7 @@ always @(posedge(clk), negedge(reset))
 begin
     if(reset == 1'b0)
     begin
-        Q <= 0;
+        Q <= reset_value;
     end
     else if(load == 1'b0)
     begin

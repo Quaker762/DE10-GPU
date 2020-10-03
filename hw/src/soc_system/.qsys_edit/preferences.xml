@@ -10,7 +10,7 @@
    <export preferredWidth="186" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1545" height="874" x="1955" y="40" />
+ <library expandedCategories="Project,Library" />
+ <window width="1269" height="903" x="2144" y="117" />
  <hdlexample language="VERILOG" />
 </preferences>

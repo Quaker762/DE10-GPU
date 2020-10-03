@@ -38,11 +38,13 @@ module soc_system (
 	register_file_0_conduit_end_export_vertex_a,
 	register_file_0_conduit_end_export_vertex_b,
 	register_file_0_conduit_end_export_control_status_out,
-	register_file_0_conduit_end_export_control_bit_load,
-	register_file_0_conduit_end_export_control_bit_in,
-	register_file_0_conduit_end_export_control_bit_out,
 	register_file_0_conduit_end_export_back_colour_out,
-	register_file_0_conduit_end_export_control_bit_address,
+	register_file_0_conduit_end_export_color_a_out,
+	register_file_0_conduit_end_export_color_b_out,
+	register_file_0_conduit_end_export_color_c_out,
+	register_file_0_conduit_end_export_win_size_out,
+	register_file_0_conduit_end_export_control_status_load_fpga,
+	register_file_0_conduit_end_export_control_status_in,
 	reset_reset_n);	
 
 	input		clk_clk;
@@ -83,10 +85,12 @@ module soc_system (
 	output	[63:0]	register_file_0_conduit_end_export_vertex_a;
 	output	[63:0]	register_file_0_conduit_end_export_vertex_b;
 	output	[63:0]	register_file_0_conduit_end_export_control_status_out;
-	input		register_file_0_conduit_end_export_control_bit_load;
-	input		register_file_0_conduit_end_export_control_bit_in;
-	output		register_file_0_conduit_end_export_control_bit_out;
 	output	[63:0]	register_file_0_conduit_end_export_back_colour_out;
-	input	[5:0]	register_file_0_conduit_end_export_control_bit_address;
+	output	[63:0]	register_file_0_conduit_end_export_color_a_out;
+	output	[63:0]	register_file_0_conduit_end_export_color_b_out;
+	output	[63:0]	register_file_0_conduit_end_export_color_c_out;
+	output	[63:0]	register_file_0_conduit_end_export_win_size_out;
+	input		register_file_0_conduit_end_export_control_status_load_fpga;
+	input	[63:0]	register_file_0_conduit_end_export_control_status_in;
 	input		reset_reset_n;
 endmodule

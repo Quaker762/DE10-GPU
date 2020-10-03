@@ -48,6 +48,7 @@ register #(64) vertex_a
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_0000_0000),
     .load(~vertex_a_load),
     
     .Q(vertex_a_out)
@@ -58,6 +59,7 @@ register #(64) vertex_b
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_0000_0000),
     .load(~vertex_b_load),
     
     .Q(vertex_b_out)
@@ -68,6 +70,7 @@ register #(64) vertex_c
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_0000_0000),
     .load(~vertex_c_load),
     
     .Q(vertex_c_out)
@@ -78,6 +81,7 @@ register #(64) color_a
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_00FF_FFFF),
     .load(~color_a_load),
     
     .Q(color_a_out)
@@ -88,6 +92,7 @@ register #(64) color_b
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_00FF_FFFF),
     .load(~color_b_load),
     
     .Q(color_b_out)
@@ -98,6 +103,7 @@ register #(64) color_c
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_00FF_FFFF),
     .load(~color_c_load),
     
     .Q(color_c_out)
@@ -108,6 +114,7 @@ register #(64) back_colour
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_0000_0000),
     .load(~back_colour_load),
     
     .Q(back_colour_out)
@@ -130,6 +137,7 @@ register #(64) win_size
     .D(writedata),
     .clk(clk),
     .reset(reset),
+	 .reset_value(64'h0000_0000_0000_0000),
     .load(~win_size_load),
     
     .Q(win_size_out)
