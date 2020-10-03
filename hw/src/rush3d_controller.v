@@ -14,6 +14,8 @@ module rush3d_controller
 	input [3:0] framebuffer_write_state,
 	input [3:0] rasteriser_state,
 	
+	input vertex_data_full,
+	
 	input pixel_fifo_empty,
 	input vertex_data_fifo_empty,
 	input vsync
@@ -23,9 +25,10 @@ reg [7:0] current_state;
 
 parameter STATE_IDLE = 8'h00;
 parameter STATE_BACKGROUND_FILL = 8'h01;
-parameter STATE_VALID_VERITICES = 8'h02;
-parameter STATE_SWAP_BUFFER_WAIT = 8'h03;
-parameter STATE_SWAP_BUFFER_FINISH = 8'h04;
+parameter STATE_VALID_VERITICES_WAIT = 8'h02;
+parameter STATE_VALID_VERITICES_FINISH = 8'h03;
+parameter STATE_SWAP_BUFFER_WAIT = 8'h04;
+parameter STATE_SWAP_BUFFER_FINISH = 8'h05;
 
 parameter WRITE_STATE_WAIT = 4'h0;
 parameter WRITE_STATE_WRITE = 4'h1;
@@ -54,11 +57,8 @@ always @(posedge(clock), negedge(reset_n)) begin
 					control_status_out <= (control_status_in & (~BACKGROUND_BIT));
 					
 				end else if(control_status_in & VALID_VERTICIES_BIT) begin
-					current_state <= STATE_VALID_VERITICES;
-					clock_verticies_flag <= 1'b1;
-					control_status_load <= 1'b1;
-					control_status_out <= (control_status_in & (~VALID_VERTICIES_BIT));
-					
+					current_state <= STATE_VALID_VERITICES_WAIT;
+	
 				end else if(control_status_in & SWAP_BUFFER_BIT) begin
 					current_state <= STATE_SWAP_BUFFER_WAIT;
 				end
@@ -76,7 +76,17 @@ always @(posedge(clock), negedge(reset_n)) begin
 				end
 			end
 			
-			STATE_VALID_VERITICES: begin
+			STATE_VALID_VERITICES_WAIT: begin
+				if(!vertex_data_full) begin
+					clock_verticies_flag <= 1'b1;
+					control_status_load <= 1'b1;
+					control_status_out <= (control_status_in & (~VALID_VERTICIES_BIT));
+					
+					current_state <= STATE_VALID_VERITICES_FINISH;
+				end
+			end
+			
+			STATE_VALID_VERITICES_FINISH: begin
 				if(~(control_status_in & VALID_VERTICIES_BIT)) begin
 					control_status_load <= 1'b0;
 					current_state <= STATE_IDLE;

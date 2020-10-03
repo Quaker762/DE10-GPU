@@ -204,7 +204,7 @@ rasteriser raster
 	
 	.vertex_data({vertex_a, vertex_b, vertex_c, color_a, color_b, color_c}),
 	.vertex_data_valid(clock_verticies_flag),
-	.vertex_data_full(),
+	.vertex_data_full(vertex_data_fifo_full),
 	.vertex_data_empty(vertex_data_fifo_empty),
 	.vertex_data_clock(clock_50),
 	.state(rasteriser_state),
@@ -229,6 +229,8 @@ rush3d_controller controller
 	
 	.framebuffer_write_state(framebuffer_write_state),
 	.rasteriser_state(rasteriser_state),
+	
+	.vertex_data_full(vertex_data_fifo_full),
 	
 	.pixel_fifo_empty(pixel_fifo_empty),
 	.vertex_data_fifo_empty(vertex_data_fifo_empty),
