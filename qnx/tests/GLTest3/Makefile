@@ -1,4 +1,4 @@
-ARTIFACT = GLTest1
+ARTIFACT = GLTest3
 
 #Build architecture/variant string, possible values: x86, armv7le, etc...
 PLATFORM ?= armv7le

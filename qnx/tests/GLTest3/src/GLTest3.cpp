@@ -2731,34 +2731,20 @@ int main(int, char**)
     xmax = ymax * aspect;
     glFrustum(xmin, xmax, ymin, ymax, 4, 10);
     GLfloat angle = 0.0f;
-    GLfloat z = -16.0f;
+    GLfloat z = -8.0f;
     while(running)
     {
-        angle -= 0.9f;
+        angle -= 1.0f;
 
-        glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         glTranslatef(0.0f, 0.0f, 0.0f);
-        glRotatef(angle, 0.0f, 1.0f, 1.0f);
+        glRotatef(angle, 1.0f, 0.0f, 1.0f);
         glTranslatef(0.0f, 0.0f, z);
         draw_teapot();
-
-        /** Uncomment me for more cubes!
-        glLoadIdentity();
-        glTranslatef(0.0f, 0.0f, 0.0f);
-        glRotatef(angle, 0.0f, 1.0f, 0.0f);
-        glTranslatef(-4.0f, 0.0f, -15.0f);
-        draw_cube();
-
-        glLoadIdentity();
-        glTranslatef(0.0f, 0.0f, 0.0f);
-        glRotatef(angle, 1.0f, 1.0f, 0.0f);
-        glTranslatef(4.0f, 3.0f, -12.0f);
-        draw_cube();
-        **/
 
         rush3d_swap_buffers();
     }
