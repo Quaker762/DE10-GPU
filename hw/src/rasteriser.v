@@ -52,8 +52,9 @@ rasteriser_fifo vertex_data_fifo(
 	.wrfull(vertex_data_full)
 );
 
-assign pixel_data[31:0] = vertex_a_colour;
+assign pixel_data[31:0] = current_colour;
 
+reg [31:0] current_colour;
 reg draw_line;
 wire draw_done;
 reg [11:0] x1, x2, y1, y2;
@@ -106,6 +107,7 @@ always @(posedge(clock), negedge(reset_n)) begin
 					x2 <= vertex_b_x[31:20];
 					y1 <= vertex_a_y[31:20];
 					y2 <= vertex_b_y[31:20];
+					current_colour <= vertex_a_colour;
 			end
 			
 			STATE_A: begin
@@ -119,6 +121,7 @@ always @(posedge(clock), negedge(reset_n)) begin
 					x2 <= vertex_c_x[31:20];
 					y1 <= vertex_b_y[31:20];
 					y2 <= vertex_c_y[31:20];
+					current_colour <= vertex_b_colour;
 				end
 			end
 			
@@ -133,6 +136,7 @@ always @(posedge(clock), negedge(reset_n)) begin
 					x2 <= vertex_a_x[31:20];
 					y1 <= vertex_c_y[31:20];
 					y2 <= vertex_a_y[31:20];
+					current_colour <= vertex_c_colour;
 				end
 			end
 			
