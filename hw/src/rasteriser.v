@@ -8,6 +8,7 @@ module rasteriser
 	output vertex_data_full,
 	output vertex_data_empty,
 	input vertex_data_clock,
+	output [3:0] state,
 	
 	output wire [63:0] pixel_data,
    output wire pixel_data_valid,
@@ -33,6 +34,8 @@ parameter STATE_WAIT = 4'h0;
 parameter STATE_A = 4'h1;
 parameter STATE_B = 4'h2;
 parameter STATE_C = 4'h3;
+
+assign state = current_state;
 
 reg [3:0] current_state;
 

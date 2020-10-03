@@ -12,6 +12,7 @@ module rush3d_controller
 	output reg current_buffer_flag,
 	
 	input [3:0] framebuffer_write_state,
+	input [3:0] rasteriser_state,
 	
 	input pixel_fifo_empty,
 	input vertex_data_fifo_empty,
@@ -84,7 +85,7 @@ always @(posedge(clock), negedge(reset_n)) begin
 			end
 			
 			STATE_SWAP_BUFFER_WAIT: begin
-				if(pixel_fifo_empty && vertex_data_fifo_empty && vsync) begin
+				if(pixel_fifo_empty && vertex_data_fifo_empty && vsync && (rasteriser_state == 4'h0)) begin
 					current_buffer_flag <= ~current_buffer_flag;
 					control_status_load <= 1'b1;
 					control_status_out <= (control_status_in & (~SWAP_BUFFER_BIT));

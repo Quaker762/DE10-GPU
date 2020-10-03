@@ -171,6 +171,7 @@ wire pixel_fifo_full;
 wire fill_background_flag;
 wire clock_verticies_flag;
 wire [3:0] framebuffer_write_state;
+wire [3:0] rasteriser_state;
 
 framebuffer_write writer
 (
@@ -206,6 +207,7 @@ rasteriser raster
 	.vertex_data_full(),
 	.vertex_data_empty(vertex_data_fifo_empty),
 	.vertex_data_clock(clock_50),
+	.state(rasteriser_state),
 	 
 	.pixel_data(rasterised_pixel_data),
    .pixel_data_valid(pixel_data_valid),
@@ -226,6 +228,7 @@ rush3d_controller controller
 	.current_buffer_flag(current_buffer),
 	
 	.framebuffer_write_state(framebuffer_write_state),
+	.rasteriser_state(rasteriser_state),
 	
 	.pixel_fifo_empty(pixel_fifo_empty),
 	.vertex_data_fifo_empty(vertex_data_fifo_empty),
