@@ -18,7 +18,7 @@ module rasteriser
 );
 
 reg clear_fifo;
-reg vertex_data_rasterised;
+reg request_data;
 
 wire [31:0] vertex_a_x;
 wire [31:0] vertex_a_y;
@@ -31,9 +31,10 @@ wire [31:0] vertex_b_colour;
 wire [31:0] vertex_c_colour;
 
 parameter STATE_WAIT = 4'h0;
-parameter STATE_A = 4'h1;
-parameter STATE_B = 4'h2;
-parameter STATE_C = 4'h3;
+parameter STATE_START = 4'h1;
+parameter STATE_A = 4'h2;
+parameter STATE_B = 4'h3;
+parameter STATE_C = 4'h4;
 
 assign state = current_state;
 
@@ -43,7 +44,7 @@ rasteriser_fifo vertex_data_fifo(
 	.aclr(clear_fifo),
 	.data(vertex_data),
 	.rdclk(clock),
-	.rdreq(vertex_data_rasterised), // We have this set up to acknowledge, not request
+	.rdreq(request_data), // We have this set up to acknowledge, not request
 	.wrclk(vertex_data_clock),
 	.wrreq(vertex_data_valid),
 	.q({vertex_a_x, vertex_a_y, vertex_b_x, vertex_b_y, vertex_c_x, vertex_c_y, vertex_a_colour, vertex_b_colour, vertex_c_colour}),
@@ -79,7 +80,7 @@ draw_line bresenham
 always @(posedge(clock), negedge(reset_n)) begin
 	if(!reset_n) begin
 		clear_fifo <= 1;
-		vertex_data_rasterised <= 0;
+		request_data <= 0;
 //		pixel_data_valid <= 0;
 //		pixel_data <= 0;
 		draw_line <= 0;
@@ -88,18 +89,23 @@ always @(posedge(clock), negedge(reset_n)) begin
 		case(current_state)
 			STATE_WAIT: begin
 				if(!vertex_data_empty) begin
+					request_data <= 1;
+					current_state <= STATE_START;
+				end
+				
+				clear_fifo <= 0;
+	//			pixel_data_valid <= 0;
+				//draw_line <= 0;
+			end
+			
+			STATE_START: begin
 					draw_line <= 1;
+					request_data <= 0;
 					current_state <= STATE_A;
 					x1 <= vertex_a_x[31:20];
 					x2 <= vertex_b_x[31:20];
 					y1 <= vertex_a_y[31:20];
 					y2 <= vertex_b_y[31:20];
-				end
-				
-				clear_fifo <= 0;
-	//			pixel_data_valid <= 0;
-				vertex_data_rasterised <= 0;
-				//draw_line <= 0;
 			end
 			
 			STATE_A: begin
@@ -136,7 +142,6 @@ always @(posedge(clock), negedge(reset_n)) begin
 				
 				draw_line <= 0;
 				if(draw_done) begin
-					vertex_data_rasterised <= 1;
 					current_state <= STATE_WAIT;
 				end
 			end
