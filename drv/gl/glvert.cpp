@@ -77,7 +77,6 @@ enum ClippingPlane
 
 void glBegin(GLenum mode)
 {
-    ASSERT(mode == GL_TRIANGLES || mode == GL_QUADS || mode == GL_TRIANGLE_FAN);
     g_gl_state->curr_draw_mode = mode;
 }
 
@@ -233,6 +232,17 @@ void glEnd()
         {
             triangle.vertices[1] = vertex_list.at(i);
             triangle.vertices[2] = vertex_list.at(i + 1);
+            triangle_list.push_back(triangle);
+        }
+    }
+    else if(g_gl_state->curr_draw_mode == GL_TRIANGLE_STRIP)
+    {
+        R3DTriangle triangle;
+        for(size_t i = 0; i < vertex_list.size() - 2; i++)
+        {
+            triangle.vertices[0] = vertex_list.at(i);
+            triangle.vertices[1] = vertex_list.at(i + 1);
+            triangle.vertices[2] = vertex_list.at(i + 2);
             triangle_list.push_back(triangle);
         }
     }
