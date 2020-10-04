@@ -191,9 +191,6 @@ void glEnd()
     float scr_width = 640.0f;
     float scr_height = 480.0f;
 #endif
-
-    ASSERT(g_gl_state->curr_draw_mode == GL_TRIANGLES); // We only support GL_TRIANGLES at the moment
-
     // Let's construct some triangles
     if(g_gl_state->curr_draw_mode == GL_TRIANGLES)
     {
@@ -204,6 +201,26 @@ void glEnd()
             triangle.vertices[1] = vertex_list.at(i + 1);
             triangle.vertices[2] = vertex_list.at(i + 2);
 
+            triangle_list.push_back(triangle);
+        }
+    }
+    else if(g_gl_state->curr_draw_mode == GL_QUADS)
+    {
+        // We need to construct two triangles to form the quad
+        R3DTriangle triangle;
+        ASSERT(vertex_list.size() % 4 == 0);
+        for(size_t i = 0; i < vertex_list.size(); i += 4)
+        {
+            // Triangle 1
+            triangle.vertices[0] = vertex_list.at(i);
+            triangle.vertices[1] = vertex_list.at(i + 1);
+            triangle.vertices[2] = vertex_list.at(i + 2);
+            triangle_list.push_back(triangle);
+
+            // Triangle 2
+            triangle.vertices[0] = vertex_list.at(i + 2);
+            triangle.vertices[1] = vertex_list.at(i + 3);
+            triangle.vertices[2] = vertex_list.at(i);
             triangle_list.push_back(triangle);
         }
     }
@@ -325,91 +342,91 @@ void glEnd()
         }
     }
 
-    if(g_gl_state->curr_draw_mode == GL_TRIANGLES)
+    for(size_t i = 0; i < processed_triangles.size(); i++)
     {
-        for(size_t i = 0; i < processed_triangles.size(); i++)
-        {
-            std::vector<R3DVertex> sort_vert_list;
-            R3DTriangle& triangle = processed_triangles.at(i);
+        std::vector<R3DVertex> sort_vert_list;
+        R3DTriangle& triangle = processed_triangles.at(i);
 
-            // Now we sort the vertices by their y values. A is the vertex that has the least y value,
-            // B is the middle and C is the bottom.
-            // These are sorted in groups of 3
-            sort_vert_list.push_back(triangle.vertices[0]);
-            sort_vert_list.push_back(triangle.vertices[1]);
-            sort_vert_list.push_back(triangle.vertices[2]);
+        // Now we sort the vertices by their y values. A is the vertex that has the least y value,
+        // B is the middle and C is the bottom.
+        // These are sorted in groups of 3
+        sort_vert_list.push_back(triangle.vertices[0]);
+        sort_vert_list.push_back(triangle.vertices[1]);
+        sort_vert_list.push_back(triangle.vertices[2]);
 
-            std::sort(sort_vert_list.begin(), sort_vert_list.end(), compare_y_values);
+        std::sort(sort_vert_list.begin(), sort_vert_list.end(), compare_y_values);
 
-            triangle.vertices[0] = sort_vert_list.at(0);
-            triangle.vertices[1] = sort_vert_list.at(1);
-            triangle.vertices[2] = sort_vert_list.at(2);
+        triangle.vertices[0] = sort_vert_list.at(0);
+        triangle.vertices[1] = sort_vert_list.at(1);
+        triangle.vertices[2] = sort_vert_list.at(2);
 
-            // Let's calculate the (signed) area of the triangle
-            // https://cp-algorithms.com/geometry/oriented-triangle-area.html
-            float dxAB = triangle.vertices[0].x - triangle.vertices[1].x; // A.x - B.x
-            float dxBC = triangle.vertices[1].x - triangle.vertices[2].x; // B.X - C.x
-            float dyAB = triangle.vertices[0].y - triangle.vertices[1].y;
-            float dyBC = triangle.vertices[1].y - triangle.vertices[2].y;
-            float area = (dxAB * dyBC) - (dxBC * dyAB);
+        // Let's calculate the (signed) area of the triangle
+        // https://cp-algorithms.com/geometry/oriented-triangle-area.html
+        float dxAB = triangle.vertices[0].x - triangle.vertices[1].x; // A.x - B.x
+        float dxBC = triangle.vertices[1].x - triangle.vertices[2].x; // B.X - C.x
+        float dyAB = triangle.vertices[0].y - triangle.vertices[1].y;
+        float dyBC = triangle.vertices[1].y - triangle.vertices[2].y;
+        float area = (dxAB * dyBC) - (dxBC * dyAB);
 
-            if(area == 0.0f)
-                continue;
+        if(area == 0.0f)
+            continue;
 
-                // Now let's work out the barycentric co-ords for the color gradients
+            // Now let's work out the barycentric co-ords for the color gradients
 
 #ifdef USE_SIM
-            // std::printf("GL_PROJECTION\n");
-            // g_gl_state->projection_matrix.print();
-            // std::printf("\nGL_MODELVIEW\n");
-            // g_gl_state->model_view_matrix.print();
-            // ASSERT_NOT_REACHED;
-            // We should probably wait here too
-            g_card.write_register(RegisterOffsets::vertexAx, triangle.vertices[0].x);
-            g_card.write_register(RegisterOffsets::vertexAy, triangle.vertices[0].y);
-            g_card.write_register(RegisterOffsets::vertexBx, triangle.vertices[1].x);
-            g_card.write_register(RegisterOffsets::vertexBy, triangle.vertices[1].y);
-            g_card.write_register(RegisterOffsets::vertexCx, triangle.vertices[2].x);
-            g_card.write_register(RegisterOffsets::vertexCy, triangle.vertices[2].y);
-            g_card.write_register(RegisterOffsets::triStartR, static_cast<uint32_t>(triangle.vertices[0].r));
-            g_card.write_register(RegisterOffsets::triStartG, static_cast<uint32_t>(triangle.vertices[0].g));
-            g_card.write_register(RegisterOffsets::triStartB, static_cast<uint32_t>(triangle.vertices[0].b));
-            g_card.write_register(RegisterOffsets::triRdX, static_cast<uint32_t>(0.0f));
-            g_card.write_register(RegisterOffsets::triGdX, static_cast<uint32_t>(1.0f));
-            g_card.write_register(RegisterOffsets::triBdX, static_cast<uint32_t>(0.0f));
-            g_card.write_register(RegisterOffsets::triRdY, static_cast<uint32_t>(0.0f));
-            g_card.write_register(RegisterOffsets::triGdY, static_cast<uint32_t>(1.0f));
-            g_card.write_register(RegisterOffsets::triBdY, static_cast<uint32_t>(0.0f));
-            g_card.write_register(RegisterOffsets::cmdTriangle, (uint32_t)area); // Write the area to the draw command
+        // std::printf("GL_PROJECTION\n");
+        // g_gl_state->projection_matrix.print();
+        // std::printf("\nGL_MODELVIEW\n");
+        // g_gl_state->model_view_matrix.print();
+        // ASSERT_NOT_REACHED;
+        // We should probably wait here too
+        g_card.write_register(RegisterOffsets::vertexAx, triangle.vertices[0].x);
+        g_card.write_register(RegisterOffsets::vertexAy, triangle.vertices[0].y);
+        g_card.write_register(RegisterOffsets::vertexBx, triangle.vertices[1].x);
+        g_card.write_register(RegisterOffsets::vertexBy, triangle.vertices[1].y);
+        g_card.write_register(RegisterOffsets::vertexCx, triangle.vertices[2].x);
+        g_card.write_register(RegisterOffsets::vertexCy, triangle.vertices[2].y);
+        g_card.write_register(RegisterOffsets::triStartR, static_cast<uint32_t>(triangle.vertices[0].r));
+        g_card.write_register(RegisterOffsets::triStartG, static_cast<uint32_t>(triangle.vertices[0].g));
+        g_card.write_register(RegisterOffsets::triStartB, static_cast<uint32_t>(triangle.vertices[0].b));
+        g_card.write_register(RegisterOffsets::triRdX, static_cast<uint32_t>(0.0f));
+        g_card.write_register(RegisterOffsets::triGdX, static_cast<uint32_t>(1.0f));
+        g_card.write_register(RegisterOffsets::triBdX, static_cast<uint32_t>(0.0f));
+        g_card.write_register(RegisterOffsets::triRdY, static_cast<uint32_t>(0.0f));
+        g_card.write_register(RegisterOffsets::triGdY, static_cast<uint32_t>(1.0f));
+        g_card.write_register(RegisterOffsets::triBdY, static_cast<uint32_t>(0.0f));
+        g_card.write_register(RegisterOffsets::cmdTriangle, (uint32_t)area); // Write the area to the draw command
 #else
-            int32_t vertexAx = f32_to_fx32(triangle.vertices[0].x);
-            int32_t vertexAy = f32_to_fx32(triangle.vertices[0].y);
-            int32_t vertexBx = f32_to_fx32(triangle.vertices[1].x);
-            int32_t vertexBy = f32_to_fx32(triangle.vertices[1].y);
-            int32_t vertexCx = f32_to_fx32(triangle.vertices[2].x);
-            int32_t vertexCy = f32_to_fx32(triangle.vertices[2].y);
+        int32_t vertexAx = f32_to_fx32(triangle.vertices[0].x);
+        int32_t vertexAy = f32_to_fx32(triangle.vertices[0].y);
+        int32_t vertexBx = f32_to_fx32(triangle.vertices[1].x);
+        int32_t vertexBy = f32_to_fx32(triangle.vertices[1].y);
+        int32_t vertexCx = f32_to_fx32(triangle.vertices[2].x);
+        int32_t vertexCy = f32_to_fx32(triangle.vertices[2].y);
 
-            uint64_t vertexA = (static_cast<uint64_t>(vertexAx) << 32) | vertexAy;
-            uint64_t vertexB = (static_cast<uint64_t>(vertexBx) << 32) | vertexBy;
-            uint64_t vertexC = (static_cast<uint64_t>(vertexCx) << 32) | vertexCy;
-            rush3d_register_write(VERTEX_A_REGISTER, vertexA);
-            rush3d_register_write(VERTEX_B_REGISTER, vertexB);
-            rush3d_register_write(VERTEX_C_REGISTER, vertexC);
-            rush3d_register_write(CONTROL_STATUS_REGISTER_WRITE, VERTEX_DATA_VALID);
-            while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER_READ)) & VERTEX_DATA_VALID)
-                ;
+        uint64_t vertexA = (static_cast<uint64_t>(vertexAx) << 32) | vertexAy;
+        uint64_t vertexB = (static_cast<uint64_t>(vertexBx) << 32) | vertexBy;
+        uint64_t vertexC = (static_cast<uint64_t>(vertexCx) << 32) | vertexCy;
+        uint32_t colorA = static_cast<uint8_t>(triangle.vertices[0].r) << 16 | static_cast<uint8_t>(triangle.vertices[0].g) << 8 | static_cast<uint8_t>(triangle.vertices[0].b);
+        uint32_t colorB = static_cast<uint8_t>(triangle.vertices[1].r) << 16 | static_cast<uint8_t>(triangle.vertices[1].g) << 8 | static_cast<uint8_t>(triangle.vertices[1].b);
+        uint32_t colorC = static_cast<uint8_t>(triangle.vertices[2].r) << 16 | static_cast<uint8_t>(triangle.vertices[2].g) << 8 | static_cast<uint8_t>(triangle.vertices[2].b);
+
+        rush3d_register_write(VERTEX_A_REGISTER, vertexA);
+        rush3d_register_write(VERTEX_B_REGISTER, vertexB);
+        rush3d_register_write(VERTEX_C_REGISTER, vertexC);
+        rush3d_register_write(COLOR_A_REGISTER, colorA);
+        rush3d_register_write(COLOR_B_REGISTER, colorB);
+        rush3d_register_write(COLOR_C_REGISTER, colorC);
+        rush3d_register_write(CONTROL_STATUS_REGISTER_WRITE, VERTEX_DATA_VALID);
+        while(static_cast<volatile uint64_t>(rush3d_register_read(CONTROL_STATUS_REGISTER_READ)) & VERTEX_DATA_VALID)
+            ;
 #endif
-        }
+    }
 
-        // We probably need to wait for the card to finish drawing here before we clear
-        triangle_list.clear();
-        processed_triangles.clear();
-        vertex_list.clear();
-    }
-    else
-    {
-        ASSERT_NOT_REACHED; // Crash for now!
-    }
+    // We probably need to wait for the card to finish drawing here before we clear
+    triangle_list.clear();
+    processed_triangles.clear();
+    vertex_list.clear();
 }
 
 void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
