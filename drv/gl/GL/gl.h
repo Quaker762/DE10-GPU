@@ -38,8 +38,11 @@ extern "C" {
 #define GL_PROJECTION 0x0051
 
 // glBegin/glEnd primitive types
-#define GL_TRIANGLES 0x0100
-#define GL_QUADS     0x0101
+#define GL_TRIANGLES      0x0100
+#define GL_QUADS          0x0101
+#define GL_TRIANGLE_FAN   0x0102
+#define GL_TRIANGLE_STRIP 0x0103
+#define GL_POLYGON        0x0104
 
 // Buffer bits
 #define GL_COLOR_BUFFER_BIT 0x0200

@@ -77,7 +77,7 @@ enum ClippingPlane
 
 void glBegin(GLenum mode)
 {
-    ASSERT(mode == GL_TRIANGLES || mode == GL_QUADS);
+    ASSERT(mode == GL_TRIANGLES || mode == GL_QUADS || mode == GL_TRIANGLE_FAN);
     g_gl_state->curr_draw_mode = mode;
 }
 
@@ -221,6 +221,18 @@ void glEnd()
             triangle.vertices[0] = vertex_list.at(i + 2);
             triangle.vertices[1] = vertex_list.at(i + 3);
             triangle.vertices[2] = vertex_list.at(i);
+            triangle_list.push_back(triangle);
+        }
+    }
+    else if(g_gl_state->curr_draw_mode == GL_TRIANGLE_FAN)
+    {
+        R3DTriangle triangle;
+        triangle.vertices[0] = vertex_list.at(0); // Root vertex is always the vertex defined first
+
+        for(size_t i = 1; i < vertex_list.size() - 1; i++) // This is technically `n-2` triangles. We start at index 1
+        {
+            triangle.vertices[1] = vertex_list.at(i);
+            triangle.vertices[2] = vertex_list.at(i + 1);
             triangle_list.push_back(triangle);
         }
     }
