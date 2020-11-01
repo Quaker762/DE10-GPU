@@ -300,7 +300,7 @@ void glEnd()
         vecs.push_back(veca);
         vecs.push_back(vecb);
         vecs.push_back(vecc);
-        // clip_triangle_against_frustum(vecs);
+        clip_triangle_against_frustum(vecs);
 
         // TODO: Copy color and UV information too!
         for(size_t vec_idx = 0; vec_idx < vecs.size(); vec_idx++)
