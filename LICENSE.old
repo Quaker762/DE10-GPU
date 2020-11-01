@@ -1,0 +1,18 @@
+Unauthorized copying or reproduction of this project and the files contained within
+is strictly prohibited.
+
+Copyright (c) 2020, Jesse Buhagiar, Jack Allan and Matthew Atkin
+All rights reserved.
+
+Here's a header version so we don't have to write this out
+eleven billion fucking times.
+
+/**
+ * Copyright (c) 2020, Jesse Buhagiar, Jack Allan and Matthew Atkin
+ * All rights reserved.
+ * Unauthorized copying or reproduction of this project and the files contained within
+ * is strictly prohibited.
+ *
+ * Author:
+ * Date:
+ */
